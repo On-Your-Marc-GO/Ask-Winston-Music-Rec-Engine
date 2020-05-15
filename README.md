@@ -44,6 +44,9 @@ If your README is very long, add a table of contents to make it easy for users t
   - [TasteDive](tastedive.com/read/api)
   - [OMDB](http://www.omdbapi.com/)
   - [GoodReads](https://www.goodreads.com/api)
+  - [Genius](https://rapidapi.com/brianiswu/api/genius)
+  - [Discogs](https://www.discogs.com/developers#page:home,header:home-general-information)
+  - [Soundcloud](https://rapidapi.com/stefan.skliarov/api/Soundcloud)
 
 - CSS Framework
   - [Matrialize](https://materializecss.com/)
