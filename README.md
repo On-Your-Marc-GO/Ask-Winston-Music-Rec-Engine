@@ -46,7 +46,29 @@ If your README is very long, add a table of contents to make it easy for users t
   - [GoodReads](https://www.goodreads.com/api)
 
 - CSS Framework
-  - [Matrialize](https://materializecss.com/)
+  - [Materialize](https://materializecss.com/)
+
+## User Story
+
+```
+AS AN avid media consumer who's run through all their queues
+I WANT to be able to get recommendations for like media I already enjoy
+SO THAT I can continue to not go insane during COVID while staying entertained
+```
+
+## Acceptance Criteria
+
+```
+GIVEN I am using a content recommendation engine to seek new media
+WHEN I arrive at the page
+THEN I am presented with the option to search for a given media type (Book, Movie, Music)
+WHEN I enter input
+THEN I am then given relevant recommendations based on the selected media types
+WHEN I click on any of the recommendations given
+THEN I am presented with relevant content information (Ex. Albums, Artist Info, YT Link to Popular song)
+WHEN I refresh the page
+THEN the previously searched content will be cleared from the screen but remain in memory to be searched on again
+```
 
 ## Installation
 
