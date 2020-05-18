@@ -8,7 +8,7 @@
 
 The purpose of this project is to initially test our knowledge of the building blocks of the Web (ie. HTML, CSS, and JS) and how to consume API's in order to create a unique web application specific to a need we see.
 
-This application will serve as a content recommendation engine. The user should be able to enter in a book, movie, or music artist they are familiar and then, based upon that input, get similar recommendations to explore within those mediums.
+This application will serve as a search engine that provides the . The user should be able to enter in a book, movie, or music artist they are familiar and then, based upon that input, get similar recommendations to explore within those mediums.
 
 The backbone of this application will rely on the TasteDive API do a majority of the "data processing". Based upon what is pulled from that API request and the user input, the corresponding APIs will come into play to show relevant information. For example if I were to enter as music artist (Dance Gavin Dance), our app would then display similar artist as well as those artist links to their music and info.
 
@@ -49,7 +49,29 @@ If your README is very long, add a table of contents to make it easy for users t
   - [Soundcloud](https://rapidapi.com/stefan.skliarov/api/Soundcloud)
 
 - CSS Framework
-  - [Matrialize](https://materializecss.com/)
+  - [Materialize](https://materializecss.com/)
+
+## User Story
+
+```
+AS AN avid media consumer who's run through all their queues
+I WANT to be able to get recommendations for like media I already enjoy
+SO THAT I can continue to not go insane during COVID while staying entertained
+```
+
+## Acceptance Criteria
+
+```
+GIVEN I am using a content recommendation engine to seek new media
+WHEN I arrive at the page
+THEN I am presented with the option to search for a given media type (Book, Movie, Music)
+WHEN I enter input
+THEN I am then given relevant recommendations based on the selected media types
+WHEN I click on any of the recommendations given
+THEN I am presented with relevant content information (Ex. Albums, Artist Info, YT Link to Popular song)
+WHEN I refresh the page
+THEN the previously searched content will be cleared from the screen but remain in memory to be searched on again
+```
 
 ## Installation
 
