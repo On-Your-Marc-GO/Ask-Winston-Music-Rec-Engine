@@ -8,7 +8,7 @@
 
 The purpose of this project is to initially test our knowledge of the building blocks of the Web (ie. HTML, CSS, and JS) and how to consume API's in order to create a unique web application specific to a need we see.
 
-This application will serve as a content recommendation engine. The user should be able to enter in a book, movie, or music artist they are familiar and then, based upon that input, get similar recommendations to explore within those mediums.
+This application will serve as a search engine that provides the . The user should be able to enter in a book, movie, or music artist they are familiar and then, based upon that input, get similar recommendations to explore within those mediums.
 
 The backbone of this application will rely on the TasteDive API do a majority of the "data processing". Based upon what is pulled from that API request and the user input, the corresponding APIs will come into play to show relevant information. For example if I were to enter as music artist (Dance Gavin Dance), our app would then display similar artist as well as those artist links to their music and info.
 
