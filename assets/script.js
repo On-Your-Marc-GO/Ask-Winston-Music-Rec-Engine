@@ -1,13 +1,3 @@
-// API Call to Query OMDB API
-var apiKeyOMDB = "6927641b";
-// This variable will change to encompass user input
-var inputMovieTitle = "The+Dark+Knight";
-var OMDBQueryURL = `http://www.omdbapi.com/?apikey=${apiKeyOMDB}&t=${inputMovieTitle}`;
+// TODO AJAX Calls to Be Created
 
-$.ajax({
-  url: OMDBQueryURL,
-  method: "GET",
-}).then(function (responseOMDB) {
-  console.log(responseOMDB);
-  console.log(responseOMDB.runtime);
-});
+var apiKey = "AIzaSyCrUV3i7mjYiK-bbrRUbt5kAKYNBexz7JA";
