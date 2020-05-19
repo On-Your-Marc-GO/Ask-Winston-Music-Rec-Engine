@@ -1,60 +1,61 @@
+var songName = "";
+var artistName = "";
 
-var songName = '';
-var artistName = '';
+function getSimilarSong(event) {
+  event.preventDefault();
+  songName = $(".songInput").val().trim();
+  artistName = $(".artistInput").val().trim();
 
+  $(".songInfo").removeClass("hide");
+  $(".searchInfo").addClass("hide");
 
-function getSimilarSong (event) {
-    event.preventDefault();
-    songName = $('.songInput').val().trim();
-    artistName = $('.artistInput').val().trim();
-    getSongInfo();
-    $('.songInput').val('');
-    $('.artistInput').val('');
+  getSongInfo();
+  $(".songInput").val("");
+  $(".artistInput").val("");
 }
 
 // SEARCH FOR SIMILAR SONGS BY SONG TITLE AND ARTIST NAME - LASTFM API
-function getSongInfo () {
+function getSongInfo() {
+  var apiKey = "da538ed1310540e471c7324ad05cf95f";
+  var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artistName}&track=${songName}&api_key=${apiKey}&format=json`;
 
-var apiKey = 'da538ed1310540e471c7324ad05cf95f';
-var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artistName}&track=${songName}&api_key=${apiKey}&format=json`;
-
-$.ajax({
-  url: queryURL,
-  method: 'GET'
-}).then(function(data){
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (data) {
     renderSongInfo(data);
-});
+  });
 }
 
-function renderSongInfo (data) {
-    console.log(data);
-    for (var i = 0; i < 10; i++) {
-        var songDiv = $('<div>');
-        songDiv.addClass('class', 'row songDiv');
-        var artistImg = $('<img>');
-        artistImg.addClass('class', 'col-2 artistImg');
-        var artistInfoDiv = $('<div>');
-        artistInfoDiv.addClass('class', 'col-4 artistInfoDiv');
-        var matchDiv = $('<div>');
-        matchDiv.addClass('class', 'col-2 matchDiv');
-        var extraInfoDiv = $('<div>');
-        extraInfoDiv.addClass('class', 'col-4 extraInfoDiv');
-        var songData = $('<p>');
-        var artistData = $('<p>');
-        var matchData = $('<p>');
-        songData.text(data.similartracks.track[i].name);
-        artistData.text(data.similartracks.track[i].artist.name);
-        matchData.text(data.similartracks.track[i].match);
-        artistImg.attr('src', data.similartracks.track[i].image[1].#text);
-        artistInfoDiv.append(songData);
-        artistInfoDiv.append(artistData);
-        matchDiv.append(matchData);
-        songDiv.append(artistImg);
-        songDiv.append(artistInfoDiv);
-        songDiv.append(matchDiv);
-        $('.songInfo').append(songDiv);
-    }
+function renderSongInfo(data) {
+  console.log(data);
+  for (var i = 0; i < 10; i++) {
+    var songDiv = $("<div>");
+    songDiv.addClass("row songDiv");
+    // var artistImg = $("<img>");
+    // artistImg.addClass("col-2 artistImg");
+    var artistInfoDiv = $("<div>");
+    artistInfoDiv.addClass("col-4 artistInfoDiv");
+    var matchDiv = $("<div>");
+    matchDiv.addClass("col-2 matchDiv");
+    // var extraInfoDiv = $("<div>");
+    // extraInfoDiv.addClass("col-4 extraInfoDiv");
+    var songData = $("<p>");
+    var artistData = $("<p>");
+    var matchData = $("<p>");
+    songData.text(data.similartracks.track[i].name);
+    artistData.text(data.similartracks.track[i].artist.name);
 
+    matchData.text((data.similartracks.track[i].match * 100).toFixed(2));
+    // artistImg.attr("src", data.similartracks.track[i].image[1].#text);
+    artistInfoDiv.append(songData);
+    artistInfoDiv.append(artistData);
+    matchDiv.append(matchData);
+    // songDiv.append(artistImg);
+    songDiv.append(artistInfoDiv);
+    songDiv.append(matchDiv);
+    $(".songInfo").append(songDiv);
+  }
 }
 
 $(".submitBtn").click(getSimilarSong);
@@ -66,7 +67,6 @@ $(".submitBtn").click(getSimilarSong);
 // }).then(function(response){
 //   console.log(response);
 // });
-
 
 // SEARCH FOR SIMILAR ARTISTS BY ARTIST NAME - LASTFM API
 // var apiKey = 'da538ed1310540e471c7324ad05cf95f';
@@ -80,7 +80,6 @@ $(".submitBtn").click(getSimilarSong);
 //   console.log(response);
 // });
 
-
 // SEARCH FOR SIMILAR SONGS BY SONG TITLE AND ARTIST NAME - LASTFM API
 // var apiKey = 'da538ed1310540e471c7324ad05cf95f';
 // var songName = 'Helena';
@@ -93,7 +92,6 @@ $(".submitBtn").click(getSimilarSong);
 // }).then(function(response){
 //   console.log(response);
 // });
-
 
 // GET LYRICS BY SONG TITLE AND ARTIST NAME - LYRICSOVH API
 // $.ajax({
