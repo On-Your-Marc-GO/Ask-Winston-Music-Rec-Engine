@@ -1,4 +1,19 @@
-$(".submitBtn").click(console.log('hello'));
+
+
+
+
+
+function getSimilarTrack (event) {
+    event.preventDefault();
+    var songInfo = $('.songInput').val().trim();
+    var artistInfo = $('.artistInput').val().trim();
+    console.log(songInfo);
+    console.log(artistInfo);
+}
+
+
+
+$(".submitBtn").click(getSimilarTrack);
 
 // GET ARTIST INFO BY ARTIST NAME - NAPSTER API
 // $.ajax({
