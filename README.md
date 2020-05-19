@@ -8,12 +8,6 @@
 
 The purpose of this project is to initially test our knowledge of the building blocks of the Web (ie. HTML, CSS, and JS) and how to consume API's in order to create a unique web application specific to a need we see.
 
-This application will serve as a search engine that provides the . The user should be able to enter in a book, movie, or music artist they are familiar and then, based upon that input, get similar recommendations to explore within those mediums.
-
-The backbone of this application will rely on the TasteDive API do a majority of the "data processing". Based upon what is pulled from that API request and the user input, the corresponding APIs will come into play to show relevant information. For example if I were to enter as music artist (Dance Gavin Dance), our app would then display similar artist as well as those artist links to their music and info.
-
-A MVP will allow the user to query for something and get a simply spit out to the page of information.
-
 ## Table of Contents
 
 If your README is very long, add a table of contents to make it easy for users to find what they need.
@@ -40,15 +34,12 @@ If your README is very long, add a table of contents to make it easy for users t
 - API's
 
   - [jQuery](https://api.jquery.com/)
-  - [BandsInTown](https://www.artists.bandsintown.com/support/api-installation)
-  - [TasteDive](tastedive.com/read/api)
-  - [OMDB](http://www.omdbapi.com/)
-  - [GoodReads](https://www.goodreads.com/api)
-  - [Genius](https://rapidapi.com/brianiswu/api/genius)
+  - [LastFM](https://www.last.fm/api/)
+  - [Napster](https://developer.napster.com/)
+  - [LyricsOVH](https://lyricsovh.docs.apiary.io/#)
   - [Discogs](https://www.discogs.com/developers#page:home,header:home-general-information)
-  - [Soundcloud](https://rapidapi.com/stefan.skliarov/api/Soundcloud)
 
-- CSS Framework
+* CSS Framework
   - [Materialize](https://materializecss.com/)
 
 ## User Story
