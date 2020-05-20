@@ -178,7 +178,12 @@ function renderLyrics (lyricsInfo) {
   $(".lyricInfo").removeClass("hide");
   $(".songLyric").text(lyricsInfo.song);
   $(".artistLyric").text(lyricsInfo.artist);
-  $(".lyric").text(lyricsInfo.lyrics.lyrics);
+  // var lyrics = JSON.stringify(lyricsInfo.lyrics.lyrics);
+  var lyrics = lyricsInfo.lyrics.lyrics;
+  // lyrics.replace(new RegExp("\n", "g"), "<br>");
+  // lyrics.replace(/(\r\n|\n|\r)/gm,"");
+  console.log(lyrics);
+  $(".lyric").html(lyrics);
 }
 
 function returnPage () {
