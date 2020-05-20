@@ -51,16 +51,17 @@ function getLastFMTrackInfo() {
 // TODO // REVIEW DURING OFFICE HOURS
 function getNapsterIDInfo(data) {
   var artistName = data.track.album.artist;
+  artistName = artistName.replace(/\s+/g, "-").toLowerCase(); // Stackoverflow
   var songName = data.track.name;
+  songName = songName.replace(/\s+/g, "-").toLowerCase();
   var albumName = data.track.album.title;
-
+  albumName = albumName.replace(/\s+/g, "-").toLowerCase();
   // console.log(`Artist Name:${artistName}`);
   // console.log(`Song Name:${songName}`);
   // console.log(`Album Name:${albumName}`);
 
   var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-  // var queryURL = `http://api.napster.com/v2.2/tracks/${artistName}/${albumName}/${songName}?apikey=${apiKey}`;
-  var queryURL = `http://api.napster.com/v2.2/artists/${artistName}?apikey=${apiKey}`;
+  var queryURL = `http://api.napster.com/v2.2/tracks/${artistName}/${albumName}/${songName}?apikey=${apiKey}`;
 
   $.ajax({
     url: queryURL,
