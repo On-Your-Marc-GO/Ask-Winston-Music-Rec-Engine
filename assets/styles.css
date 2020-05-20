@@ -1,5 +1,44 @@
-h2 {
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+nav {
+  background-color: black;
+  color: white;
+}
+
+h1,
+nav {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 600;
+}
+
+li.active {
+  text-decoration: underline;
+}
+
+h2,
+.submitBtn {
   font-size: 25px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+
+.page-footer {
+  background-color: white;
+  color: black;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+
+.no-shadows {
+  box-shadow: none!important;
 }
 
 .hide {
