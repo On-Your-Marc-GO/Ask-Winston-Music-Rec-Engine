@@ -107,7 +107,10 @@ function renderSongInfo (data) {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      if (data.images.length >= 1) {
+      // console.log(data);
+      if (data.images.length === 5) {
+        albumImg.attr("src", data.images[4].url);
+      } else if (data.images.length > 0 && data.images.length < 5) {
         albumImg.attr("src", data.images[2].url);
       } else {
         albumImg.attr("src", "assets/placeholder.png");
