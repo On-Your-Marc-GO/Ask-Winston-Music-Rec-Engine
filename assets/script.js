@@ -165,8 +165,15 @@ function renderLyrics (lyricsInfo) {
   $(".lyric").text(JSON.stringify(lyricsInfo.lyrics));
 }
 
+function returnPage () {
+  $(".songInfo").removeClass("hide");
+  $(".searchInfo").addClass("hide");
+  $(".lyricInfo").addClass("hide");
+}
+
 $(".submitBtn").click(getTrackArtistInfo);
 $(document).on("click", ".lyricsBtn", getLyrics);
+$(".returnBtn").click(returnPage);
 
 
 
