@@ -1,7 +1,9 @@
 var songName = "";
 var artistName = "";
 
-function getSimilarSong(event) {
+var similarResultsArr = [];
+
+function getTrackArtistInfo(event) {
   event.preventDefault();
   songName = $(".songInput").val().trim();
   artistName = $(".artistInput").val().trim();
@@ -9,13 +11,14 @@ function getSimilarSong(event) {
   $(".songInfo").removeClass("hide");
   $(".searchInfo").addClass("hide");
 
-  getSongInfo();
+  getSimilarSongs();
+
   $(".songInput").val("");
   $(".artistInput").val("");
 }
 
 // SEARCH FOR SIMILAR SONGS BY SONG TITLE AND ARTIST NAME - LASTFM API
-function getSongInfo() {
+function getSimilarSongs() {
   var apiKey = "da538ed1310540e471c7324ad05cf95f";
   var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artistName}&track=${songName}&api_key=${apiKey}&format=json`;
 
@@ -23,13 +26,59 @@ function getSongInfo() {
     url: queryURL,
     method: "GET",
   }).then(function (data) {
-    renderSongInfo(data);
+    renderSimilarSongs(data);
   });
 }
 
-function renderSongInfo(data) {
-  console.log(data);
+function getTrackInfo() {
+  console.log("In the Get Track Info Function");
+  for (var i = 0; i < similarResultsArr.length; i++) {
+    console.log("in the for loop");
+    var simArtistName = similarResultsArr[i].similarArtist;
+    var simSongName = similarResultsArr[i].similarSong;
+
+    var queryObject = {
+      queryArtist: simArtistName,
+      querySong: simSongName,
+    };
+
+    console.log(queryObject);
+
+    var apiKey = "da538ed1310540e471c7324ad05cf95f";
+    var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${queryObject.queryArtist}&track=${queryObject.querySong}&format=json`;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (data) {
+      console.log(data);
+    });
+  }
+}
+
+// var apiKey = "da538ed1310540e471c7324ad05cf95f";
+// var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${artistName}&track=${songName}&format=json`;
+
+// $.ajax({
+//   url: queryURL,
+//   method: "GET",
+// }).then(function (data) {
+//   console.log(data);
+//   // renderAddTrackInfo(data);
+// });
+
+function renderSimilarSongs(data) {
+  // console.log(data);
   for (var i = 0; i < 10; i++) {
+    var trackArtistResult = {
+      similarArtist: data.similartracks.track[i].artist.name,
+      similarSong: data.similartracks.track[i].name,
+    };
+    // console.log("IN THE RENDERSIMILARSONGS FUNCTION. THE FOLLOWING ARE THE OBJECTS PUSHED TO ARRAY");
+    // console.log(trackArtistResult);
+
+    similarResultsArr.push(trackArtistResult);
+
     var songDiv = $("<div>");
     songDiv.addClass("row songDiv");
     // var artistImg = $("<img>");
@@ -56,9 +105,11 @@ function renderSongInfo(data) {
     songDiv.append(matchDiv);
     $(".songInfo").append(songDiv);
   }
+
+  getTrackInfo();
 }
 
-$(".submitBtn").click(getSimilarSong);
+$(".submitBtn").click(getTrackArtistInfo);
 
 // GET ARTIST INFO BY ARTIST NAME - NAPSTER API
 // $.ajax({
