@@ -1,7 +1,9 @@
 var songName = "";
 var artistName = "";
-
 var similarResultsArr = [];
+
+
+$( document ).ready(function() {
 
 function getTrackArtistInfo(event) {
   event.preventDefault();
@@ -178,7 +180,9 @@ function renderLyrics (lyricsInfo) {
   $(".lyricInfo").removeClass("hide");
   $(".songLyric").text(lyricsInfo.song);
   $(".artistLyric").text(lyricsInfo.artist);
-  $(".lyric").text(lyricsInfo.lyrics.lyrics);
+  var lyrics = lyricsInfo.lyrics.lyrics;
+  lyrics = lyrics.replace(/[\n\r]/g, "<p>");
+  $(".lyric").html(lyrics);
 }
 
 function returnPage () {
@@ -187,16 +191,9 @@ function returnPage () {
   $(".lyricInfo").addClass("hide");
 }
 
+
 $(".submitBtn").click(getTrackArtistInfo);
 $(document).on("click", ".lyricsBtn", getLyrics);
 $(".returnBtn").click(returnPage);
 
-
-
-// GET LYRICS BY SONG TITLE AND ARTIST NAME - LYRICSOVH API
-// $.ajax({
-//   url: 'https://api.lyrics.ovh/v1/tupac/changes',
-//   method: 'GET'
-// }).then(function(response){
-//   console.log(response);
-// });
+});
