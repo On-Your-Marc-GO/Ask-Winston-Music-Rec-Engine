@@ -9,7 +9,7 @@ function getTrackArtistInfo(event) {
   artistName = $(".artistInput").val().trim();
 
   $(".home-page").removeClass("active");
-  $(".songInfo").removeClass("hide");
+  $(".songInfoDiv").removeClass("hide");
   $(".searchInfo").addClass("hide");
 
   getSimilarSongs();
@@ -90,16 +90,25 @@ function getNapsterIDInfo(data) {
 
 function renderSongInfo (data) {
   // console.log(data.tracks.length);
-  // console.log(data);
   $('.userSong').text(songName);
   $('.userArtist').text(artistName);
 
   if (data.tracks.length === 1) {
+    // console.log(data);
     var songDiv = $("<div>");
     songDiv.addClass("row songDiv");
     var albumImg = $("<img>");
     albumImg.addClass("col s2 albumImg");
-      // albumImg.attr("src", );
+    var albumID = data.tracks[0].albumId;
+    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+    var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (data) {
+      // console.log(data);
+      albumImg.attr("src", data.images[4].url);
+    });
     var songInfoDiv = $("<div>");
     songInfoDiv.addClass("col s4 songInfoDiv");
     var lyricsDiv = $("<div>");
@@ -113,8 +122,6 @@ function renderSongInfo (data) {
     lyricsBtn.addClass('btn waves-effect waves-light lyricsBtn');
     lyricsBtn.attr('data-song', data.tracks[0].name);
     lyricsBtn.attr('data-artist', data.tracks[0].artistName);
-    // var songPreviewBtn = $('<button>');
-    // songPreviewBtn.addClass('btn waves-effect waves-light songPreviewBtn');
     var songPreview = $('<audio>');
     songPreview.attr('controls', 'controls');
     var songSource = $('<source>')
@@ -158,16 +165,16 @@ function getLyrics () {
 }
 
 function renderLyrics (lyricsInfo) {
-  $(".songInfo").addClass("hide");
+  $(".songInfoDiv").addClass("hide");
   $(".searchInfo").addClass("hide");
   $(".lyricInfo").removeClass("hide");
   $(".songLyric").text(lyricsInfo.song);
   $(".artistLyric").text(lyricsInfo.artist);
-  $(".lyric").text(JSON.stringify(lyricsInfo.lyrics));
+  $(".lyric").text(lyricsInfo.lyrics.lyrics);
 }
 
 function returnPage () {
-  $(".songInfo").removeClass("hide");
+  $(".songInfoDiv").removeClass("hide");
   $(".searchInfo").addClass("hide");
   $(".lyricInfo").addClass("hide");
 }
