@@ -108,7 +108,7 @@ function renderSongInfo (data) {
       method: "GET",
     }).then(function (data) {
       if (data.images.length >= 1) {
-        albumImg.attr("src", data.images[4].url);
+        albumImg.attr("src", data.images[2].url);
       } else {
         albumImg.attr("src", "assets/placeholder.png");
       }
