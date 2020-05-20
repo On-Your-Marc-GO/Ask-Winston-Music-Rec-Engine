@@ -8,6 +8,7 @@ function getTrackArtistInfo(event) {
   songName = $(".songInput").val().trim();
   artistName = $(".artistInput").val().trim();
 
+  $(".home-page").removeClass("active");
   $(".songInfo").removeClass("hide");
   $(".searchInfo").addClass("hide");
 
