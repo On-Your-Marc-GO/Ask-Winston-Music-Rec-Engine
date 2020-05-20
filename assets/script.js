@@ -100,15 +100,20 @@ function renderSongInfo (data) {
     var albumImg = $("<img>");
     albumImg.addClass("col s2 albumImg");
     var albumID = data.tracks[0].albumId;
+
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      // console.log(data);
-      albumImg.attr("src", data.images[4].url);
+      if (data.images.length >= 1) {
+        albumImg.attr("src", data.images[4].url);
+      } else {
+        albumImg.attr("src", "assets/placeholder.png");
+      }
     });
+
     var songInfoDiv = $("<div>");
     songInfoDiv.addClass("col s4 songInfoDiv");
     var lyricsDiv = $("<div>");
@@ -128,8 +133,8 @@ function renderSongInfo (data) {
     songSource.attr('src', data.tracks[0].previewURL);
     songSource.attr('type', 'audio/mp3');
     songData.text(data.tracks[0].name);
-    artistData.text(data.tracks[0].artistName);
-    albumData.text(data.tracks[0].albumName);
+    artistData.text(`Artist: ${data.tracks[0].artistName}`);
+    albumData.text(`Album: ${data.tracks[0].albumName}`);
     lyricsBtn.text('Lyrics');
     songInfoDiv.append(songData);
     songInfoDiv.append(artistData);
