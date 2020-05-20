@@ -30,42 +30,46 @@ function getSimilarSongs() {
   });
 }
 
-function getTrackInfo() {
-  console.log("In the Get Track Info Function");
+// Based on Similar Songs Received, Pull Track Info for each - LASTFM API
+function getLastFMTrackInfo() {
   for (var i = 0; i < similarResultsArr.length; i++) {
-    console.log("in the for loop");
     var simArtistName = similarResultsArr[i].similarArtist;
     var simSongName = similarResultsArr[i].similarSong;
 
-    var queryObject = {
-      queryArtist: simArtistName,
-      querySong: simSongName,
-    };
-
-    console.log(queryObject);
-
     var apiKey = "da538ed1310540e471c7324ad05cf95f";
-    var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${queryObject.queryArtist}&track=${queryObject.querySong}&format=json`;
+    var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${simArtistName}&track=${simSongName}&format=json`;
 
     $.ajax({
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      console.log(data);
+      // console.log(data);
+      getNapsterIDInfo(data);
     });
   }
 }
+// TODO // REVIEW DURING OFFICE HOURS
+function getNapsterIDInfo(data) {
+  var artistName = data.track.album.artist;
+  artistName = artistName.replace(/\s+/g, "-").toLowerCase(); // Stackoverflow
+  var songName = data.track.name;
+  songName = songName.replace(/\s+/g, "-").toLowerCase();
+  var albumName = data.track.album.title;
+  albumName = albumName.replace(/\s+/g, "-").toLowerCase();
+  // console.log(`Artist Name:${artistName}`);
+  // console.log(`Song Name:${songName}`);
+  // console.log(`Album Name:${albumName}`);
 
-// var apiKey = "da538ed1310540e471c7324ad05cf95f";
-// var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${artistName}&track=${songName}&format=json`;
+  var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+  var queryURL = `http://api.napster.com/v2.2/tracks/${artistName}/${albumName}/${songName}?apikey=${apiKey}`;
 
-// $.ajax({
-//   url: queryURL,
-//   method: "GET",
-// }).then(function (data) {
-//   console.log(data);
-//   // renderAddTrackInfo(data);
-// });
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (data) {
+    console.log(data);
+  });
+}
 
 function renderSimilarSongs(data) {
   // console.log(data);
@@ -106,7 +110,7 @@ function renderSimilarSongs(data) {
     $(".songInfo").append(songDiv);
   }
 
-  getTrackInfo();
+  getLastFMTrackInfo();
 }
 
 $(".submitBtn").click(getTrackArtistInfo);
