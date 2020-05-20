@@ -16,7 +16,7 @@
     <nav class="no-shadows">
       <div class="nav-wrapper">
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li class="active"><a href="./index.html">HOME</a></li>
+          <li class="home-page active"><a href="./index.html">HOME</a></li>
           <li><a href="./about.html">ABOUT</a></li>
           <li><a href="./help.html">HELP</a></li>
         </ul>
@@ -50,9 +50,33 @@
       </div>
 
       <!-- Display Song Info Div -->
-      <div class="songInfo"></div>
-    </div>
+      <div class="songInfoDiv hide">
+        <div class="row songInfo center-align">
+          <h2>SIMILAR SONGS</h2>
+          <p class="userSong"></p>
+          <p class="userArtist"></p>
+        </div>
+        <!-- <ul class="pagination center-align">
+          <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
+          <li class="active"><a href="#!">1</a></li>
+          <li class="waves-effect"><a href="#!">2</a></li>
+          <li class="waves-effect"><a href="#!">3</a></li>
+          <li class="waves-effect"><a href="#!">4</a></li>
+          <li class="waves-effect"><a href="#!">5</a></li>
+          <li class="waves-effect"><a href="#!"><i class="material-icons"></i></a></li>
+        </ul>    -->
+      </div>
 
+      <!-- Display Lyric Div -->
+      <div class="lyricInfo center-align hide">
+        <h2 class="songLyric">Song Name</h2>
+        <h3 class="artistLyric">Artist Name</h3>
+        <button class="btn waves-effect waves-light returnBtn">Return to Results</button>
+        <p class="lyric">Lyrics</p>
+      </div>
+
+
+    </div>
   </main>
     
     <footer class="page-footer">
