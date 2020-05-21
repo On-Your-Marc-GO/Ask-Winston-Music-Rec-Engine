@@ -85,9 +85,10 @@ $(document).ready(function () {
   }
 
   function renderSongInfo(data) {
-    // console.log(data.tracks.length);
-    $(".userSong").text(songName);
-    $(".userArtist").text(artistName);
+    // $('.songChoice').text(songName);
+    // $('.artistChoice').text(artistName);
+    // $(".userSongDiv").text(`${songName} by ${artistName}`);
+    $(".userSongDiv").html(`<div><span class="songChoice">${songName}</span><span class=artistChoice> by ${artistName}</span></div>`);
 
     if (data.tracks.length === 1) {
       // console.log(data);
