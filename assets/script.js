@@ -2,8 +2,6 @@ var songName = "";
 var artistName = "";
 var similarResultsArr = [];
 
-var apiKeyYT = "AIzaSyD7zePgMXC4h9_g6fWu1mPQRf0HHpHFaww";
-
 $(document).ready(function () {
   function getTrackArtistInfo(event) {
     event.preventDefault();
