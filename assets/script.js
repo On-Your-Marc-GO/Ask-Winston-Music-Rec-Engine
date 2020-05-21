@@ -4,18 +4,33 @@ var similarResultsArr = [];
 
 $(document).ready(function () {
 
-  function getTrackArtistInfo() {
+// GET INFO FROM FORM AND RESET IT
+  function getSongArtistInfo() {
     songName = $(".songInput").val().trim();
     artistName = $(".artistInput").val().trim();
 
     $(".home-page").removeClass("active");
-    $(".songInfoDiv").removeClass("hide");
     $(".searchInfo").addClass("hide");
+    $(".artistInfoDiv").addClass("hide");
+    $(".songInfoDiv").removeClass("hide");
 
     getSimilarSongs();
 
     $(".songInput").val("");
     $(".artistInput").val("");
+  }
+
+  function getArtistInfo() {
+    artistName = $(".onlyArtistInput").val().trim();
+
+    $(".home-page").removeClass("active");
+    $(".searchInfo").addClass("hide");
+    $(".songInfoDiv").addClass("hide");
+    $(".artistInfoDiv").removeClass("hide");
+
+    getSimilarArtists();
+
+    $(".onlyArtistInput").val("");
   }
 
   // SEARCH FOR SIMILAR SONGS BY SONG TITLE AND ARTIST NAME - LASTFM API
@@ -31,6 +46,19 @@ $(document).ready(function () {
     });
   }
 
+  function getSimilarArtists() {
+    var apiKey = "da538ed1310540e471c7324ad05cf95f";
+    var queryURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=${artistName}&api_key=${apiKey}&format=json`;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (data) {
+      renderSimilarArtists(data);
+      // console.log(data)
+    });
+  }
+
   function renderSimilarSongs(data) {
     // console.log(data);
     for (var i = 0; i < 100; i++) {
@@ -43,11 +71,20 @@ $(document).ready(function () {
 
       similarResultsArr.push(trackArtistResult);
     }
-    getLastFMTrackInfo();
+    getLastFMSongInfo();
+  }
+
+  function renderSimilarArtists(data) {
+    for (var i = 0; i < 100; i++) {
+      var similarArtist = data.similarartists.artist[i].name;
+      similarResultsArr.push(similarArtist);
+    }
+    // console.log(similarResultsArr);
+    getNapsterArtistInfo();
   }
 
   // Based on Similar Songs Received, Pull Track Info for each - LASTFM API
-  function getLastFMTrackInfo() {
+  function getLastFMSongInfo() {
     for (var i = 0; i < similarResultsArr.length; i++) {
       var simArtistName = similarResultsArr[i].similarArtist;
       var simSongName = similarResultsArr[i].similarSong;
@@ -59,12 +96,12 @@ $(document).ready(function () {
         url: queryURL,
         method: "GET",
       }).then(function (data) {
-        getNapsterIDInfo(data);
+        getNapsterSongInfo(data);
       });
     }
   }
   // TODO // REVIEW DURING OFFICE HOURS
-  function getNapsterIDInfo(data) {
+  function getNapsterSongInfo(data) {
     var artistName = data.track.artist.name;
     artistName = artistName.replace(/\W+/g, "-").toLowerCase(); // Stackoverflow
     var songName = data.track.name;
@@ -82,6 +119,23 @@ $(document).ready(function () {
       // console.log(queryURL);
       renderSongInfo(data);
     });
+  }
+
+  function getNapsterArtistInfo() {
+    for (var i = 0; i < similarResultsArr.length; i++) {
+      var simArtistName = similarResultsArr[i];
+      simArtistName = simArtistName.replace(/\W+/g, "-").toLowerCase();
+
+      var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+      var queryURL = `http://api.napster.com/v2.2/artists/${simArtistName}?apikey=${apiKey}`;
+
+      $.ajax({
+        url: queryURL,
+        method: "GET",
+      }).then(function (data) {
+        renderArtistInfo(data);
+      });
+    }
   }
 
   function renderSongInfo(data) {
@@ -153,6 +207,10 @@ $(document).ready(function () {
     }
   }
 
+  function renderArtistInfo(data) {
+    console.log(data);
+  }
+
   function getLyrics() {
     var lyricsSong = $(this).attr("data-song");
     lyricsSong.replace(/\W+/g, "-").toLowerCase();
@@ -190,12 +248,11 @@ $(document).ready(function () {
   }
 
 
-  $(".songInput").val("");
-  $(".artistInput").val("")
 
+
+  // Event listeners
   $(".submitBtn").click(function (event) {
     event.preventDefault();
-    console.log
     if ($(".songInput").val() === "" && $(".artistInput").val() === "") {
       alert('Please add both song and artist information');
       return;
@@ -206,7 +263,17 @@ $(document).ready(function () {
       alert('Must include artist or band name')
       return;
     } else {
-      getTrackArtistInfo();
+      getSongArtistInfo();
+    }
+  });
+
+  $(".submitArtistBtn").click(function (event) {
+    event.preventDefault();
+    if ($(".onlyArtistInput").val() === ""){
+      alert('Must include artist or band name')
+      return;
+    } else {
+      getArtistInfo();
     }
   });
 
@@ -217,6 +284,7 @@ $(document).ready(function () {
     $('.songForm').removeClass('hide');
     $('.artistForm').addClass('hide');
   });
+
   $('#artistR2').click(function () {
     $('.songForm').addClass('hide');
     $('.artistForm').removeClass('hide');
