@@ -3,8 +3,8 @@ var artistName = "";
 var similarResultsArr = [];
 
 $(document).ready(function () {
-  function getTrackArtistInfo(event) {
-    event.preventDefault();
+
+  function getTrackArtistInfo() {
     songName = $(".songInput").val().trim();
     artistName = $(".artistInput").val().trim();
 
@@ -88,7 +88,7 @@ $(document).ready(function () {
     // $('.songChoice').text(songName);
     // $('.artistChoice').text(artistName);
     // $(".userSongDiv").text(`${songName} by ${artistName}`);
-    $(".userSongDiv").html(`<div><span class="songChoice">${songName}</span><span class=artistChoice> by ${artistName}</span></div>`);
+    $(".userSongDiv").html(`<div><span class="songChoice">${songName.toUpperCase()}</span><span class=artistChoice> by ${artistName}</span></div>`);
 
     if (data.tracks.length === 1) {
       // console.log(data);
@@ -135,7 +135,7 @@ $(document).ready(function () {
       var songSource = $("<source>");
       songSource.attr("src", data.tracks[0].previewURL);
       songSource.attr("type", "audio/mp3");
-      songData.text(data.tracks[0].name);
+      songData.text(data.tracks[0].name.toUpperCase());
       artistData.text(`Artist: ${data.tracks[0].artistName}`);
       albumData.text(`Album: ${data.tracks[0].albumName}`);
       lyricsBtn.text("Lyrics");
@@ -176,7 +176,7 @@ $(document).ready(function () {
     $(".songInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
     $(".lyricInfo").removeClass("hide");
-    $(".songLyric").text(lyricsInfo.song);
+    $(".songLyric").text(lyricsInfo.song.toUpperCase());
     $(".artistLyric").text(lyricsInfo.artist);
     var lyrics = lyricsInfo.lyrics.lyrics;
     lyrics = lyrics.replace(/[\n\r]/g, "<p>");
@@ -190,11 +190,28 @@ $(document).ready(function () {
   }
 
 
-  $(".submitBtn").click(getTrackArtistInfo);
+  $(".songInput").val("");
+  $(".artistInput").val("")
+
+  $(".submitBtn").click(function (event) {
+    event.preventDefault();
+    console.log
+    if ($(".songInput").val() === "" && $(".artistInput").val() === "") {
+      alert('Please add both song and artist information');
+      return;
+    } else if ($(".songInput").val() === ""){
+      alert('Must include song title')
+      return;
+    } else if ($(".artistInput").val() === ""){
+      alert('Must include artist or band name')
+      return;
+    } else {
+      getTrackArtistInfo();
+    }
+  });
+
   $(document).on("click", ".lyricsBtn", getLyrics);
   $(".returnBtn").click(returnPage);
-
-
 
   $('#songR1').click(function () {
     $('.songForm').removeClass('hide');

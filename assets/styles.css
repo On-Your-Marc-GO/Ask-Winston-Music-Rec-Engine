@@ -2,8 +2,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  /* font-family: 'Prompt', sans-serif;
-  font-weight: 200; */
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
 }
 
 main {
@@ -45,6 +45,11 @@ h2,
 .submitArtistBtn,
 .messageBtn {
   font-size: 25px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+
+.lyricsBtn {
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
 }
@@ -118,6 +123,16 @@ audio {
   font-weight: 300;
   font-size: 24px;
 }
+
+.songLyric {
+  font-size: 50px;
+}
+
+#songRadioBtn,
+#artistRadioBtn {
+  color: black;
+}
+
 /*Help page CSS*/
 
 .help-tag {
