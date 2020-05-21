@@ -191,7 +191,16 @@ $(document).ready(function () {
     $(".lyricInfo").addClass("hide");
   }
 
+
   $(".submitBtn").click(getTrackArtistInfo);
   $(document).on("click", ".lyricsBtn", getLyrics);
   $(".returnBtn").click(returnPage);
+  $('#songR1').click(function () {
+    $('.songForm').removeClass('hide');
+    $('.artistForm').addClass('hide');
+  });
+  $('#artistR2').click(function () {
+    $('.songForm').addClass('hide');
+    $('.artistForm').removeClass('hide');
+  });
 });
