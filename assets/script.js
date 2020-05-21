@@ -104,7 +104,9 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
+      if (data.tracks.length === 1) {
       renderSongInfo(data);
+      }
     });
   }
 
@@ -119,7 +121,9 @@ $(document).ready(function () {
         url: queryURL,
         method: "GET",
       }).then(function (data) {
+        if (data.artists.length === 1) {
         renderArtistInfo(data);
+        }
       });
     }
   }
@@ -127,17 +131,16 @@ $(document).ready(function () {
   // USING NAPSTER SONG DATA, RENDER RELEVANT INFO ON PAGE
   function renderSongInfo(data) {
     $(".userSongDiv").html(`<div><span class="songChoice">${songName.toUpperCase()}</span><span class=artistChoice> by ${artistName}</span></div>`);
-    if (data.tracks.length === 1) {
-      var songDiv = $("<div>");
-      songDiv.addClass("row songDiv");
-      var albumImg = $("<img>");
-      albumImg.addClass("col s2 albumImg");
-      var albumID = data.tracks[0].albumId;
-      var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-      var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+    var songDiv = $("<div>");
+    songDiv.addClass("row songDiv");
+    var albumImg = $("<img>");
+    albumImg.addClass("col s2 albumImg");
+    var albumID = data.tracks[0].albumId;
+    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+    var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
       $.ajax({
-        url: queryURL,
-        method: "GET",
+      url: queryURL,
+      method: "GET",
       }).then(function (data) {
         if (data.images.length === 5) {
           albumImg.attr("src", data.images[4].url);
@@ -147,43 +150,42 @@ $(document).ready(function () {
           albumImg.attr("src", "assets/placeholder.png");
         }
       });
-      var songInfoDiv = $("<div>");
-      songInfoDiv.addClass("col s4 songInfoDiv");
-      var lyricsDiv = $("<div>");
-      lyricsDiv.addClass("col s3 lyricsDiv");
-      var songPreviewDiv = $("<div>");
-      songPreviewDiv.addClass("col s3 songPreviewDiv");
-      var songData = $("<p>");
-      var artistData = $("<p>");
-      var albumData = $("<p>");
-      songData.addClass("songData");
-      artistData.addClass("artistData");
-      albumData.addClass("albumData");
-      var lyricsBtn = $("<button>");
-      lyricsBtn.addClass("btn waves-effect waves-light lyricsBtn");
-      lyricsBtn.attr("data-song", data.tracks[0].name);
-      lyricsBtn.attr("data-artist", data.tracks[0].artistName);
-      var songPreview = $("<audio>");
-      songPreview.attr("controls", "controls");
-      var songSource = $("<source>");
-      songSource.attr("src", data.tracks[0].previewURL);
-      songSource.attr("type", "audio/mp3");
-      songData.text(data.tracks[0].name.toUpperCase());
-      artistData.text(`Artist: ${data.tracks[0].artistName}`);
-      albumData.text(`Album: ${data.tracks[0].albumName}`);
-      lyricsBtn.text("Lyrics");
-      songInfoDiv.append(songData);
-      songInfoDiv.append(artistData);
-      songInfoDiv.append(albumData);
-      lyricsDiv.append(lyricsBtn);
-      songPreview.append(songSource);
-      songPreviewDiv.append(songPreview);
-      songDiv.append(albumImg);
-      songDiv.append(songInfoDiv);
-      songDiv.append(lyricsDiv);
-      songDiv.append(songPreviewDiv);
-      $(".songInfo").append(songDiv);
-    }
+    var songInfoDiv = $("<div>");
+    songInfoDiv.addClass("col s4 songInfoDiv");
+    var lyricsDiv = $("<div>");
+    lyricsDiv.addClass("col s3 lyricsDiv");      
+    var songPreviewDiv = $("<div>");
+    songPreviewDiv.addClass("col s3 songPreviewDiv");
+    var songData = $("<p>");
+    var artistData = $("<p>");
+    var albumData = $("<p>");
+    songData.addClass("songData");
+    artistData.addClass("artistData");
+    albumData.addClass("albumData");
+    var lyricsBtn = $("<button>");
+    lyricsBtn.addClass("btn waves-effect waves-light lyricsBtn");
+    lyricsBtn.attr("data-song", data.tracks[0].name);
+    lyricsBtn.attr("data-artist", data.tracks[0].artistName);
+    var songPreview = $("<audio>");
+    songPreview.attr("controls", "controls");
+    var songSource = $("<source>");
+    songSource.attr("src", data.tracks[0].previewURL);
+    songSource.attr("type", "audio/mp3");
+    songData.text(data.tracks[0].name.toUpperCase());
+    artistData.text(`Artist: ${data.tracks[0].artistName}`);
+    albumData.text(`Album: ${data.tracks[0].albumName}`);
+    lyricsBtn.text("Lyrics");
+    songInfoDiv.append(songData);
+    songInfoDiv.append(artistData);
+    songInfoDiv.append(albumData);
+    lyricsDiv.append(lyricsBtn);
+    songPreview.append(songSource);
+    songPreviewDiv.append(songPreview);
+    songDiv.append(albumImg);
+    songDiv.append(songInfoDiv);
+    songDiv.append(lyricsDiv);
+    songDiv.append(songPreviewDiv);
+    $(".songInfo").append(songDiv);
   }
 
   // TODO:
