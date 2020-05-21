@@ -71,9 +71,6 @@ $(document).ready(function () {
     songName = songName.replace(/\W+/g, "-").toLowerCase();
     var albumName = data.track.album.title;
     albumName = albumName.replace(/\W+/g, "-").toLowerCase();
-    // console.log(`Artist Name:${artistName}`);
-    // console.log(`Song Name:${songName}`);
-    // console.log(`Album Name:${albumName}`);
 
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `http://api.napster.com/v2.2/tracks/${artistName}/${albumName}/${songName}?apikey=${apiKey}`;
@@ -195,6 +192,9 @@ $(document).ready(function () {
   $(".submitBtn").click(getTrackArtistInfo);
   $(document).on("click", ".lyricsBtn", getLyrics);
   $(".returnBtn").click(returnPage);
+
+
+
   $('#songR1').click(function () {
     $('.songForm').removeClass('hide');
     $('.artistForm').addClass('hide');

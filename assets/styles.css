@@ -31,7 +31,8 @@ li.active {
 }
 
 h2,
-.submitBtn {
+.submitBtn,
+.submitArtistBtn {
   font-size: 25px;
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
