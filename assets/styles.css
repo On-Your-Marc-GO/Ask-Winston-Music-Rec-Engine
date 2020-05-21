@@ -84,6 +84,11 @@ audio {
   margin-top: 28px;
 }
 
+.returnBtn {
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
 .userSong {
   font-family: 'Prompt', sans-serif;
   font-weight: 600;
