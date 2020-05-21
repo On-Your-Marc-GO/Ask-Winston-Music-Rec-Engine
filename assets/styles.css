@@ -2,8 +2,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  /* font-family: 'Prompt', sans-serif;
-  font-weight: 200; */
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
 }
 
 main {
@@ -15,10 +15,26 @@ nav {
   color: white;
 }
 
+a:hover,
+#noteLogo {
+  color: #26A69A;
+
+}
+
+
+
+#noteLogo:hover {
+  color: white;
+}
+
 p {
   margin-bottom: 5px;
   margin-top: 5px;
 } 
+
+h1 {
+  margin-top: 75px;
+}
 
 h1,
 nav {
@@ -32,8 +48,14 @@ li.active {
 
 h2,
 .submitBtn,
-.submitArtistBtn {
+.submitArtistBtn,
+.messageBtn {
   font-size: 25px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+
+.lyricsBtn {
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
 }
@@ -49,6 +71,8 @@ h3 {
   color: black;
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .no-shadows {
@@ -90,22 +114,38 @@ audio {
   margin-bottom: 25px;
 }
 
-.userSong {
+.userSongDiv {
+  margin-bottom: 75px;
+}
+
+.songChoice{
   font-family: 'Prompt', sans-serif;
   font-weight: 600;
   font-size: 24px;
 }
 
-.userArtist {
-  /* font-family: 'Prompt', sans-serif;
-  font-weight: 300; */
-  font-size: 20px;
+.artistChoice {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
 }
+
+.songLyric {
+  font-size: 50px;
+}
+
+#songRadioBtn,
+#artistRadioBtn {
+  color: black;
+}
+
 /*Help page CSS*/
 
 .help-tag {
-  font-size: 18px;
-  font-family: sans-serif;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 55px;
 }
 
 /*About page CSS*/
@@ -120,4 +160,8 @@ audio {
   clear: right;
   float: left;
   margin: 15px;
+}
+
+.aboutH1 {
+  margin-bottom: 75px;
 }

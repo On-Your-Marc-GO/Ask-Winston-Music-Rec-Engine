@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ask Winston</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+    <link rel="icon" type="image/png" href="./assets/note.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles.css" />
@@ -15,6 +16,7 @@
   <header>
     <nav class="no-shadows">
       <div class="nav-wrapper">
+        <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" target="_blank" class="brand-logo right" id="noteLogo"><i class="fa fa-music"></i></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a href="./index.html">HOME</a></li>
           <li><a href="./about.html">ABOUT</a></li>
@@ -26,16 +28,14 @@
 
   <main>
     <div class="container center-align">
-        <h1>DON'T WORRY!  WE'VE GOT YOUR BACK.</h1>
+        <h1>DON'T WORRY!<br>WE'VE GOT YOUR BACK.</h1>
         <P class="help-tag">Can't find what you are searching for?  Get in touch with the Developers here!</P>
     </div>
     <div class="container">
       <div class="row">
           <div class="col m10 offset-m1 s12">
-              <h2 class="center-align">Contact Form</h2>
               <div class="row">
                   <form class="col m8 offset-m2 s12">
-                      <div class="row">
                           <div class="input-field col s12">
                               <input id="name" type="text">
                               <label for="name">Name</label>
@@ -48,12 +48,11 @@
                             <textarea id="message" class="materialize-textarea"></textarea>
                             <label for="message">Message</label>
                           </div>
-                      </div>
                       
                       <div class="divider"></div>
                       <div class="row">
                           <div class="col m12">
-                           <p class="right-align"><button class="btn btn-large waves-effect waves-light" type="button" name="action">Send Message</button></p>
+                           <p class="center-align"><button class="btn btn-large waves-effect waves-light messageBtn" type="button" name="action">Send Message</button></p>
                           </div>
                       </div>
                   </form>
