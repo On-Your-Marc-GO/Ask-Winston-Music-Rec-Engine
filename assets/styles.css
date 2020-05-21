@@ -15,7 +15,8 @@ nav {
   color: white;
 }
 
-a:hover {
+a:hover,
+#noteLogo {
   color: #26A69A;
 
 }
@@ -59,6 +60,8 @@ h3 {
   color: black;
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .no-shadows {
