@@ -50,3 +50,13 @@ h3 {
 .hide {
   display: none;
 }
+
+/*Help page CSS*/
+
+.help-tag {
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+/*About page CSS*/
+
