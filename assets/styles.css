@@ -2,6 +2,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  /* font-family: 'Prompt', sans-serif;
+  font-weight: 200; */
 }
 
 main {
@@ -12,6 +14,11 @@ nav {
   background-color: black;
   color: white;
 }
+
+p {
+  margin-bottom: 5px;
+  margin-top: 5px;
+} 
 
 h1,
 nav {
@@ -49,4 +56,42 @@ h3 {
 
 .hide {
   display: none;
+}
+
+.songData {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.artistData {
+
+}
+
+.albumData {
+
+}
+
+.songInfoDiv {
+  margin-top: 10px;
+}
+
+.lyricsBtn {
+  margin-top: 38px;
+}
+
+audio {
+  margin-top: 28px;
+}
+
+.userSong {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.userArtist {
+  /* font-family: 'Prompt', sans-serif;
+  font-weight: 300; */
+  font-size: 20px;
 }
