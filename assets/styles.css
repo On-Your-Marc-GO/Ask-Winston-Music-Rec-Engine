@@ -110,14 +110,6 @@ audio {
 
 /*About page CSS*/
 
-.TextWrap {
-  clear: left;
-  float: right;
-  margin: 15px;
-}
-
-.TextWrapLeft {
-  clear: right;
-  float: left;
-  margin: 15px;
+.dev-pics {
+  margin-top: 205px;
 }
