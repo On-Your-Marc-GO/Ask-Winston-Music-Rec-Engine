@@ -30,31 +30,48 @@
         <!--Search Info Div-->
         <div class="searchInfo center-align">
 
+          <!-- Logo -->
+          <div class="row butlerdiv">
+            <img src="./assets/butlern.png" alt="" class="butlerlogo"/>
+          </div>
+
           <div class="row">
-            <h1>ASK WINSTON</h1>
-            <h2>Music Recommendation Search Engine</h2>
+            <h1 id="askwinstonlogo">ASK WINSTON</h1>
+            <h2 class="descriptiondiv">Music Recommendation Search Engine</h2>
           </div>
 
           <!-- Radio Buttons -->
           <div class="row s12">
             <form action="#">
               <p class="col s2 offset-m4">
-                <label id="songRadioBtn">
-                  <input name="QuerySelect" type="radio" id="songR1" checked/>
-                  <span>Song</span>
+                <label id="artistRadioBtn">
+                  <input name="QuerySelect" type="radio" id="artistR2" checked/>
+                  <span>Artist</span>
                 </label>
               </p>
               <p class="col s2">
-                <label id="artistRadioBtn">
-                  <input name="QuerySelect" type="radio" id="artistR2"/>
-                  <span>Artist</span>
+                <label id="songRadioBtn">
+                  <input name="QuerySelect" type="radio" id="songR1">
+                  <span>Song</span>
                 </label>
               </p>
             </form>
           </div>
 
+          <!-- Artist Form -->
+          <div class="row artistForm center-align">
+            <form class="col s12 m4 offset-m4">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input class="onlyArtistInput" type="text" class="validate" placeholder="Artist Name" />
+                </div>
+              </div>
+              <button class="btn waves-effect waves-light btn-large submitArtistBtn" type="submit" name="action">Search</button>
+            </form>
+          </div>
+
           <!-- Song Form -->
-          <div class="row songForm center-align">
+          <div class="row songForm center-align hide">
             <form class="col s12 m4 offset-m4">
               <div class="row">
                 <div class="input-field col s12">
@@ -70,18 +87,7 @@
             </form>
           </div>
 
-          <!-- Artist Form -->
-          <div class="row artistForm center-align hide">
-            <form class="col s12 m4 offset-m4">
-              <div class="row">
-                <div class="input-field col s12">
-                  <input class="onlyArtistInput" type="text" class="validate" placeholder="Artist Name" />
-                </div>
-              </div>
-              <button class="btn waves-effect waves-light btn-large submitArtistBtn" type="submit" name="action">Search</button>
-            </form>
-          </div>
-
+          <!-- Top Links -->
           <div class="row center-align">
             <div class="col s4 topLinks">
               <a href="#">
