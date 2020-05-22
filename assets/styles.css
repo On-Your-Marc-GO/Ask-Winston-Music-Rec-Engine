@@ -2,8 +2,13 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  /* font-family: 'Prompt', sans-serif;
-  font-weight: 200; */
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+
+.backgroundImg {
+  background-image: url(./butlerbackground.png);
+  background-size: cover;
 }
 
 main {
@@ -15,10 +20,26 @@ nav {
   color: white;
 }
 
+a:hover,
+#noteLogo {
+  color: #26A69A;
+
+}
+
+
+
+#noteLogo:hover {
+  color: white;
+}
+
 p {
   margin-bottom: 5px;
   margin-top: 5px;
 } 
+
+h1 {
+  margin-top: 75px;
+}
 
 h1,
 nav {
@@ -32,8 +53,32 @@ li.active {
 
 h2,
 .submitBtn,
-.submitArtistBtn {
+.submitArtistBtn,
+.messageBtn {
   font-size: 25px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+.topLinks {
+  margin-top: 60px;
+}
+
+.topImgs {
+  width: 200px;
+  border-radius: 30px;
+  /* border: 5px white solid; */
+  /* border-style: inset; */
+}
+/* .homePage {
+  margin-left: 60px;
+  margin-right: 60px;
+} */
+
+/* .topImages {
+  margin-top: 100px;
+} */
+
+.lyricsBtn {
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
 }
@@ -45,10 +90,12 @@ h3 {
 }
 
 .page-footer {
-  background-color: white;
+  background-color: transparent;
   color: black;
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .no-shadows {
@@ -90,22 +137,38 @@ audio {
   margin-bottom: 25px;
 }
 
-.userSong {
+.userSongDiv {
+  margin-bottom: 75px;
+}
+
+.songChoice{
   font-family: 'Prompt', sans-serif;
   font-weight: 600;
   font-size: 24px;
 }
 
-.userArtist {
-  /* font-family: 'Prompt', sans-serif;
-  font-weight: 300; */
-  font-size: 20px;
+.artistChoice {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
 }
+
+.songLyric {
+  font-size: 50px;
+}
+
+#songRadioBtn,
+#artistRadioBtn {
+  color: black;
+}
+
 /*Help page CSS*/
 
 .help-tag {
-  font-size: 18px;
-  font-family: sans-serif;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 55px;
 }
 
 /*About page CSS*/
@@ -130,4 +193,7 @@ audio {
   -ms-transform: scale(1.5);
   -webkit-transform: scale(1.5);
   transform: scale(1.5); 
+}
+  .aboutH1 {
+  margin-bottom: 75px;
 }
