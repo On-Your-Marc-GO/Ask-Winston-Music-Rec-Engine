@@ -84,6 +84,24 @@ Alternatively you may refer to the 'Site Link' provided above to visit the site 
 
 - If you followed tutorials, include links to those here as well.
 
+Butler icon
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+Headphones icon
+<div>Icons made by <a href="https://roundicons.com/" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+Top artists background img
+Photo by Jacob Mejicanos on Unsplash
+
+top songs background img
+Photo by Aditya Chinchure on Unsplash
+
+top albums background img
+Photo by James Owen on Unsplash
+
+
+
+
 ## License
 
 MIT License

@@ -10,6 +10,7 @@ $(document).ready(function () {
     songName = $(".songInput").val().trim();
     artistName = $(".artistInput").val().trim();
     $(".home-page").removeClass("active");
+    $("body").removeClass("backgroundImg");
     $(".searchInfo").addClass("hide");
     $(".artistInfoDiv").addClass("hide");
     $(".songInfoDiv").removeClass("hide");
