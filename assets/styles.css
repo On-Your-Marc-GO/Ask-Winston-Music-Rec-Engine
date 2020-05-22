@@ -6,10 +6,29 @@ body {
   font-weight: 300;
 }
 
+.butlerlogo {
+  width: 225px;
+}
+
+.butlerdiv {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+#askwinstonlogo {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.descriptiondiv {
+  margin-top: 10px;
+}
+
+/* //remove this
 .backgroundImg {
   background-image: url(./butlerbackground.png);
   background-size: cover;
-}
+} */
 
 main {
   flex: 1 0 auto;
@@ -194,6 +213,7 @@ audio {
   -webkit-transform: scale(1.5);
   transform: scale(1.5); 
 }
-  .aboutH1 {
+
+.aboutH1 {
   margin-bottom: 75px;
 }
