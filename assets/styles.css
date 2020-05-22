@@ -177,6 +177,23 @@ audio {
   margin-top: 205px;
 }
 
-.aboutH1 {
+#inezImage:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5); 
+  transform: scale(1.5); 
+}
+
+#marcImage:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5); 
+  transform: scale(1.5); 
+}
+
+#ramonImage:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5); 
+}
+  .aboutH1 {
   margin-bottom: 75px;
 }
