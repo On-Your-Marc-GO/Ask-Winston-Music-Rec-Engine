@@ -6,6 +6,11 @@ body {
   font-weight: 300;
 }
 
+.backgroundImg {
+  background-image: url(./butlerbackground.png);
+  background-size: cover;
+}
+
 main {
   flex: 1 0 auto;
 }
@@ -54,6 +59,24 @@ h2,
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
 }
+.topLinks {
+  margin-top: 60px;
+}
+
+.topImgs {
+  width: 200px;
+  border-radius: 30px;
+  /* border: 5px white solid; */
+  /* border-style: inset; */
+}
+/* .homePage {
+  margin-left: 60px;
+  margin-right: 60px;
+} */
+
+/* .topImages {
+  margin-top: 100px;
+} */
 
 .lyricsBtn {
   font-family: 'Prompt', sans-serif;
@@ -67,7 +90,7 @@ h3 {
 }
 
 .page-footer {
-  background-color: white;
+  background-color: transparent;
   color: black;
   font-family: 'Prompt', sans-serif;
   font-weight: 300;
