@@ -121,6 +121,7 @@ $(document).ready(function () {
         url: queryURL,
         method: "GET",
       }).then(function (data) {
+        // console.log(data);
         if (data.artists.length === 1) {
           renderArtistInfo(data);
         }
@@ -195,12 +196,13 @@ $(document).ready(function () {
 
   // USING NAPSTER ARTIST DATA, RENDER RELEVANT INFO ON PAGE
   function renderArtistInfo(data) {
+    // console.log(data);
     // var artistDiv = $("<div>");
     // artistDiv.addClass("row");
-    var artistColDiv = $("<div>");
-    artistColDiv.addClass("col s6");
+    // var artistColDiv = $("<div>");
+    // artistColDiv.addClass("col s6");
     var artistCardDiv = $("<div>");
-    artistCardDiv.addClass("card");
+    artistCardDiv.addClass("card col s6");
 
     var artistCardImgDiv = $("<div>");
     artistCardImgDiv.addClass("card-image");
@@ -219,7 +221,7 @@ $(document).ready(function () {
       } else if (imageData.images.length > 0 && imageData.images.length < 4) {
         artistImg.attr("src", imageData.images[1].url);
       } else {
-        artistImg.attr("src", "assets/placeholder.png");
+        artistImg.attr("src", "https://via.placeholder.com/633x422");
       }
     });
 
@@ -231,8 +233,6 @@ $(document).ready(function () {
     var artistInfoDiv = $("<div>");
     artistInfoDiv.addClass("card-content");
     var artistInfoBio = $("<p>");
-    artistInfoBio.text(data.artists[0].bios[0].bio);
-
 
     var artistTopSongsDiv = $("<div>");
     artistTopSongsDiv.addClass("card-action");
@@ -252,15 +252,15 @@ $(document).ready(function () {
     artistCardDiv.append(artistCardImgDiv);
     artistCardDiv.append(artistInfoDiv);
     artistCardDiv.append(artistTopSongsDiv);
-
-    artistColDiv.append(artistCardDiv);
+  
+    // artistColDiv.append(artistCardDiv);
 
     // artistDiv.append(artistColDiv);
 
     // $(".userArtistDiv").append(artistDiv);
 
 
-    $(".userArtistDiv").append(artistColDiv);
+    $(".userArtistDiv").append(artistCardDiv);
   }
 
   // USING SONG AND ARTIST INFO GET LYRICS - LYRICSOVH API

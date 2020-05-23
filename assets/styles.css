@@ -136,6 +136,11 @@ h3 {
   font-size: 18px;
 }
 
+.card-content {
+  height: 200px;
+  overflow: scroll;
+}
+
 .artistData {
 
 }
