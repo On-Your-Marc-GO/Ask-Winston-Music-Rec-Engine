@@ -358,5 +358,12 @@ $(document).ready(function () {
     $(".lyricInfo").addClass("hide");
   });
 
+  $(".returnArtistsBtn").click(function () {
+    $(".artistInfoDiv").removeClass("hide");
+    $(".topSongInfoDiv").addClass("hide");
+    $(".searchInfo").addClass("hide");
+    $(".lyricInfo").addClass("hide");
+  });
+
   $(document).on("click", ".topSongsBtn", getTopSongs);
 });
