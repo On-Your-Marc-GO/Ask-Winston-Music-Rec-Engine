@@ -85,13 +85,16 @@ $(document).ready(function () {
         url: queryURL,
         method: "GET",
       }).then(function (data) {
-        getNapsterSongInfo(data);
+        if (data.track && data.track.album && data.track.album.title) {
+          getNapsterSongInfo(data);
+        }
       });
     }
   }
 
   // USE SONG, ARTIST, AND ALBUM INFO TO GET EVEN MORE SONG DETAILS - NAPSTER API
   function getNapsterSongInfo(data) {
+    // console.log(data);
     var artistName = data.track.artist.name;
     artistName = artistName.replace(/\W+/g, "-").toLowerCase(); // Stackoverflow
     var songName = data.track.name;
@@ -121,9 +124,9 @@ $(document).ready(function () {
         url: queryURL,
         method: "GET",
       }).then(function (data) {
-        // console.log(data);
-        if (data.artists.length === 1) {
+        if (data.artists.length === 1 && data.artists[0].bios) {
           renderArtistInfo(data);
+          // console.log(data);
         }
       });
     }
@@ -131,31 +134,10 @@ $(document).ready(function () {
 
   // USING NAPSTER SONG DATA, RENDER RELEVANT INFO ON PAGE
   function renderSongInfo(data) {
+    // console.log(data);
     $(".userSongDiv").html(`<div><span class="songChoice">${songName.toUpperCase()}</span><span class=artistChoice> by ${artistName}</span></div>`);
     var songDiv = $("<div>");
     songDiv.addClass("row songDiv");
-    var albumImg = $("<img>");
-    albumImg.addClass("col s2 albumImg");
-    albumImg.attr("src", "https://via.placeholder.com/150");
-
-    var albumID = data.tracks[0].albumId;
-    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
-
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).then(function (data) {
-      // TODO ALBUM IMGS NOT RENDERING, SRC NOT BEING ADDED TO THE IMG ELEMENT
-      if (data.images.length === 5) {
-        albumImg.attr("src", data.images[4].url);
-      } else if (data.images.length > 0 && data.images.length < 5) {
-        albumImg.attr("src", data.images[2].url);
-      } else {
-        albumImg.attr("src", "assets/placeholder.png");
-      }
-    });
-
     var songInfoDiv = $("<div>");
     songInfoDiv.addClass("col s4 songInfoDiv");
     var lyricsDiv = $("<div>");
@@ -187,20 +169,37 @@ $(document).ready(function () {
     lyricsDiv.append(lyricsBtn);
     songPreview.append(songSource);
     songPreviewDiv.append(songPreview);
-    songDiv.append(albumImg);
     songDiv.append(songInfoDiv);
     songDiv.append(lyricsDiv);
     songDiv.append(songPreviewDiv);
-    $(".songInfo").append(songDiv);
+
+    var albumID = data.tracks[0].albumId;
+    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+    var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (response) {
+      var albumImg = $("<img>");
+      albumImg.addClass("col s2 albumImg");
+      // TODO ALBUM IMGS NOT RENDERING, SRC NOT BEING ADDED TO THE IMG ELEMENT
+      if (response.images.length >= 5) {
+        console.log(songDiv);
+        albumImg.attr("src", response.images[4].url);
+      } else if (response.images.length > 0 && response.images.length < 5) {
+        img.attr("src", response.images[2].url);
+      } else {
+        img.attr("src", "assets/placeholder.png");
+      }
+      songDiv.prepend(albumImg);
+      $(".songInfo").append(songDiv);
+    });
   }
 
   // USING NAPSTER ARTIST DATA, RENDER RELEVANT INFO ON PAGE
   function renderArtistInfo(data) {
     // console.log(data);
-    // var artistDiv = $("<div>");
-    // artistDiv.addClass("row");
-    // var artistColDiv = $("<div>");
-    // artistColDiv.addClass("col s6");
     var artistCardDiv = $("<div>");
     artistCardDiv.addClass("card col s6");
 
@@ -225,7 +224,7 @@ $(document).ready(function () {
       }
     });
 
-    console.log(data);
+    // console.log(data);
     var artistImgName = $("<span>");
     artistImgName.addClass("card-title");
     artistImgName.text(data.artists[0].name);
@@ -255,12 +254,6 @@ $(document).ready(function () {
     artistCardDiv.append(artistInfoDiv);
     artistCardDiv.append(artistTopSongsDiv);
   
-    // artistColDiv.append(artistCardDiv);
-
-    // artistDiv.append(artistColDiv);
-
-    // $(".userArtistDiv").append(artistDiv);
-
 
     $(".userArtistDiv").append(artistCardDiv);
   }
