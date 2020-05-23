@@ -194,33 +194,52 @@ $(document).ready(function () {
   // TODO:
   // USING NAPSTER ARTIST DATA, RENDER RELEVANT INFO ON PAGE
   function renderArtistInfo(data) {
-    console.log(data);
+    // console.log(data);
+
     var artistDiv = $("<div>");
     artistDiv.addClass("row");
     var artistColDiv = $("<div>");
-    artistColDiv.addclass("col s12 m7");
+    artistColDiv.addClass("col s12 m7");
     var artistCardDiv = $("<div>");
-    artistCardDiv.addclass("card");
+    artistCardDiv.addClass("card");
 
     var artistCardImg = $("<div>");
-    artistCardImg.addclass("card-image");
-
+    artistCardImg.addClass("card-image");
     var artistImage = $("<img>");
-    artistImage.attr("src", "https://via.placeholder.com/150");
+
+    // Napster Artist Image API CALL
+    var artistID = data.artists[0].id;
+    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+    var queryURL = `http://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (imageData) {
+      // console.log(imageData);
+      if (imageData.images.length === 5) {
+        artistImage.attr("src", imageData.images[4].url);
+      } else if (imageData.images.length > 0 && imageData.images.length < 5) {
+        artistImage.attr("src", imageData.images[1].url);
+      } else {
+        artistImage.attr("src", "assets/placeholder.png");
+      }
+    });
+
+    console.log(data);
 
     var artistImageName = $("<span>");
-    artistImageName.addclass("card-title");
-    artistImageName.text("A DAY TO REMEMBER"); // Test Placehodler text. Will be replaced with API Call Object info.
+    artistImageName.addClass("card-title");
+    artistImageName.text(data.artists[0].name);
 
     // TODO: We can add more P tags and pull more info to put into the card if we like.
     var artistInfoDiv = $("div>");
-    artistInfoDiv.addclass("card-content");
-    var artistInfoGenre = $("<p>");
-    artistInfoGenre.text("Metalcore + Pop Punk"); // Test Placeholder text. Will be replaced with API Call Object Info.
+    artistInfoDiv.addClass("card-content");
+    var artistInfoBio = $("<p>");
+    artistInfoBio.text(data.artists[0].bios[0].bio);
 
     // TODO: For the card action we can link to top Albums?
     var artistTopAlbumLinkDiv = $("<div>");
-    artistTopAlbumLinkDiv.addcalss("card-action");
+    artistTopAlbumLinkDiv.addClass("card-action");
 
     var artistTopAlbumLink = $("<a>");
     artistTopAlbumLink.attr("href", "#");
