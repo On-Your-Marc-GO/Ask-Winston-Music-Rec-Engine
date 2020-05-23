@@ -43,12 +43,12 @@
         <div class="col s4">
           <input type="image" id="ramonImage" src="ramon.jpg" alt="young-hispanic-male-posing" class="circle" height="250" width="250"/>
         </div>
-        <p class="hide" id='inezBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
-          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</p>
-        <p class="hide" id='marcBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
-          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</p>
-       <p class="hide" id='ramonBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
-          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</p>
+        <div class="col s4 hide" id='inezBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
+          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</div>
+        <div class="col s4 hide" id='marcBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
+          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</div>
+       <div class="col s6 hide" id='ramonBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
+          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</div>
       </div>
     </div>
   </main>
@@ -69,6 +69,14 @@
         $('#inezBio').removeClass('hide');
         $('#marcImage').addClass('hide');
         $('#ramonImage').addClass('hide');
+        //$('#inezImage').removeClass('circle');
+      }
+
+      function mouseLeaveInez() {
+        $('#inezBio').addClass('hide');
+        $('#marcImage').removeClass('hide');
+        $('#ramonImage').removeClass('hide');
+        //$('#inezImage').addClass('circle');
       }
 
       function mouseLeaveInez() {
@@ -81,6 +89,15 @@
         $('#marcBio').removeClass('hide');
         $('#inezImage').addClass('hide');
         $('#ramonImage').addClass('hide');
+        //$('#marcImage').removeClass('circle');
+      }
+
+      function mouseLeaveMarc() {
+        $('#marcBio').addClass('hide');
+        $('#marcImage').removeClass('hide');
+        $('#ramonImage').removeClass('hide');
+        $('#inezImage').removeClass('hide');
+        //$('#marcImage').addClass('circle');
       }
 
       function mouseLeaveMarc() {
@@ -94,6 +111,14 @@
         $('#ramonBio').removeClass('hide');
         $('#inezImage').addClass('hide');
         $('#marcImage').addClass('hide');
+        //$('#ramonImage').removeClass('circle');
+      }
+
+      function mouseLeaveRamon() {
+        $('#ramonBio').addClass('hide');
+        $('#inezImage').removeClass('hide');
+        $('#marcImage').removeClass('hide');
+        //$('#ramonImage').addClass('circle');
       }
 
       function mouseLeaveRamon() {
