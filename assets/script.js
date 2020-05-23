@@ -9,7 +9,6 @@ $(document).ready(function () {
     songName = $(".songInput").val().trim();
     artistName = $(".artistInput").val().trim();
     $(".home-page").removeClass("active");
-    $("body").removeClass("backgroundImg");
     $(".searchInfo").addClass("hide");
     $(".artistInfoDiv").addClass("hide");
     $(".songInfoDiv").removeClass("hide");
@@ -38,6 +37,7 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       renderSimilarSongs(data);
+      console.log(data);
     });
   }
 
@@ -200,7 +200,7 @@ $(document).ready(function () {
     var artistInfoDiv = $("<div>");
     artistInfoDiv.addClass("card-content");
     var artistInfoBio = $("<p>");
-    artistInfoBio.text(data.artists[0].bios[0].bio);
+    artistInfoBio.html(data.artists[0].bios[0].bio);
     var artistTopSongsDiv = $("<div>");
     artistTopSongsDiv.addClass("card-action");
     var artistTopSongsButton = $("<button>");
