@@ -203,8 +203,8 @@ $(document).ready(function () {
     var artistCardDiv = $("<div>");
     artistCardDiv.addClass("card");
 
-    var artistCardImg = $("<div>");
-    artistCardImg.addClass("card-image");
+    var artistCardImgDiv = $("<div>");
+    artistCardImgDiv.addClass("card-image");
     var artistImage = $("<img>");
 
     // Napster Artist Image API CALL
@@ -245,7 +245,20 @@ $(document).ready(function () {
     artistTopAlbumLink.attr("href", "#");
     artistTopAlbumLink.text("See Top Albums");
 
-    artistDiv.append();
+    artistCardImgDiv.append(artistImage);
+    artistCardImgDiv.append(artistImageName);
+
+    artistInfoDiv.append(artistInfoBio);
+
+    artistTopAlbumLinkDiv.append(artistTopAlbumLink);
+
+    artistCardDiv.append(artistCardImgDiv);
+    artistCardDiv.append(artistInfoDiv);
+    artistCardDiv.append(artistTopAlbumLinkDiv);
+
+    artistColDiv.append(artistCardDiv);
+
+    artistDiv.append(artistColDiv);
 
     $(".artistInfo").append(artistDiv);
   }
