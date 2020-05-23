@@ -1,3 +1,8 @@
+nav {
+  background-color: black;
+  color: white;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -6,13 +11,91 @@ body {
   font-weight: 300;
 }
 
-.butlerlogo {
-  width: 225px;
+main {
+  flex: 1 0 auto;
+}
+
+h1,
+nav {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  margin-top: 75px;
+}
+
+h3 {
+  font-size: 20px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+
+p {
+  margin-bottom: 5px;
+  margin-top: 5px;
+} 
+
+
+audio {
+  margin-top: 28px;
+}
+
+a:hover,
+#noteLogo {
+  color: #26A69A;
+
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.no-shadows {
+  box-shadow: none!important;
+}
+
+.descriptiondiv {
+  margin-top: 10px;
 }
 
 .butlerdiv {
   margin-top: 20px;
   margin-bottom: 0px;
+}
+
+.butlerlogo {
+  width: 225px;
+}
+
+h2,
+.submitBtn,
+.submitArtistBtn,
+.messageBtn {
+  font-size: 25px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+
+.toast {
+  /* background-color: #426b67; */
+  background-color: goldenrod;
+  color: black;
+}
+
+.topLinks {
+  margin-top: 60px;
+}
+
+.topImgs {
+  width: 200px;
+  border-radius: 30px;
+  /* border: 10px #26A69A solid; */
+  /* border-style: inset; */
+}
+
+.hide {
+  display: none;
 }
 
 .card {
@@ -24,114 +107,8 @@ body {
   overflow: scroll;
 }
 
-#askwinstonlogo {
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
-
-.descriptiondiv {
+.songInfoDiv {
   margin-top: 10px;
-}
-
-.toast {
-  /* background-color: #426b67; */
-  background-color: goldenrod;
-  color: black;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-nav {
-  background-color: black;
-  color: white;
-}
-
-a:hover,
-#noteLogo {
-  color: #26A69A;
-
-}
-
-
-
-#noteLogo:hover {
-  color: white;
-}
-
-p {
-  margin-bottom: 5px;
-  margin-top: 5px;
-} 
-
-h1 {
-  margin-top: 75px;
-}
-
-h1,
-nav {
-  font-family: 'Prompt', sans-serif;
-  font-weight: 600;
-}
-
-li.active {
-  text-decoration: underline;
-}
-
-h2,
-.submitBtn,
-.submitArtistBtn,
-.messageBtn {
-  font-size: 25px;
-  font-family: 'Prompt', sans-serif;
-  font-weight: 300;
-}
-.topLinks {
-  margin-top: 60px;
-}
-
-.topImgs {
-  width: 200px;
-  border-radius: 30px;
-  /* border: 10px #26A69A solid; */
-  /* border-style: inset; */
-}
-/* .homePage {
-  margin-left: 60px;
-  margin-right: 60px;
-} */
-
-/* .topImages {
-  margin-top: 100px;
-} */
-
-.lyricsBtn {
-  font-family: 'Prompt', sans-serif;
-  font-weight: 300;
-}
-
-h3 {
-  font-size: 20px;
-  font-family: 'Prompt', sans-serif;
-  font-weight: 300;
-}
-
-.page-footer {
-  background-color: transparent;
-  color: black;
-  font-family: 'Prompt', sans-serif;
-  font-weight: 300;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-.no-shadows {
-  box-shadow: none!important;
-}
-
-.hide {
-  display: none;
 }
 
 .songData {
@@ -140,33 +117,19 @@ h3 {
   font-size: 18px;
 }
 
-.artistData {
-
-}
-
-.albumData {
-
-}
-
-.songInfoDiv {
-  margin-top: 10px;
+.userSongDiv {
+  margin-bottom: 75px;
 }
 
 .lyricsBtn {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
   margin-top: 38px;
-}
-
-audio {
-  margin-top: 28px;
 }
 
 .returnBtn {
   margin-top: 15px;
   margin-bottom: 25px;
-}
-
-.userSongDiv {
-  margin-bottom: 75px;
 }
 
 .songChoice{
@@ -183,6 +146,24 @@ audio {
 
 .songLyric {
   font-size: 50px;
+}
+
+.page-footer {
+  background-color: transparent;
+  color: black;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#askwinstonlogo {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#noteLogo:hover {
+  color: white;
 }
 
 #songRadioBtn,
@@ -216,6 +197,10 @@ audio {
 }
 
 /*About page CSS*/
+
+.aboutH1 {
+  margin-bottom: 75px;
+}
 
 .dev-pics {
   margin-top: 100px;
@@ -268,8 +253,4 @@ audio {
 
 #ramonImage {
   transition: transform .5s ease;
-}
-
-.aboutH1 {
-  margin-bottom: 75px;
 }
