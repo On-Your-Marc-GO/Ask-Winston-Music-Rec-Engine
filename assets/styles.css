@@ -24,6 +24,10 @@ body {
   margin-top: 10px;
 }
 
+.toast {
+  background-color: #e3c84e;
+  color: black;
+}
 /* //remove this
 .backgroundImg {
   background-image: url(./butlerbackground.png);
