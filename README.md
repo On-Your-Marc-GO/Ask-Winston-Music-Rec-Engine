@@ -90,6 +90,9 @@ Butler icon
 Headphones icon
 <div>Icons made by <a href="https://roundicons.com/" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
+butler full body icon
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
 Top artists background img
 Photo by Jacob Mejicanos on Unsplash
 
