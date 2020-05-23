@@ -298,13 +298,13 @@ $(document).ready(function () {
   $(".submitBtn").click(function (event) {
     event.preventDefault();
     if ($(".songInput").val() === "" && $(".artistInput").val() === "") {
-      alert("Please add both song and artist information");
+      M.toast({html: 'Please add both song and artist information'});
       return;
     } else if ($(".songInput").val() === "") {
-      alert("Must include song title");
+      M.toast({html: 'Must include song title'});
       return;
     } else if ($(".artistInput").val() === "") {
-      alert("Must include artist or band name");
+      M.toast({html: 'Must include artist or band name'});
       return;
     } else {
       getSongArtistInfo();
@@ -314,7 +314,7 @@ $(document).ready(function () {
   $(".submitArtistBtn").click(function (event) {
     event.preventDefault();
     if ($(".onlyArtistInput").val() === "") {
-      alert("Must include artist or band name");
+      M.toast({html: 'Must include artist or band name'});
       return;
     } else {
       getArtistInfo();
