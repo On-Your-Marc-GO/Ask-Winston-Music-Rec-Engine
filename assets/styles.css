@@ -24,6 +24,11 @@ body {
   margin-top: 10px;
 }
 
+.toast {
+  /* background-color: #426b67; */
+  background-color: goldenrod;
+  color: black;
+}
 /* //remove this
 .backgroundImg {
   background-image: url(./butlerbackground.png);
@@ -85,7 +90,7 @@ h2,
 .topImgs {
   width: 200px;
   border-radius: 30px;
-  /* border: 5px white solid; */
+  /* border: 10px #26A69A solid; */
   /* border-style: inset; */
 }
 /* .homePage {
@@ -129,6 +134,11 @@ h3 {
   font-family: 'Prompt', sans-serif;
   font-weight: 600;
   font-size: 18px;
+}
+
+.card-content {
+  height: 200px;
+  overflow: scroll;
 }
 
 .artistData {
@@ -179,6 +189,22 @@ audio {
 #songRadioBtn,
 #artistRadioBtn {
   color: black;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */ 
+  text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}
+
+:-ms-input-placeholder {  
+  text-align: center; 
 }
 
 /*Help page CSS*/
