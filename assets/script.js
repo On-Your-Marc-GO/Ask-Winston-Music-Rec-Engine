@@ -190,7 +190,7 @@ $(document).ready(function () {
       } else if (response.images.length > 0 && response.images.length < 5) {
         img.attr("src", response.images[2].url);
       } else {
-        img.attr("src", "assets/placeholder.png");
+        img.attr("src", "assets/squareplaceholder.png");
       }
       songDiv.prepend(albumImg);
       $(".songInfo").append(songDiv);
@@ -220,7 +220,7 @@ $(document).ready(function () {
       } else if (imageData.images.length > 0 && imageData.images.length < 4) {
         artistImg.attr("src", imageData.images[1].url);
       } else {
-        artistImg.attr("src", "https://via.placeholder.com/633x422");
+        artistImg.attr("src", "assets/rectangleplaceholder.png");
       }
     });
 
