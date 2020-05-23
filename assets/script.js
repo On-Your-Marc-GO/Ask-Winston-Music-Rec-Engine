@@ -144,7 +144,7 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      if (data.images.length === 5) {
+      if (data.images.length >= 5) {
         albumImg.attr("src", data.images[4].url);
       } else if (data.images.length > 0 && data.images.length < 5) {
         albumImg.attr("src", data.images[2].url);
@@ -199,7 +199,7 @@ $(document).ready(function () {
     var artistDiv = $("<div>");
     artistDiv.addClass("row");
     var artistColDiv = $("<div>");
-    artistColDiv.addClass("col s12 m7");
+    artistColDiv.addClass("col s6");
     var artistCardDiv = $("<div>");
     artistCardDiv.addClass("card");
 
@@ -216,51 +216,52 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (imageData) {
       // console.log(imageData);
-      if (imageData.images.length === 5) {
-        artistImage.attr("src", imageData.images[4].url);
-      } else if (imageData.images.length > 0 && imageData.images.length < 5) {
+      if (imageData.images.length >= 4) {
+        artistImage.attr("src", imageData.images[3].url);
+      } else if (imageData.images.length > 0 && imageData.images.length < 4) {
         artistImage.attr("src", imageData.images[1].url);
       } else {
         artistImage.attr("src", "assets/placeholder.png");
       }
     });
 
-    console.log(data);
+    // console.log(data);
 
     var artistImageName = $("<span>");
     artistImageName.addClass("card-title");
     artistImageName.text(data.artists[0].name);
 
     // TODO: We can add more P tags and pull more info to put into the card if we like.
-    var artistInfoDiv = $("div>");
+    var artistInfoDiv = $("<div>");
     artistInfoDiv.addClass("card-content");
     var artistInfoBio = $("<p>");
     artistInfoBio.text(data.artists[0].bios[0].bio);
 
     // TODO: For the card action we can link to top Albums?
-    var artistTopAlbumLinkDiv = $("<div>");
-    artistTopAlbumLinkDiv.addClass("card-action");
+    var artistTopSongsDiv = $("<div>");
+    artistTopSongsDiv.addClass("card-action");
 
-    var artistTopAlbumLink = $("<a>");
-    artistTopAlbumLink.attr("href", "#");
-    artistTopAlbumLink.text("See Top Albums");
+    var artistTopSongsButton = $("<button>");
+    artistTopSongsButton.addClass("btn waves-effect waves-light topSongsBtn");
+    artistTopSongsButton.attr('data-artist', data.artists[0].id);
+    artistTopSongsButton.text("Top Songs");
 
     artistCardImgDiv.append(artistImage);
     artistCardImgDiv.append(artistImageName);
 
     artistInfoDiv.append(artistInfoBio);
 
-    artistTopAlbumLinkDiv.append(artistTopAlbumLink);
+    artistTopSongsDiv.append(artistTopSongsButton);
 
     artistCardDiv.append(artistCardImgDiv);
     artistCardDiv.append(artistInfoDiv);
-    artistCardDiv.append(artistTopAlbumLinkDiv);
+    artistCardDiv.append(artistTopSongsDiv);
 
     artistColDiv.append(artistCardDiv);
 
     artistDiv.append(artistColDiv);
 
-    $(".artistInfo").append(artistDiv);
+    $(".userArtistDiv").append(artistDiv);
   }
 
   // USING SONG AND ARTIST INFO GET LYRICS - LYRICSOVH API
@@ -280,6 +281,18 @@ $(document).ready(function () {
       };
       renderLyrics(lyricsInfo);
     });
+  }
+
+  function getTopSongs() {
+    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw"
+    var artistID = $(this).attr("data-artist");
+    var queryURL = `http://api.napster.com/v2.2/artists/${artistID}/tracks/top?apikey=${apiKey}`;
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (data) {
+      console.log(data);
+    })
   }
 
   // USING LYRICSOVH DATA, RENDER RELEVANT INFO ON PAGE
@@ -338,4 +351,6 @@ $(document).ready(function () {
     $(".searchInfo").addClass("hide");
     $(".lyricInfo").addClass("hide");
   });
+
+  $(document).on("click", ".topSongsBtn", getTopSongs);
 });
