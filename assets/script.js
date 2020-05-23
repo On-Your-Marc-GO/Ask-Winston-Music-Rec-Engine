@@ -144,7 +144,8 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      if (data.images.length >= 5) {
+      // console.log(data);
+      if (data.images.length > 4) {
         albumImg.attr("src", data.images[4].url);
       } else if (data.images.length > 0 && data.images.length < 5) {
         albumImg.attr("src", data.images[2].url);
@@ -294,7 +295,7 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      console.log(data);
+      renderTopSongs(data);
     })
   }
 
@@ -308,6 +309,15 @@ $(document).ready(function () {
     var lyrics = lyricsInfo.lyrics.lyrics;
     lyrics = lyrics.replace(/[\n\r]/g, "<p>");
     $(".lyric").html(lyrics);
+  }
+
+  function renderTopSongs(data) {
+    $(".songInfoDiv").addClass("hide");
+    $(".searchInfo").addClass("hide");
+    $(".lyricInfo").addClass("hide");
+    $(".artistInfoDiv").addClass("hide");
+    $(".topSongsInfoDiv").removeClass("hide");
+    console.log(data);
   }
 
   // EVENT LISTENERS
