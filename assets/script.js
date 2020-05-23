@@ -225,6 +225,7 @@ $(document).ready(function () {
       }
     });
 
+    console.log(data);
     var artistImgName = $("<span>");
     artistImgName.addClass("card-title");
     artistImgName.text(data.artists[0].name);
@@ -233,6 +234,7 @@ $(document).ready(function () {
     var artistInfoDiv = $("<div>");
     artistInfoDiv.addClass("card-content");
     var artistInfoBio = $("<p>");
+    artistInfoBio.text(data.artists[0].bios[0].bio);
 
     var artistTopSongsDiv = $("<div>");
     artistTopSongsDiv.addClass("card-action");
