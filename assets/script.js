@@ -4,8 +4,7 @@ var artistName = "";
 var similarResultsArr = [];
 
 $(document).ready(function () {
-
-// GET SONG AND ARTIST INFO FROM FORM AND RESET IT
+  // GET SONG AND ARTIST INFO FROM FORM AND RESET IT
   function getSongArtistInfo() {
     songName = $(".songInput").val().trim();
     artistName = $(".artistInput").val().trim();
@@ -19,7 +18,7 @@ $(document).ready(function () {
     $(".artistInput").val("");
   }
 
-// GET ARTIST INFO FROM FORM AND RESET IT
+  // GET ARTIST INFO FROM FORM AND RESET IT
   function getArtistInfo() {
     artistName = $(".onlyArtistInput").val().trim();
     $(".home-page").removeClass("active");
@@ -106,7 +105,7 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       if (data.tracks.length === 1) {
-      renderSongInfo(data);
+        renderSongInfo(data);
       }
     });
   }
@@ -123,7 +122,7 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (data) {
         if (data.artists.length === 1) {
-        renderArtistInfo(data);
+          renderArtistInfo(data);
         }
       });
     }
@@ -136,25 +135,28 @@ $(document).ready(function () {
     songDiv.addClass("row songDiv");
     var albumImg = $("<img>");
     albumImg.addClass("col s2 albumImg");
+
     var albumID = data.tracks[0].albumId;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
-      $.ajax({
+
+    $.ajax({
       url: queryURL,
       method: "GET",
-      }).then(function (data) {
-        if (data.images.length === 5) {
-          albumImg.attr("src", data.images[4].url);
-        } else if (data.images.length > 0 && data.images.length < 5) {
-          albumImg.attr("src", data.images[2].url);
-        } else {
-          albumImg.attr("src", "assets/placeholder.png");
-        }
-      });
+    }).then(function (data) {
+      if (data.images.length === 5) {
+        albumImg.attr("src", data.images[4].url);
+      } else if (data.images.length > 0 && data.images.length < 5) {
+        albumImg.attr("src", data.images[2].url);
+      } else {
+        albumImg.attr("src", "assets/placeholder.png");
+      }
+    });
+
     var songInfoDiv = $("<div>");
     songInfoDiv.addClass("col s4 songInfoDiv");
     var lyricsDiv = $("<div>");
-    lyricsDiv.addClass("col s3 lyricsDiv");      
+    lyricsDiv.addClass("col s3 lyricsDiv");
     var songPreviewDiv = $("<div>");
     songPreviewDiv.addClass("col s3 songPreviewDiv");
     var songData = $("<p>");
@@ -193,6 +195,40 @@ $(document).ready(function () {
   // USING NAPSTER ARTIST DATA, RENDER RELEVANT INFO ON PAGE
   function renderArtistInfo(data) {
     console.log(data);
+    var artistDiv = $("<div>");
+    artistDiv.addClass("row");
+    var artistColDiv = $("<div>");
+    artistColDiv.addclass("col s12 m7");
+    var artistCardDiv = $("<div>");
+    artistCardDiv.addclass("card");
+
+    var artistCardImg = $("<div>");
+    artistCardImg.addclass("card-image");
+
+    var artistImage = $("<img>");
+    artistImage.attr("src", "https://via.placeholder.com/150");
+
+    var artistImageName = $("<span>");
+    artistImageName.addclass("card-title");
+    artistImageName.text("A DAY TO REMEMBER"); // Test Placehodler text. Will be replaced with API Call Object info.
+
+    // TODO: We can add more P tags and pull more info to put into the card if we like.
+    var artistInfoDiv = $("div>");
+    artistInfoDiv.addclass("card-content");
+    var artistInfoGenre = $("<p>");
+    artistInfoGenre.text("Metalcore + Pop Punk"); // Test Placeholder text. Will be replaced with API Call Object Info.
+
+    // TODO: For the card action we can link to top Albums?
+    var artistTopAlbumLinkDiv = $("<div>");
+    artistTopAlbumLinkDiv.addcalss("card-action");
+
+    var artistTopAlbumLink = $("<a>");
+    artistTopAlbumLink.attr("href", "#");
+    artistTopAlbumLink.text("See Top Albums");
+
+    artistDiv.append();
+
+    $(".artistInfo").append(artistDiv);
   }
 
   // USING SONG AND ARTIST INFO GET LYRICS - LYRICSOVH API
@@ -230,13 +266,13 @@ $(document).ready(function () {
   $(".submitBtn").click(function (event) {
     event.preventDefault();
     if ($(".songInput").val() === "" && $(".artistInput").val() === "") {
-      alert('Please add both song and artist information');
+      alert("Please add both song and artist information");
       return;
-    } else if ($(".songInput").val() === ""){
-      alert('Must include song title')
+    } else if ($(".songInput").val() === "") {
+      alert("Must include song title");
       return;
-    } else if ($(".artistInput").val() === ""){
-      alert('Must include artist or band name')
+    } else if ($(".artistInput").val() === "") {
+      alert("Must include artist or band name");
       return;
     } else {
       getSongArtistInfo();
@@ -245,22 +281,22 @@ $(document).ready(function () {
 
   $(".submitArtistBtn").click(function (event) {
     event.preventDefault();
-    if ($(".onlyArtistInput").val() === ""){
-      alert('Must include artist or band name')
+    if ($(".onlyArtistInput").val() === "") {
+      alert("Must include artist or band name");
       return;
     } else {
       getArtistInfo();
     }
   });
 
-  $('#songR1').click(function () {
-    $('.songForm').removeClass('hide');
-    $('.artistForm').addClass('hide');
+  $("#songR1").click(function () {
+    $(".songForm").removeClass("hide");
+    $(".artistForm").addClass("hide");
   });
 
-  $('#artistR2').click(function () {
-    $('.songForm').addClass('hide');
-    $('.artistForm').removeClass('hide');
+  $("#artistR2").click(function () {
+    $(".songForm").addClass("hide");
+    $(".artistForm").removeClass("hide");
   });
 
   $(document).on("click", ".lyricsBtn", getLyrics);
@@ -270,5 +306,4 @@ $(document).ready(function () {
     $(".searchInfo").addClass("hide");
     $(".lyricInfo").addClass("hide");
   });
-
 });
