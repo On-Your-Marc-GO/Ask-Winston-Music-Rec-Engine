@@ -196,8 +196,8 @@ $(document).ready(function () {
   function renderArtistInfo(data) {
     // console.log(data);
 
-    var artistDiv = $("<div>");
-    artistDiv.addClass("row");
+    // var artistDiv = $("<div>");
+    // artistDiv.addClass("row");
     var artistColDiv = $("<div>");
     artistColDiv.addClass("col s6");
     var artistCardDiv = $("<div>");
@@ -259,9 +259,12 @@ $(document).ready(function () {
 
     artistColDiv.append(artistCardDiv);
 
-    artistDiv.append(artistColDiv);
+    // artistDiv.append(artistColDiv);
 
-    $(".userArtistDiv").append(artistDiv);
+    // $(".userArtistDiv").append(artistDiv);
+
+
+    $(".userArtistDiv").append(artistColDiv);
   }
 
   // USING SONG AND ARTIST INFO GET LYRICS - LYRICSOVH API
