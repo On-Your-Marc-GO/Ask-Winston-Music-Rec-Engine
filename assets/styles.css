@@ -218,16 +218,28 @@ audio {
   transform: scale(1.5); 
 }
 
+#inezImage {
+  transition: transform .5s ease;
+}
+
 #marcImage:hover {
   -ms-transform: scale(1.5);
   -webkit-transform: scale(1.5); 
   transform: scale(1.5); 
 }
 
+#marcImage {
+  transition: transform .5s ease;
+}
+
 #ramonImage:hover {
   -ms-transform: scale(1.5);
   -webkit-transform: scale(1.5);
   transform: scale(1.5); 
+}
+
+#ramonImage {
+  transition: transform .5s ease;
 }
 
 .aboutH1 {
