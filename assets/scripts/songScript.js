@@ -174,6 +174,16 @@ $(document).ready(function () {
   }
 
   // EVENT LISTENERS
+  $("#songR1").click(function () {
+    $(".songForm").removeClass("hide");
+    $(".artistForm").addClass("hide");
+  });
+
+  $("#artistR2").click(function () {
+    $(".songForm").addClass("hide");
+    $(".artistForm").removeClass("hide");
+  });
+
   $(".submitBtn").click(function (event) {
     event.preventDefault();
     if ($(".songInput").val() === "" && $(".artistInput").val() === "") {
@@ -190,14 +200,9 @@ $(document).ready(function () {
     }
   });
 
-  $("#songR1").click(function () {
-    $(".songForm").removeClass("hide");
-    $(".artistForm").addClass("hide");
-  });
-
-  $("#artistR2").click(function () {
-    $(".songForm").addClass("hide");
-    $(".artistForm").removeClass("hide");
+  $(".goBackBtn").click(function () {
+    $(".undefinedInputDiv").addClass('hide');
+    $(".searchInfo").removeClass("hide");
   });
 
   $(document).on("click", ".lyricsBtn", getLyrics);
