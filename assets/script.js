@@ -176,14 +176,13 @@ $(document).ready(function () {
     $.ajax({
       url: queryURL,
       method: "GET",
-    }).then(function (response) {
-      var albumImg = $("<img>");
-      albumImg.addClass("col s2 albumImg");
-      if (response.images.length >= 5) {
-        console.log(songDiv);
-        albumImg.attr("src", response.images[4].url);
-      } else if (response.images.length > 0 && response.images.length < 5) {
-        img.attr("src", response.images[2].url);
+    }).then(function (data) {
+    var albumImg = $("<img>");
+    albumImg.addClass("col s2 albumImg");
+      if (data.images.length >= 5) {
+        albumImg.attr("src", data.images[4].url);
+      } else if (data.images.length > 0 && data.images.length < 5) {
+        img.attr("src", data.images[2].url);
       } else {
         img.attr("src", "assets/squareplaceholder.png");
       }
@@ -194,6 +193,7 @@ $(document).ready(function () {
 
   // USING NAPSTER ARTIST DATA, RENDER RELEVANT INFO ON PAGE
   function renderArtistInfo(data) {
+    $('.userArtistChoice').text(artistName.toUpperCase());
     var artistCardDiv = $("<div>");
     artistCardDiv.addClass("card col s6");
     var artistInfoDiv = $("<div>");
