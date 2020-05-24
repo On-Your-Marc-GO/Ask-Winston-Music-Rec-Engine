@@ -4,12 +4,12 @@ var artistName = "";
 var similarResultsArr = [];
 
 $(document).ready(function () {
+  
   // GET SONG AND ARTIST INFO FROM FORM AND RESET IT
   function getSongArtistInfo() {
     songName = $(".songInput").val().trim();
     artistName = $(".artistInput").val().trim();
     $(".home-page").removeClass("active");
-    $("body").removeClass("backgroundImg");
     $(".searchInfo").addClass("hide");
     $(".artistInfoDiv").addClass("hide");
     $(".songInfoDiv").removeClass("hide");
@@ -17,7 +17,7 @@ $(document).ready(function () {
     $(".songInput").val("");
     $(".artistInput").val("");
   }
-
+  
   // SEARCH FOR SIMILAR SONGS BY SONG TITLE AND ARTIST NAME - LASTFM API
   function getSimilarSongs() {
     var apiKey = "da538ed1310540e471c7324ad05cf95f";
@@ -62,7 +62,6 @@ $(document).ready(function () {
 
   // USE SONG, ARTIST, AND ALBUM INFO TO GET EVEN MORE SONG DETAILS - NAPSTER API
   function getNapsterSongInfo(data) {
-    // console.log(data);
     var artistName = data.track.artist.name;
     artistName = artistName.replace(/\W+/g, "-").toLowerCase(); // Stackoverflow
     var songName = data.track.name;
@@ -83,7 +82,6 @@ $(document).ready(function () {
 
   // USING NAPSTER SONG DATA, RENDER RELEVANT INFO ON PAGE
   function renderSongInfo(data) {
-    // console.log(data);
     $(".userSongDiv").html(`<div><span class="songChoice">${songName.toUpperCase()}</span><span class=artistChoice> by ${artistName}</span></div>`);
     var songDiv = $("<div>");
     songDiv.addClass("row songDiv");
@@ -129,24 +127,63 @@ $(document).ready(function () {
     $.ajax({
       url: queryURL,
       method: "GET",
-    }).then(function (response) {
-      var albumImg = $("<img>");
-      albumImg.addClass("col s2 albumImg");
-      // TODO ALBUM IMGS NOT RENDERING, SRC NOT BEING ADDED TO THE IMG ELEMENT
-      if (response.images.length >= 5) {
-        console.log(songDiv);
-        albumImg.attr("src", response.images[4].url);
-      } else if (response.images.length > 0 && response.images.length < 5) {
-        img.attr("src", response.images[2].url);
+    }).then(function (data) {
+    var albumImg = $("<img>");
+    albumImg.addClass("col s2 albumImg");
+      if (data.images.length >= 5) {
+        albumImg.attr("src", data.images[4].url);
+      } else if (data.images.length > 0 && data.images.length < 5) {
+        albumImg.attr("src", data.images[2].url);
       } else {
-        img.attr("src", "assets/placeholder.png");
+        albumImg.attr("src", "assets/pics/placeholder.png");
       }
       songDiv.prepend(albumImg);
       $(".songInfo").append(songDiv);
     });
   }
 
+  // USING SONG AND ARTIST INFO GET LYRICS - LYRICSOVH API
+  function getLyrics() {
+    var lyricsSong = $(this).attr("data-song");
+    lyricsSong.replace(/\W+/g, "-").toLowerCase();
+    var lyricsArtist = $(this).attr("data-artist");
+    lyricsArtist.replace(/\W+/g, "-").toLowerCase();
+    $.ajax({
+      url: `https://api.lyrics.ovh/v1/${lyricsArtist}/${lyricsSong}`,
+      method: "GET",
+    }).then(function (data) {
+      var lyricsInfo = {
+        song: lyricsSong,
+        artist: lyricsArtist,
+        lyrics: data,
+      };
+      renderLyrics(lyricsInfo);
+    });
+  }
+
+  // USING LYRICSOVH DATA, RENDER RELEVANT INFO ON PAGE
+  function renderLyrics(lyricsInfo) {
+    $(".songInfoDiv").addClass("hide");
+    $(".searchInfo").addClass("hide");
+    $(".lyricInfo").removeClass("hide");
+    $(".songLyric").text(lyricsInfo.song.toUpperCase());
+    $(".artistLyric").text(lyricsInfo.artist);
+    var lyrics = lyricsInfo.lyrics.lyrics;
+    lyrics = lyrics.replace(/[\n\r]/g, "<p>");
+    $(".lyric").html(lyrics);
+  }
+
   // EVENT LISTENERS
+  $("#songR1").click(function () {
+    $(".songForm").removeClass("hide");
+    $(".artistForm").addClass("hide");
+  });
+
+  $("#artistR2").click(function () {
+    $(".songForm").addClass("hide");
+    $(".artistForm").removeClass("hide");
+  });
+
   $(".submitBtn").click(function (event) {
     event.preventDefault();
     if ($(".songInput").val() === "" && $(".artistInput").val() === "") {
@@ -163,10 +200,12 @@ $(document).ready(function () {
     }
   });
 
-  $("#songR1").click(function () {
-    $(".songForm").removeClass("hide");
-    $(".artistForm").addClass("hide");
+  $(".goBackBtn").click(function () {
+    $(".undefinedInputDiv").addClass('hide');
+    $(".searchInfo").removeClass("hide");
   });
+
+  $(document).on("click", ".lyricsBtn", getLyrics);
 
   $(".returnBtn").click(function () {
     $(".songInfoDiv").removeClass("hide");
@@ -174,5 +213,4 @@ $(document).ready(function () {
     $(".lyricInfo").addClass("hide");
   });
 
-  $(document).on("click", ".topSongsBtn", getTopSongs);
-});
+})
