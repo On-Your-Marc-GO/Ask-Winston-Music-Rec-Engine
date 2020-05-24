@@ -37,11 +37,10 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       renderSimilarSongs(data);
-      console.log(data);
     });
   }
 
-  // SEARCH FOR SIMILAR SONGS BY ARTIST NAME - LASTFM API
+  // SEARCH FOR SIMILAR ARTISTS BY ARTIST NAME - LASTFM API
   function getSimilarArtists() {
     var apiKey = "da538ed1310540e471c7324ad05cf95f";
     var queryURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=${artistName}&api_key=${apiKey}&format=json`;
