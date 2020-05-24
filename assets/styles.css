@@ -47,6 +47,10 @@ a:hover,
 
 }
 
+.sidenav {
+  width: 200px;
+}
+
 .active {
   text-decoration: underline;
 }
