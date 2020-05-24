@@ -3,8 +3,13 @@ var songName = "";
 var artistName = "";
 var similarResultsArr = [];
 
+// NAV BAR COLLAPSE: MATERIALIZE
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+});
+
 $(document).ready(function () {
-  
+
   // GET SONG AND ARTIST INFO FROM FORM AND RESET IT
   function getSongArtistInfo() {
     songName = $(".songInput").val().trim();
