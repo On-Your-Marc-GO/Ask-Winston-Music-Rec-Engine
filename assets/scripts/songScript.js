@@ -133,9 +133,9 @@ $(document).ready(function () {
       if (data.images.length >= 5) {
         albumImg.attr("src", data.images[4].url);
       } else if (data.images.length > 0 && data.images.length < 5) {
-        img.attr("src", data.images[2].url);
+        albumImg.attr("src", data.images[2].url);
       } else {
-        img.attr("src", "assets/pics/placeholder.png");
+        albumImg.attr("src", "assets/pics/placeholder.png");
       }
       songDiv.prepend(albumImg);
       $(".songInfo").append(songDiv);
