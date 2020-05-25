@@ -93,25 +93,35 @@
           </div>
 
           <!-- Top Links -->
-          <div class="row center-align hide ">
+          <div class="row center-align">
             <div class="col s4 topLinks">
               <a href="#">
-                <img src="./assets/pics/topsongs.png" alt="HTML tutorial" class="topImgs">
+                <img src="./assets/pics/topsongs.png" alt="HTML tutorial" class="topImgs" data-type="top songs">
               </a>
             </div>
             <div class="col s4 topLinks">
               <a href="#">
-                <img src="./assets/pics/topartists.png" alt="HTML tutorial" class="topImgs">
+                <img src="./assets/pics/topartists.png" alt="HTML tutorial" class="topImgs" data-type="top artists">
               </a>
             </div>
             <div class="col s4 topLinks">
               <a href="#">
-                <img src="./assets/pics/topalbums.png" alt="HTML tutorial" class="topImgs">
+                <img src="./assets/pics/topalbums.png" alt="HTML tutorial" class="topImgs" data-type="top albums">
               </a>
             </div>
           </div>
         </div>
       
+
+        <!--Display Monthly Top Songs-->
+        <div class="monthlyTopSongsDiv hide">
+          <div class="row center-align">
+            <h1>TOP SONGS</h1>
+            <h2>Updated Monthly</h2>
+            <div class="monthlySongDiv"></div>
+          </div>
+        </div>
+
         <!-- Error/Undefined Div -->
         <div class="undefinedInputDiv center-align hide">
           <h1>ERROR</h1>
@@ -145,16 +155,16 @@
           </div>
         </div>
 
-        <!-- Display Top Songs Div -->
+        <!-- Display Artist Top Songs Div -->
         <div class="topSongsInfoDiv hide">
           <div class="row songInfo center-align">
             <h1>TOP SONGS</h1>
             <button class="btn waves-effect waves-light returnArtistsBtn">Return to Results</button>
           <div class="userTopSongDiv"></div>
         </div>
-
+        
+      
         </div>
-
       </div>
     </main>
     
