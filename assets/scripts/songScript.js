@@ -8,6 +8,11 @@ $(document).ready(function(){
   $('.sidenav').sidenav();
 });
 
+// INITIALIZE MODALS
+$(document).ready(function(){
+  $('.modal').modal();
+});
+
 $(document).ready(function () {
 
   // GET SONG AND ARTIST INFO FROM FORM AND RESET IT
@@ -103,9 +108,10 @@ $(document).ready(function () {
     artistData.addClass("artistData");
     albumData.addClass("albumData");
     var lyricsBtn = $("<button>");
-    lyricsBtn.addClass("btn waves-effect waves-light lyricsBtn");
+    lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
     lyricsBtn.attr("data-song", data.tracks[0].name);
     lyricsBtn.attr("data-artist", data.tracks[0].artistName);
+    lyricsBtn.attr("data-target", "modal1");
     var songPreview = $("<audio>");
     songPreview.attr("controls", "controls");
     var songSource = $("<source>");
@@ -168,9 +174,9 @@ $(document).ready(function () {
 
   // USING LYRICSOVH DATA, RENDER RELEVANT INFO ON PAGE
   function renderLyrics(lyricsInfo) {
-    $(".songInfoDiv").addClass("hide");
-    $(".searchInfo").addClass("hide");
-    $(".lyricInfo").removeClass("hide");
+    // $(".songInfoDiv").addClass("hide");
+    // $(".searchInfo").addClass("hide");
+    // $(".lyricInfo").removeClass("hide");
     $(".songLyric").text(lyricsInfo.song.toUpperCase());
     $(".artistLyric").text(lyricsInfo.artist);
     var lyrics = lyricsInfo.lyrics.lyrics;
