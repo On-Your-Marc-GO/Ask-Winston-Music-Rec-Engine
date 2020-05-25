@@ -93,18 +93,18 @@
           </div>
 
           <!-- Top Links -->
-          <div class="row center-align hide ">
-            <div class="col s4 topLinks">
+          <div class="row">
+            <div class="col s4 right-align topLinks">
               <a href="#">
                 <img src="./assets/pics/topsongs.png" alt="HTML tutorial" class="topImgs">
               </a>
             </div>
-            <div class="col s4 topLinks">
+            <div class="col s4 center-align topLinks">
               <a href="#">
                 <img src="./assets/pics/topartists.png" alt="HTML tutorial" class="topImgs">
               </a>
             </div>
-            <div class="col s4 topLinks">
+            <div class="col s4 left-align topLinks">
               <a href="#">
                 <img src="./assets/pics/topalbums.png" alt="HTML tutorial" class="topImgs">
               </a>
@@ -128,13 +128,25 @@
         </div>
 
 
-        <!-- Display Lyric Div -->
+        <!-- Lyric Modal -->
+        <div id="modal1" class="lyricInfo center-align modal">
+          <div class="modal-content">
+            <h1 class="songLyric"></h1>
+            <h2 class="artistLyric"></h2>
+            <p class="lyric"></p>
+          </div>
+          <!-- <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">x</a>
+          </div> -->
+        </div>
+
+        <!-- Display Lyric Div
         <div class="lyricInfo center-align hide">
           <h1 class="songLyric">Song Name</h2>
           <h2 class="artistLyric">Artist Name</h3>
           <button class="btn waves-effect waves-light returnBtn">Return to Results</button>
           <p class="lyric">Lyrics</p>
-        </div>
+        </div> -->
 
         <!-- Display Similar Artist Info Div -->
         <div class="artistInfoDiv hide">
@@ -151,8 +163,6 @@
             <h1>TOP SONGS</h1>
             <button class="btn waves-effect waves-light returnArtistsBtn">Return to Results</button>
           <div class="userTopSongDiv"></div>
-        </div>
-
         </div>
 
       </div>

@@ -94,9 +94,14 @@ h2,
 
 .topImgs {
   width: 200px;
-  border-radius: 30px;
+  border-radius: 50px;
   /* border: 10px #26A69A solid; */
   /* border-style: inset; */
+}
+
+.topImgs:hover {
+  opacity: 75%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .hide {
