@@ -4,17 +4,16 @@ var artistName = "";
 var similarResultsArr = [];
 
 // NAV BAR COLLAPSE: MATERIALIZE
-$(document).ready(function(){
-  $('.sidenav').sidenav();
+$(document).ready(function () {
+  $(".sidenav").sidenav();
 });
 
 // INITIALIZE MODALS
-$(document).ready(function(){
-  $('.modal').modal();
+$(document).ready(function () {
+  $(".modal").modal();
 });
 
 $(document).ready(function () {
-
   // GET SONG AND ARTIST INFO FROM FORM AND RESET IT
   function getSongArtistInfo() {
     songName = $(".songInput").val().trim();
@@ -27,7 +26,7 @@ $(document).ready(function () {
     $(".songInput").val("");
     $(".artistInput").val("");
   }
-  
+
   // SEARCH FOR SIMILAR SONGS BY SONG TITLE AND ARTIST NAME - LASTFM API
   function getSimilarSongs() {
     var apiKey = "da538ed1310540e471c7324ad05cf95f";
@@ -139,8 +138,8 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-    var albumImg = $("<img>");
-    albumImg.addClass("col s2 albumImg");
+      var albumImg = $("<img>");
+      albumImg.addClass("col s2 albumImg");
       if (data.images.length >= 5) {
         albumImg.attr("src", data.images[4].url);
       } else if (data.images.length > 0 && data.images.length < 5) {
@@ -212,7 +211,7 @@ $(document).ready(function () {
   });
 
   $(".goBackBtn").click(function () {
-    $(".undefinedInputDiv").addClass('hide');
+    $(".undefinedInputDiv").addClass("hide");
     $(".searchInfo").removeClass("hide");
   });
 
@@ -223,5 +222,4 @@ $(document).ready(function () {
     $(".searchInfo").addClass("hide");
     $(".lyricInfo").addClass("hide");
   });
-
-})
+});
