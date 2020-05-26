@@ -115,7 +115,8 @@ h2,
   overflow: scroll;
 }
 
-.songInfoDiv {
+.songInfoDiv,
+.topSongsInfoDiv {
   margin-top: 10px;
 }
 
