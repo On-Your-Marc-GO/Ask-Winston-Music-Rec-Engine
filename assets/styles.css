@@ -145,12 +145,8 @@ h2,
 }
 
 .songChoice,
-<<<<<<< HEAD
 .userArtistChoice,
 .topSong {
-=======
-.userArtistChoice {
->>>>>>> 1249ec09937cedd78a64105a86dee144def6a4e6
   font-family: "Prompt", sans-serif;
   font-weight: 600;
   font-size: 24px;
