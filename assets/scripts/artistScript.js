@@ -118,16 +118,8 @@ $(document).ready(function () {
     $(".lyricInfo").addClass("hide");
     $(".artistInfoDiv").addClass("hide");
     $(".topSongsInfoDiv").removeClass("hide");
-    console.log("classes were unhidden");
 
     $(".userTopSongDiv").html(`<div><span class="topSong">Top Songs by ${data.tracks[0].artistName}</span></div>`);
-    // var topSongDiv = $("<div>");
-    // var topSongData = $("<p>");
-    // var topSongAlbumData = $("<p>");
-    // topSongData.text(data.tracks[0].name.toUpperCase());
-    // topSongAlbumData.text(`Album: ${data.tracks[0].albumName}`);
-    // topSongDiv.append(topSongData);
-    // topSongDiv.append(topSongAlbumData);
 
     for (var i = 0; i < data.tracks.length; i++) {
       var topSongDiv = $("<div>");
@@ -172,50 +164,9 @@ $(document).ready(function () {
       topSongDiv.append(topSongLyricsDiv);
       topSongDiv.append(topSongPreviewDiv);
 
-      console.log("Appending should have been done.");
-
       $(".userTopSongDiv").append(topSongDiv);
     }
 
-    // $(".userSongDiv").html(`<div><span class="songChoice">${songName.toUpperCase()}</span><span class=artistChoice> by ${artistName}</span></div>`);
-    // var songDiv = $("<div>");
-    // songDiv.addClass("row songDiv");
-    // var songInfoDiv = $("<div>");
-    // songInfoDiv.addClass("col s4 songInfoDiv");
-    // var lyricsDiv = $("<div>");
-    // lyricsDiv.addClass("col s3 lyricsDiv");
-    // var songPreviewDiv = $("<div>");
-    // songPreviewDiv.addClass("col s3 songPreviewDiv");
-    // var songData = $("<p>");
-    // var artistData = $("<p>");
-    // var albumData = $("<p>");
-    // songData.addClass("songData");
-    // artistData.addClass("artistData");
-    // albumData.addClass("albumData");
-    // var lyricsBtn = $("<button>");
-    // lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
-    // lyricsBtn.attr("data-song", data.tracks[0].name);
-    // lyricsBtn.attr("data-artist", data.tracks[0].artistName);
-    // lyricsBtn.attr("data-target", "modal1");
-    // var songPreview = $("<audio>");
-    // songPreview.attr("controls", "controls");
-    // var songSource = $("<source>");
-    // songSource.attr("src", data.tracks[0].previewURL);
-    // songSource.attr("type", "audio/mp3");
-    // songData.text(data.tracks[0].name.toUpperCase());
-    // artistData.text(`Artist: ${data.tracks[0].artistName}`);
-    // albumData.text(`Album: ${data.tracks[0].albumName}`);
-    // lyricsBtn.text("Lyrics");
-    // songInfoDiv.append(songData);
-    // songInfoDiv.append(artistData);
-    // songInfoDiv.append(albumData);
-    // lyricsDiv.append(lyricsBtn);
-    // songPreview.append(songSource);
-    // songPreviewDiv.append(songPreview);
-    // songDiv.append(songInfoDiv);
-    // songDiv.append(lyricsDiv);
-    // songDiv.append(songPreviewDiv);
-  }
 
   // EVENT LISTENERS
   $(".submitArtistBtn").click(function (event) {
