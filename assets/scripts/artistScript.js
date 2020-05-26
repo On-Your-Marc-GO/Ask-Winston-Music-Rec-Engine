@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  
   // GET ARTIST INFO FROM FORM AND RESET IT
   function getArtistInfo() {
     artistName = $(".onlyArtistInput").val().trim();
@@ -52,7 +51,7 @@ $(document).ready(function () {
 
   // USING NAPSTER ARTIST DATA, RENDER RELEVANT INFO ON PAGE
   function renderArtistInfo(data) {
-    $('.userArtistChoice').text(artistName.toUpperCase());
+    $(".userArtistChoice").text(artistName.toUpperCase());
     var artistCardDiv = $("<div>");
     artistCardDiv.addClass("card col s6");
     var artistInfoDiv = $("<div>");
@@ -73,17 +72,17 @@ $(document).ready(function () {
     var artistID = data.artists[0].id;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `http://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
-    
+
     $.ajax({
       url: queryURL,
       method: "GET",
     }).then(function (imageData) {
       var artistCardImgDiv = $("<div>");
       artistCardImgDiv.addClass("card-image");
-      var artistImg = $("<img>"); 
+      var artistImg = $("<img>");
       var artistImgName = $("<span>");
       artistImgName.addClass("card-title");
-      artistImgName.text(data.artists[0].name); 
+      artistImgName.text(data.artists[0].name);
       if (imageData.images.length >= 4) {
         artistImg.attr("src", imageData.images[3].url);
       } else if (imageData.images.length > 0 && imageData.images.length < 4) {
@@ -119,6 +118,103 @@ $(document).ready(function () {
     $(".lyricInfo").addClass("hide");
     $(".artistInfoDiv").addClass("hide");
     $(".topSongsInfoDiv").removeClass("hide");
+    console.log("classes were unhidden");
+
+    $(".userTopSongDiv").html(`<div><span class="topSong">Top Songs by ${data.tracks[0].artistName}</span></div>`);
+    // var topSongDiv = $("<div>");
+    // var topSongData = $("<p>");
+    // var topSongAlbumData = $("<p>");
+    // topSongData.text(data.tracks[0].name.toUpperCase());
+    // topSongAlbumData.text(`Album: ${data.tracks[0].albumName}`);
+    // topSongDiv.append(topSongData);
+    // topSongDiv.append(topSongAlbumData);
+
+    for (var i = 0; i < data.tracks.length; i++) {
+      var topSongDiv = $("<div>");
+      topSongDiv.addClass("row topSongDiv");
+      var topSongInfoDiv = $("<div>");
+      topSongInfoDiv.addClass("col s4 topSongInfoDiv");
+      var topSongLyricsDiv = $("<div>");
+      topSongLyricsDiv.addClass("col s3 topSongLyricsDiv");
+
+      var topSongPreviewDiv = $("<div>");
+      topSongPreviewDiv.addClass("col s3 topSongPreviewDiv");
+
+      var topSongData = $("<p>");
+      var topSongAlbumData = $("<p>");
+
+      topSongData.addClass("topSongData");
+      topSongAlbumData.addClass("topSongAlbumData");
+
+      var topSongLyricsBtn = $("<button>");
+      topSongLyricsBtn.addClass("btn modal-trigger waves-effect waves-light topSongLyricsBtn");
+      topSongLyricsBtn.attr("data-topSong", data.tracks[i].name);
+      topSongLyricsBtn.attr("data-target", "modal1");
+
+      var topSongPreview = $("<audio>");
+      topSongPreview.attr("controls", "controls");
+
+      var topSongSource = $("<source>");
+      topSongSource.attr("src", data.tracks[i].previewURL);
+      topSongSource.attr("type", "audio/mp3");
+
+      topSongData.text(data.tracks[i].name.toUpperCase());
+      topSongAlbumData.text(`Album: ${data.tracks[i].albumName}`);
+      topSongLyricsBtn.text("Lyrics");
+
+      topSongInfoDiv.append(topSongData);
+      topSongInfoDiv.append(topSongAlbumData);
+      topSongLyricsDiv.append(topSongLyricsBtn);
+      topSongPreview.append(topSongSource);
+      topSongPreviewDiv.append(topSongPreview);
+
+      topSongDiv.append(topSongInfoDiv);
+      topSongDiv.append(topSongLyricsDiv);
+      topSongDiv.append(topSongPreviewDiv);
+
+      console.log("Appending should have been done.");
+
+      $(".userTopSongDiv").append(topSongDiv);
+    }
+
+    // $(".userSongDiv").html(`<div><span class="songChoice">${songName.toUpperCase()}</span><span class=artistChoice> by ${artistName}</span></div>`);
+    // var songDiv = $("<div>");
+    // songDiv.addClass("row songDiv");
+    // var songInfoDiv = $("<div>");
+    // songInfoDiv.addClass("col s4 songInfoDiv");
+    // var lyricsDiv = $("<div>");
+    // lyricsDiv.addClass("col s3 lyricsDiv");
+    // var songPreviewDiv = $("<div>");
+    // songPreviewDiv.addClass("col s3 songPreviewDiv");
+    // var songData = $("<p>");
+    // var artistData = $("<p>");
+    // var albumData = $("<p>");
+    // songData.addClass("songData");
+    // artistData.addClass("artistData");
+    // albumData.addClass("albumData");
+    // var lyricsBtn = $("<button>");
+    // lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
+    // lyricsBtn.attr("data-song", data.tracks[0].name);
+    // lyricsBtn.attr("data-artist", data.tracks[0].artistName);
+    // lyricsBtn.attr("data-target", "modal1");
+    // var songPreview = $("<audio>");
+    // songPreview.attr("controls", "controls");
+    // var songSource = $("<source>");
+    // songSource.attr("src", data.tracks[0].previewURL);
+    // songSource.attr("type", "audio/mp3");
+    // songData.text(data.tracks[0].name.toUpperCase());
+    // artistData.text(`Artist: ${data.tracks[0].artistName}`);
+    // albumData.text(`Album: ${data.tracks[0].albumName}`);
+    // lyricsBtn.text("Lyrics");
+    // songInfoDiv.append(songData);
+    // songInfoDiv.append(artistData);
+    // songInfoDiv.append(albumData);
+    // lyricsDiv.append(lyricsBtn);
+    // songPreview.append(songSource);
+    // songPreviewDiv.append(songPreview);
+    // songDiv.append(songInfoDiv);
+    // songDiv.append(lyricsDiv);
+    // songDiv.append(songPreviewDiv);
   }
 
   // EVENT LISTENERS
@@ -137,7 +233,6 @@ $(document).ready(function () {
     $(".artistForm").removeClass("hide");
   });
 
-
   $(".returnArtistsBtn").click(function () {
     $(".artistInfoDiv").removeClass("hide");
     $(".topSongInfoDiv").addClass("hide");
@@ -146,5 +241,4 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".topSongsBtn", getTopSongs);
-
-})
+});
