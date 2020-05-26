@@ -7,7 +7,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
 }
 
@@ -17,7 +17,7 @@ main {
 
 h1,
 nav {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 600;
 }
 
@@ -27,15 +27,14 @@ h1 {
 
 h3 {
   font-size: 20px;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
 }
 
 p {
   margin-bottom: 5px;
   margin-top: 5px;
-} 
-
+}
 
 audio {
   margin-top: 28px;
@@ -43,8 +42,7 @@ audio {
 
 a:hover,
 #noteLogo {
-  color: #26A69A;
-
+  color: #26a69a;
 }
 
 .sidenav {
@@ -56,7 +54,7 @@ a:hover,
 }
 
 .no-shadows {
-  box-shadow: none!important;
+  box-shadow: none !important;
 }
 
 .descriptiondiv {
@@ -78,7 +76,7 @@ h2,
 .messageBtn,
 .goBackBtn {
   font-size: 25px;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
 }
 
@@ -121,8 +119,9 @@ h2,
   margin-top: 10px;
 }
 
-.songData {
-  font-family: 'Prompt', sans-serif;
+.songData,
+.topSongData {
+  font-family: "Prompt", sans-serif;
   font-weight: 600;
   font-size: 18px;
 }
@@ -133,7 +132,7 @@ h2,
 }
 
 .lyricsBtn {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
   margin-top: 38px;
 }
@@ -145,13 +144,13 @@ h2,
 
 .songChoice,
 .userArtistChoice {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 600;
   font-size: 24px;
 }
 
 .artistChoice {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-size: 24px;
 }
@@ -163,7 +162,7 @@ h2,
 .page-footer {
   background-color: transparent;
   color: black;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
   margin-top: 30px;
   margin-bottom: 20px;
@@ -187,22 +186,24 @@ h2,
   text-align: center;
 }
 
-:-moz-placeholder { /* Firefox 18- */ 
-  text-align: center;  
+:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-  text-align: center;  
+::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
 }
 
-:-ms-input-placeholder {  
-  text-align: center; 
+:-ms-input-placeholder {
+  text-align: center;
 }
 
 /*Help page CSS*/
 
 .help-tag {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-size: 20px;
   margin-bottom: 55px;
@@ -220,12 +221,12 @@ h2,
 
 #inezImage:hover {
   -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5); 
-  transform: scale(1.5); 
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
 }
 
 #inezImage {
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
 }
 
 #inezBio {
@@ -249,20 +250,20 @@ h2,
 
 #marcImage:hover {
   -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5); 
-  transform: scale(1.5); 
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
 }
 
 #marcImage {
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
 }
 
 #ramonImage:hover {
   -ms-transform: scale(1.5);
   -webkit-transform: scale(1.5);
-  transform: scale(1.5); 
+  transform: scale(1.5);
 }
 
 #ramonImage {
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
 }
