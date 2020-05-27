@@ -103,13 +103,49 @@ function getTopArtists() {
     url: queryURL,
     method: "GET",
   }).then(function (data) {
-    renderTopArtists(data);
+        renderTopArtists(data); 
   });
 }
 
 function renderTopArtists(data) {
   $(".searchInfo").addClass("hide");
   $(".monthlyTopArtistsDiv").removeClass("hide");
+  var monthlyArtistDiv = $('.monthlyArtistDiv');
+  console.log(data);
+  for (var i = 0; i < 20; i++) {
+    var artistCardImgDiv = $("<div>");
+    artistCardImgDiv.addClass("card-image");
+    var artistImg = $("<img>");
+    artistImg.attr("src", "assets/pics/rectangleplaceholder.png");
+    var artistImgName = $("<span>");
+    artistImgName.addClass("card-title");
+    artistImgName.text(data.artists[i].name);
+      var monthArtistCardDiv = $('<div>');
+      monthArtistCardDiv.addClass('card col s6');
+      var monthInfoDiv = $('<div>');
+      monthInfoDiv.addClass('card-content');
+      var monthArtistBio = $('<p>');
+      if (data.artists[i].bios) {
+          monthArtistBio.html(data.artists[i].bios[0].bio);
+      } else {
+          monthArtistBio.text('No Bio');
+      }
+      //monthArtistBio.html(data.artists[i].bios[0].bio);
+      var monthArtistTopSongsDiv = $('<div>');
+      monthArtistTopSongsDiv.addClass('card-action');
+      var monthArtistTopSongBtn = $('<button>');
+      monthArtistTopSongBtn.addClass('btn waves-effect waves-light topSongsBtn');
+      monthArtistTopSongBtn.attr('data-artist', data.artists[i].id);
+      monthArtistTopSongBtn.text('Top Songs');
+      artistCardImgDiv.append(artistImg);
+      artistCardImgDiv.append(artistImgName);
+      monthInfoDiv.append(monthArtistBio);
+      monthArtistTopSongsDiv.append(monthArtistTopSongBtn);
+      monthArtistCardDiv.append(artistCardImgDiv);
+      monthArtistCardDiv.append(monthInfoDiv);
+      monthArtistCardDiv.append(monthArtistTopSongsDiv);
+      monthlyArtistDiv.append(monthArtistCardDiv);
+  }
   console.log(data);
 }
 
