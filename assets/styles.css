@@ -82,7 +82,7 @@ h2,
 
 .toast {
   /* background-color: #426b67; */
-  background-color: goldenrod;
+  background-color: #F5C002;
   color: black;
 }
 
@@ -160,6 +160,10 @@ h2,
 
 .songLyric {
   font-size: 50px;
+}
+
+.userTopSongDiv {
+  margin-top: 75px;
 }
 
 .page-footer {
