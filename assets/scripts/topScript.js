@@ -205,7 +205,51 @@ $.ajax({
 }
 
 function renderAlbumDetails(data) {
+  $('.albumDetailsDiv').removeClass("hide");
+  $(".monthlyTopAlbumsDiv").addClass("hide");
   console.log(data);
+  var userAlbumChoice = $('<div>');
+  userAlbumChoice.addClass('row');
+  // var albumImg = $('<img>');
+  // albumImg.addClass('col s5');
+  // albumImg.attr('src', 'assets/pics/placeholder.png');
+  var albumInfo = $('<div>');
+  albumInfo.addClass('col s8');
+  var albumName = $('<p>');
+  albumName.text(data.tracks[0].albumName);
+  albumName.addClass('row');
+  var artistName = $('<p>');
+  artistName.addClass('row');
+  artistName.text(data.tracks[0].artistName);
+  albumInfo.append(albumName);
+  albumInfo.append(artistName);
+  // userAlbumChoice.append(albumImg);
+  userAlbumChoice.append(albumInfo);
+  // $('.albumDetailsInfo').append(userAlbumChoice);
+
+  var albumID = data.tracks[0].albumId;
+  var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+  var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (data) {
+    console.log(data);
+      var albumImg = $('<img>');
+      albumImg.addClass('col s4');
+      if (data.images.length > 0 && data.images.length <= 5) {
+        for (var i = 0; i < 5; i++) {
+          if (data.images[i]) {
+            albumImg.attr("src", data.images[i].url);
+          }
+        }
+      } else {
+        albumImg.attr("src", "assets/pics/placeholder.png");
+      }
+      userAlbumChoice.prepend(albumImg);
+      $('.albumDetailsInfo').append(userAlbumChoice);
+    });
 }
 
 $(document).on("click", ".topImgs", getApiType);
