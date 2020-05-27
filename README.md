@@ -10,8 +10,6 @@ The purpose of this project is to initially test our knowledge of the building b
 
 ## Table of Contents
 
-If your README is very long, add a table of contents to make it easy for users to find what they need.
-
 - [Developers](#developers)
 - [Technologies](#technologies)
 - [Installation](#installation)
@@ -34,10 +32,9 @@ If your README is very long, add a table of contents to make it easy for users t
 - API's
 
   - [jQuery](https://api.jquery.com/)
-  - [LastFM](https://www.last.fm/api/)
-  - [Napster](https://developer.napster.com/)
+  - [LastFM Open API](https://www.last.fm/api/)
+  - [Napster API](https://developer.napster.com/)
   - [LyricsOVH](https://lyricsovh.docs.apiary.io/#)
-  - [Discogs](https://www.discogs.com/developers#page:home,header:home-general-information)
 
 * CSS Framework
   - [Materialize](https://materializecss.com/)
@@ -45,17 +42,17 @@ If your README is very long, add a table of contents to make it easy for users t
 ## User Story
 
 ```
-AS AN avid media consumer who's run through all their queues
-I WANT to be able to get recommendations for like media I already enjoy
+AS AN avid audiophile who's run through all their queues
+I WANT to be able to get recommendations for like music I already enjoy
 SO THAT I can continue to not go insane during COVID while staying entertained
 ```
 
 ## Acceptance Criteria
 
 ```
-GIVEN I am using a content recommendation engine to seek new media
+GIVEN I am using a content recommendation engine to seek new music
 WHEN I arrive at the page
-THEN I am presented with the option to search for a given media type (Book, Movie, Music)
+THEN I am presented with the option to search for similar.
 WHEN I enter input
 THEN I am then given relevant recommendations based on the selected media types
 WHEN I click on any of the recommendations given
@@ -85,12 +82,15 @@ Alternatively you may refer to the 'Site Link' provided above to visit the site 
 - If you followed tutorials, include links to those here as well.
 
 Butler icon
+
 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 Headphones icon
+
 <div>Icons made by <a href="https://roundicons.com/" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 butler full body icon
+
 <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 Top artists background img
@@ -101,9 +101,6 @@ Photo by Bruce Mars on Unsplash
 
 top albums background img
 Photo by Daniel Schludi on Unsplash
-
-
-
 
 ## License
 
