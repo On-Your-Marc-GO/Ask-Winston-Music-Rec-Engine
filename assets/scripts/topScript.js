@@ -24,10 +24,15 @@ function getTopSongs() {
 }
 
 function renderTopSongs(data) {
+  var monthTopSongs = $('.monthlySongDiv');
   $(".searchInfo").addClass("hide");
   $(".monthlyTopSongsDiv").removeClass("hide");
+  for (var i = 0; i < 20; i++) {
    var monthlySongsDiv = $('<div>') ;
    monthlySongsDiv.addClass('row monthlySongDiv');
+   var albumImg = $("<img>");
+   albumImg.addClass("col s2 albumImg");
+   albumImg.attr("src", "assets/pics/placeholder.png");
    var monthlyInfoDiv = $('<div>');
    monthlyInfoDiv.addClass('col s4 monthlyInfoDiv');
    var monthlySongLyrics = $('<div>');
@@ -42,17 +47,17 @@ function renderTopSongs(data) {
    monthAlbumData.addClass('monthAlbumData');
    var lyricsBtn = $("<button>");
    lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
-   lyricsBtn.attr("data-song", data.tracks[0].name);
-   lyricsBtn.attr("data-artist", data.tracks[0].artistName);
+   lyricsBtn.attr("data-song", data.tracks[i].name);
+   lyricsBtn.attr("data-artist", data.tracks[i].artistName);
    lyricsBtn.attr("data-target", "modal1");
    var monthSongPreview = $("<audio>");
    monthSongPreview.attr("controls", "controls");
    var monthSongSource = $("<source>");
-   monthSongSource.attr("src", data.tracks[0].previewURL);
+   monthSongSource.attr("src", data.tracks[i].previewURL);
    monthSongSource.attr("type", "audio/mp3");
-   monthSongData.text(data.tracks[0].name.toUpperCase());
-   monthArtistData.text(`Artist: ${data.tracks[0].artistName}`);
-   monthAlbumData.text(`Album: ${data.tracks[0].albumName}`);
+   monthSongData.text(data.tracks[i].name.toUpperCase());
+   monthArtistData.text(`Artist: ${data.tracks[i].artistName}`);
+   monthAlbumData.text(`Album: ${data.tracks[i].albumName}`);
    lyricsBtn.text("Lyrics");
    monthlyInfoDiv.append(monthSongData);
    monthlyInfoDiv.append(monthArtistData);
@@ -60,19 +65,69 @@ function renderTopSongs(data) {
    monthlySongLyrics.append(lyricsBtn);
    monthSongPreview.append(monthSongSource);
    monthlySongPreviewDiv.append(monthSongPreview);
-   monthlyInfoDiv.append(monthlyInfoDiv);
-   monthlyInfoDiv.append(monthlySongLyrics);
-   monthlyInfoDiv.append(monthlySongPreviewDiv); 
-   $('.monthlySongDiv').append(monthlyInfoDiv, monthlyInfoDiv, monthlySongLyrics, monthlySongPreviewDiv);
-   console.log(data);
+   monthlySongsDiv.append(albumImg);
+   monthlySongsDiv.append(monthlyInfoDiv);
+   monthlySongsDiv.append(monthlySongLyrics);
+   monthlySongsDiv.append(monthlySongPreviewDiv);
+   monthTopSongs.append(monthlySongsDiv);
+
+  // var albumID = data.tracks[i].albumId;
+  // var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+  // var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+
+  // $.ajax({
+  //   url: queryURL,
+  //   method: "GET",
+  // }).then(function (data) {
+  //     // var albumImg = $("<img>");
+  //     // albumImg.addClass("col s2 albumImg");
+  //     if (data.images.length > 0 && data.images.length <= 5) {
+  //       for (var i = 0; i < 5; i++) {
+  //         if (data.images[i]) {
+  //           albumImg.attr("src", data.images[i].url);
+  //         }
+  //       }
+  //     } else {
+  //       albumImg.attr("src", "assets/pics/placeholder.png");
+  //     }
+  //     // monthlySongsDiv.prepend(albumImg);
+  //     // monthTopSongs.append(monthlySongsDiv);
+  //   });
+  }
 }
 
 function getTopArtists() {
-  alert("getTopArtists");
+  var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+  var queryURL = `http://api.napster.com/v2.2/artists/top?apikey=${apiKey}`;
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (data) {
+    renderTopArtists(data);
+  });
+}
+
+function renderTopArtists(data) {
+  $(".searchInfo").addClass("hide");
+  $(".monthlyTopArtistsDiv").removeClass("hide");
+  console.log(data);
 }
 
 function getTopAlbums() {
-  alert("getTopAlbums");
+  var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+  var queryURL = `http://api.napster.com/v2.2/albums/top?apikey=${apiKey}`;
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (data) {
+    renderTopAlbums(data);
+  });
+}
+
+function renderTopAlbums(data) {
+  $(".searchInfo").addClass("hide");
+  $(".monthlyTopAlbumsDiv").removeClass("hide");
+  console.log(data);
 }
 
 $(document).on("click", ".topImgs", getApiType);
