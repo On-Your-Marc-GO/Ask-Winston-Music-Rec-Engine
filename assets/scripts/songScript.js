@@ -128,7 +128,7 @@ $(document).ready(function () {
     songPreviewDiv.append(songPreview);
     songDiv.append(songInfoDiv);
     songDiv.append(lyricsDiv);
-    songDiv.append(songPreviewDiv);
+    songDiv.append(songPreviewDiv);                                                                                         
 
     var albumID = data.tracks[0].albumId;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
