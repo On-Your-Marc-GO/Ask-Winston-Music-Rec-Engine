@@ -118,8 +118,9 @@ $(document).ready(function () {
     $(".lyricInfo").addClass("hide");
     $(".artistInfoDiv").addClass("hide");
     $(".topSongsInfoDiv").removeClass("hide");
-
-    $(".userTopSongDiv").html(`<div><span class="topSong">Top Songs by ${data.tracks[0].artistName}</span></div>`);
+    $(".monthlyTopArtistsDiv").addClass("hide");
+    $(".userTopSongH2").html(`<div><span class="artistChoice">${data.tracks[0].artistName}`);
+    // $(".userTopSongDiv").html(`<div><span class="songChoice">Top Songs by<spa ${data.tracks[0].artistName}</span></div>`);
 
     for (var i = 0; i < data.tracks.length; i++) {
       var topSongDiv = $("<div>");
@@ -135,8 +136,9 @@ $(document).ready(function () {
       topSongData.addClass("topSongData");
       topSongAlbumData.addClass("topSongAlbumData");
       var topSongLyricsBtn = $("<button>");
-      topSongLyricsBtn.addClass("btn modal-trigger waves-effect waves-light topSongLyricsBtn");
-      topSongLyricsBtn.attr("data-topSong", data.tracks[i].name);
+      topSongLyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
+      topSongLyricsBtn.attr("data-song", data.tracks[i].name);
+      topSongLyricsBtn.attr("data-artist", data.tracks[i].artistName);
       topSongLyricsBtn.attr("data-target", "modal1");
       var topSongPreview = $("<audio>");
       topSongPreview.attr("controls", "controls");
@@ -155,6 +157,9 @@ $(document).ready(function () {
       topSongDiv.append(topSongInfoDiv);
       topSongDiv.append(topSongLyricsDiv);
       topSongDiv.append(topSongPreviewDiv);
+
+      //lyrics not rendering
+
 
       // TODO: Logic to Include Top Track Album Image much like our similar song page
       // var topSongAlbumID = data.tracks[i].albumId;
@@ -204,6 +209,7 @@ $(document).ready(function () {
     $(".topSongInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
     $(".lyricInfo").addClass("hide");
+    $(".topSongsInfoDiv").addClass("hide");
   });
 
   $(document).on("click", ".topSongsBtn", getTopSongs);

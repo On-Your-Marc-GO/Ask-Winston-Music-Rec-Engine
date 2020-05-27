@@ -138,12 +138,14 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      var albumImg = $("<img>");
-      albumImg.addClass("col s2 albumImg");
-      if (data.images.length >= 5) {
-        albumImg.attr("src", data.images[4].url);
-      } else if (data.images.length > 0 && data.images.length < 5) {
-        albumImg.attr("src", data.images[2].url);
+    var albumImg = $("<img>");
+    albumImg.addClass("col s2 albumImg");
+      if (data.images.length > 0 && data.images.length <= 5) {
+        for (var i = 0; i < 5; i++) {
+          if (data.images[i]) {
+            albumImg.attr("src", data.images[i].url);
+          }
+        }
       } else {
         albumImg.attr("src", "assets/pics/placeholder.png");
       }
@@ -158,6 +160,8 @@ $(document).ready(function () {
     lyricsSong.replace(/\W+/g, "-").toLowerCase();
     var lyricsArtist = $(this).attr("data-artist");
     lyricsArtist.replace(/\W+/g, "-").toLowerCase();
+    console.log(lyricsSong);
+    console.log(lyricsArtist);
     $.ajax({
       url: `https://api.lyrics.ovh/v1/${lyricsArtist}/${lyricsSong}`,
       method: "GET",
@@ -173,6 +177,7 @@ $(document).ready(function () {
 
   // USING LYRICSOVH DATA, RENDER RELEVANT INFO ON PAGE
   function renderLyrics(lyricsInfo) {
+    console.log(lyricsInfo);
     // $(".songInfoDiv").addClass("hide");
     // $(".searchInfo").addClass("hide");
     // $(".lyricInfo").removeClass("hide");
