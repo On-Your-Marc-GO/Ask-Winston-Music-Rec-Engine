@@ -103,7 +103,7 @@ function getTopArtists() {
     url: queryURL,
     method: "GET",
   }).then(function (data) {
-        renderTopArtists(data); 
+     renderTopArtists(data); 
   });
 }
 
@@ -130,7 +130,6 @@ function renderTopArtists(data) {
       } else {
           monthArtistBio.text('No Bio');
       }
-      //monthArtistBio.html(data.artists[i].bios[0].bio);
       var monthArtistTopSongsDiv = $('<div>');
       monthArtistTopSongsDiv.addClass('card-action');
       var monthArtistTopSongBtn = $('<button>');
@@ -146,7 +145,6 @@ function renderTopArtists(data) {
       monthArtistCardDiv.append(monthArtistTopSongsDiv);
       monthlyArtistDiv.append(monthArtistCardDiv);
   }
-  console.log(data);
 }
 
 function getTopAlbums() {
