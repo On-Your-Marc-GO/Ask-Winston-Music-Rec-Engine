@@ -125,8 +125,11 @@ $(document).ready(function () {
     for (var i = 0; i < data.tracks.length; i++) {
       var topSongDiv = $("<div>");
       topSongDiv.addClass("row topSongDiv");
+      var topSongAlbumImg = $("<img>");
+      topSongAlbumImg.addClass("col s2 albumImg");
+      topSongAlbumImg.attr("src", "assets/pics/placeholder.png")
       var topSongInfoDiv = $("<div>");
-      topSongInfoDiv.addClass("col s4 topSongInfoDiv");
+      topSongInfoDiv.addClass("col s4 songInfoDiv");
       var topSongLyricsDiv = $("<div>");
       topSongLyricsDiv.addClass("col s3 topSongLyricsDiv");
       var topSongPreviewDiv = $("<div>");
@@ -154,11 +157,12 @@ $(document).ready(function () {
       topSongPreview.append(topSongSource);
       topSongPreviewDiv.append(topSongPreview);
 
+      topSongDiv.append(topSongAlbumImg);
       topSongDiv.append(topSongInfoDiv);
       topSongDiv.append(topSongLyricsDiv);
       topSongDiv.append(topSongPreviewDiv);
 
-      //lyrics not rendering
+      // TODO: lyrics not rendering: console says body style="overflow: hidden"
 
 
       // TODO: Logic to Include Top Track Album Image much like our similar song page
@@ -203,6 +207,9 @@ $(document).ready(function () {
     $(".songForm").addClass("hide");
     $(".artistForm").removeClass("hide");
   });
+
+// TODO: TOP ARTISTS BUTTON, TOP SONGS USES THIS BUTTON
+// NEED TO FIX BECAUSE INSTEAD OF RETURNING IT TO TOP ARTISTS IT RETURNS TO SIMILAR ARTISTS
 
   $(".returnArtistsBtn").click(function () {
     $(".artistInfoDiv").removeClass("hide");
