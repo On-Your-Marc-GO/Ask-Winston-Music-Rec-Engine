@@ -7,6 +7,7 @@ $(document).ready(function () {
     $(".songInfoDiv").addClass("hide");
     $(".artistInfoDiv").removeClass("hide");
     getSimilarArtists();
+    4;
     $(".onlyArtistInput").val("");
   }
 
@@ -18,7 +19,16 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      renderSimilarArtists(data);
+      if (data.error === 6 && data.message === "The artist you supplied could not be found") {
+        $(".home-page").addClass("active");
+        $(".searchInfo").removeClass("hide");
+        $(".songInfoDiv").removeClass("hide");
+        $(".artistInfoDiv").addClass("hide");
+        M.toast({ html: "Not a valid artist name. Try searching again!", classes: "toast" });
+        return;
+      } else {
+        renderSimilarArtists(data);
+      }
     });
   }
 
@@ -127,7 +137,7 @@ $(document).ready(function () {
       topSongDiv.addClass("row topSongDiv");
       var topSongAlbumImg = $("<img>");
       topSongAlbumImg.addClass("col s2 albumImg");
-      topSongAlbumImg.attr("src", "assets/pics/placeholder.png")
+      topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
       var topSongInfoDiv = $("<div>");
       topSongInfoDiv.addClass("col s4 songInfoDiv");
       var topSongLyricsDiv = $("<div>");
@@ -163,7 +173,6 @@ $(document).ready(function () {
       topSongDiv.append(topSongPreviewDiv);
 
       // TODO: lyrics not rendering: console says body style="overflow: hidden"
-
 
       // TODO: Logic to Include Top Track Album Image much like our similar song page
       // var topSongAlbumID = data.tracks[i].albumId;
@@ -208,8 +217,8 @@ $(document).ready(function () {
     $(".artistForm").removeClass("hide");
   });
 
-// TODO: TOP ARTISTS BUTTON, TOP SONGS USES THIS BUTTON
-// NEED TO FIX BECAUSE INSTEAD OF RETURNING IT TO TOP ARTISTS IT RETURNS TO SIMILAR ARTISTS
+  // TODO: TOP ARTISTS BUTTON, TOP SONGS USES THIS BUTTON
+  // NEED TO FIX BECAUSE INSTEAD OF RETURNING IT TO TOP ARTISTS IT RETURNS TO SIMILAR ARTISTS
 
   $(".returnArtistsBtn").click(function () {
     $(".artistInfoDiv").removeClass("hide");
