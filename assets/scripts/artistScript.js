@@ -125,7 +125,7 @@ $(document).ready(function () {
     console.log(data);
     $(".songInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
-    $(".lyricInfo").addClass("hide");
+    // $(".lyricInfo").addClass("hide");
     $(".artistInfoDiv").addClass("hide");
     $(".topSongsInfoDiv").removeClass("hide");
     $(".monthlyTopArtistsDiv").addClass("hide");
@@ -224,7 +224,7 @@ $(document).ready(function () {
     $(".artistInfoDiv").removeClass("hide");
     $(".topSongInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
-    $(".lyricInfo").addClass("hide");
+    // $(".lyricInfo").addClass("hide");
     $(".topSongsInfoDiv").addClass("hide");
   });
 
