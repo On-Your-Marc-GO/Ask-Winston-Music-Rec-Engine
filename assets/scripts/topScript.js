@@ -142,7 +142,7 @@ function renderTopArtists(data) {
       artistCardDiv.append(artistCardImgDiv);
       artistCardDiv.append(artistInfoDiv);
       artistCardDiv.append(artistTopSongsDiv);
-      monthlyArtistDiv.append(monthArtistCardDiv);
+      monthlyArtistDiv.append(artistCardDiv);
   }
 }
 
