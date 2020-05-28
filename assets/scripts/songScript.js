@@ -241,10 +241,4 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".lyricsBtn", getLyrics);
-
-  $(".returnBtn").click(function () {
-    $(".songInfoDiv").removeClass("hide");
-    $(".searchInfo").addClass("hide");
-    $(".lyricInfo").addClass("hide");
-  });
 });
