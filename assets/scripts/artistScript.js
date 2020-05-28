@@ -7,6 +7,7 @@ $(document).ready(function () {
     $(".songInfoDiv").addClass("hide");
     $(".artistInfoDiv").removeClass("hide");
     getSimilarArtists();
+    4;
     $(".onlyArtistInput").val("");
   }
 
@@ -18,8 +19,6 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      // console.log(data);
-
       if (data.error === 6 && data.message === "The artist you supplied could not be found") {
         $(".home-page").addClass("active");
         $(".searchInfo").removeClass("hide");
