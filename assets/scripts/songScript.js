@@ -35,7 +35,16 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      renderSimilarSongs(data);
+      if (data.error === 6 && data.message === "Track not found") {
+        $(".home-page").addClass("active");
+        $(".searchInfo").removeClass("hide");
+        $(".artistInfoDiv").removeClass("hide");
+        $(".songInfoDiv").addClass("hide");
+        M.toast({ html: "Either the artist or song were incorrect. Try searching again!", classes: "toast" });
+        return;
+      } else {
+        renderSimilarSongs(data);
+      }
     });
   }
 
@@ -128,7 +137,7 @@ $(document).ready(function () {
     songPreviewDiv.append(songPreview);
     songDiv.append(songInfoDiv);
     songDiv.append(lyricsDiv);
-    songDiv.append(songPreviewDiv);                                                                                         
+    songDiv.append(songPreviewDiv);
 
     var albumID = data.tracks[0].albumId;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
@@ -138,8 +147,8 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-    var albumImg = $("<img>");
-    albumImg.addClass("col s2 albumImg");
+      var albumImg = $("<img>");
+      albumImg.addClass("col s2 albumImg");
       if (data.images.length > 0 && data.images.length <= 5) {
         for (var i = 0; i < 5; i++) {
           if (data.images[i]) {
