@@ -283,6 +283,7 @@ function renderTrackDetails(data) {
     var trackName = $("<td>");
     var lyrics = $("<td>");
     var lyricsBtn = $("<button>");
+    lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
     lyricsBtn.attr("data-song", data.tracks[i].name);
     lyricsBtn.attr("data-artist", data.tracks[i].artistName);
     lyricsBtn.attr("data-target", "modal1");
