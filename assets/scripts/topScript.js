@@ -35,7 +35,7 @@ function renderTopSongs(data) {
     albumImg.attr("data-album", data.tracks[i].albumId);
     //albumImg.attr("src", "assets/pics/placeholder.png");
     var monthlyInfoDiv = $("<div>");
-    monthlyInfoDiv.addClass("col s4 monthlyInfoDiv");
+    monthlyInfoDiv.addClass("col s4 songInfoDiv");
     var monthlySongLyrics = $("<div>");
     monthlySongLyrics.addClass("col s3 monthlyLyricsDiv");
     var monthlySongPreviewDiv = $("<div>");
@@ -43,9 +43,9 @@ function renderTopSongs(data) {
     var monthSongData = $("<p>");
     var monthArtistData = $("<p>");
     var monthAlbumData = $("<p>");
-    monthSongData.addClass("monthSongData");
-    monthArtistData.addClass("monthArtistData");
-    monthAlbumData.addClass("monthAlbumData");
+    monthSongData.addClass("songData");
+    monthArtistData.addClass("artistData");
+    monthAlbumData.addClass("albumData");
     var lyricsBtn = $("<button>");
     lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
     lyricsBtn.attr("data-song", data.tracks[i].name);

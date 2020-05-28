@@ -110,6 +110,10 @@ h2,
   width: 100%;
 }
 
+.card-title {
+  text-shadow: 2px 2px 5px black;
+}
+
 .card-image {
   height: 295px;
 }
