@@ -174,25 +174,36 @@ $(document).ready(function () {
     $.ajax({
       url: `https://api.lyrics.ovh/v1/${lyricsArtist}/${lyricsSong}`,
       method: "GET",
-    }).then(function (data) {
-      var lyricsInfo = {
-        song: lyricsSong,
-        artist: lyricsArtist,
-        lyrics: data,
-      };
-      renderLyrics(lyricsInfo);
-    });
+    })
+      .then(function (data) {
+        console.log(data);
+        var lyricsInfo = {
+          song: lyricsSong,
+          artist: lyricsArtist,
+          lyrics: data.lyrics,
+        };
+
+        renderLyrics(lyricsInfo);
+      })
+      .catch(function (error) {
+        console.log("You effed up A-A-Ron");
+        console.log(JSON.stringify(error));
+        var lyricsInfo = {
+          song: lyricsSong,
+          artist: lyricsArtist,
+          lyrics: "Lyrics not available for this song.",
+        };
+
+        renderLyrics(lyricsInfo);
+      });
   }
 
   // USING LYRICSOVH DATA, RENDER RELEVANT INFO ON PAGE
   function renderLyrics(lyricsInfo) {
-    console.log(lyricsInfo);
-    // $(".songInfoDiv").addClass("hide");
-    // $(".searchInfo").addClass("hide");
-    // $(".lyricInfo").removeClass("hide");
+    // console.log(lyricsInfo);
     $(".songLyric").text(lyricsInfo.song.toUpperCase());
     $(".artistLyric").text(lyricsInfo.artist);
-    var lyrics = lyricsInfo.lyrics.lyrics;
+    var lyrics = lyricsInfo.lyrics;
     lyrics = lyrics.replace(/[\n\r]/g, "<p>");
     $(".lyric").html(lyrics);
   }
