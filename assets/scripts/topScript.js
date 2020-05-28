@@ -407,6 +407,7 @@ $(document).on("click", ".albumDetailsBtn", getAlbumDetails);
 $('.returnArtistsTopBtn').click(function () {
   $(".monthlyTopArtistsDiv").removeClass("hide");
   $(".artistTopSongsInfoDiv").addClass("hide");
+  $(".artistTopSongDiv").empty();
 })
 
   $(".returnBtn").click(function () {

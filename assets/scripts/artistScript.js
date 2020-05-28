@@ -220,10 +220,10 @@ $(document).ready(function () {
 
   $(".returnArtistsBtn").click(function () {
     $(".artistInfoDiv").removeClass("hide");
-    $(".topSongInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
     // $(".lyricInfo").addClass("hide");
     $(".topSongsInfoDiv").addClass("hide");
+    $(".userTopSongDiv").empty();
   });
 
   $(document).on("click", ".topSongsBtn", getTopSongs);
