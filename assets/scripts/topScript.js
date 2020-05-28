@@ -207,7 +207,7 @@ $.ajax({
 function renderAlbumDetails(data) {
   $('.albumDetailsDiv').removeClass("hide");
   $(".monthlyTopAlbumsDiv").addClass("hide");
-  console.log(data);
+  // console.log(data);
   var userAlbumChoice = $('<div>');
   userAlbumChoice.addClass('row');
   // var albumImg = $('<img>');
@@ -235,7 +235,7 @@ function renderAlbumDetails(data) {
     url: queryURL,
     method: "GET",
   }).then(function (data) {
-    console.log(data);
+    // console.log(data);
       var albumImg = $('<img>');
       albumImg.addClass('col s4');
       if (data.images.length > 0 && data.images.length <= 5) {
@@ -250,7 +250,55 @@ function renderAlbumDetails(data) {
       userAlbumChoice.prepend(albumImg);
       $('.albumDetailsInfo').append(userAlbumChoice);
     });
+    renderTrackDetails(data);
 }
+
+function renderTrackDetails(data) {
+  console.log(data);
+  var trackTable = $('<table>');
+  var trackTableHead = $('<thead>')
+  var trackRowHead = $('<tr>');
+  var trackNameHead = $('<th>');
+  var trackLyricsHead = $('<th>');
+  var songPreviewHead = $('<th>');
+  trackNameHead.text('Song Name');
+  trackLyricsHead.text('Lyrics');
+  songPreviewHead.text('Song Preview');
+  trackRowHead.append(trackNameHead);
+  trackRowHead.append(trackLyricsHead);
+  trackRowHead.append(songPreviewHead);
+  trackTableHead.append(trackRowHead);
+  var trackTableBody = $('<tbody>');
+
+  for (var i = 0; i < data.tracks.length; i++) {
+  var trackRowBody = $('<tr>');
+  var trackName = $('<td>');
+  var lyrics = $('<td>');
+  var lyricsBtn = $('<button>');
+  lyricsBtn.attr("data-song", data.tracks[i].name);
+  lyricsBtn.attr("data-artist", data.tracks[i].artistName);
+  lyricsBtn.attr("data-target", "modal1");
+  var songPreview = $('<td>');
+  var songPreviewAudio = $("<audio>");
+  songPreviewAudio.attr("controls", "controls");
+  var songSource = $("<source>");
+  songSource.attr("src", data.tracks[i].previewURL);
+  songSource.attr("type", "audio/mp3");
+  trackName.text(data.tracks[i].name);
+  lyricsBtn.text("Lyrics");
+  lyrics.append(lyricsBtn);
+  songPreviewAudio.append(songSource);
+  songPreview.append(songPreviewAudio);
+  trackRowBody.append(trackName);
+  trackRowBody.append(lyrics);
+  trackRowBody.append(songPreview);
+  trackTableBody.append(trackRowBody);
+  }
+  trackTable.append(trackTableHead);
+  trackTable.append(trackTableBody);
+  $('.albumTrackTable').append(trackTable);
+}
+
 
 $(document).on("click", ".topImgs", getApiType);
 
