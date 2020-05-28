@@ -30,7 +30,7 @@ $(document).ready(function () {
   // SEARCH FOR SIMILAR SONGS BY SONG TITLE AND ARTIST NAME - LASTFM API
   function getSimilarSongs() {
     var apiKey = "da538ed1310540e471c7324ad05cf95f";
-    var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artistName}&track=${songName}&api_key=${apiKey}&format=json`;
+    var queryURL = `https://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artistName}&track=${songName}&api_key=${apiKey}&format=json`;
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -66,7 +66,7 @@ $(document).ready(function () {
       var simArtistName = similarResultsArr[i].similarArtist;
       var simSongName = similarResultsArr[i].similarSong;
       var apiKey = "da538ed1310540e471c7324ad05cf95f";
-      var queryURL = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${simArtistName}&track=${simSongName}&format=json`;
+      var queryURL = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${apiKey}&artist=${simArtistName}&track=${simSongName}&format=json`;
       $.ajax({
         url: queryURL,
         method: "GET",
@@ -87,7 +87,7 @@ $(document).ready(function () {
     var albumName = data.track.album.title;
     albumName = albumName.replace(/\W+/g, "-").toLowerCase();
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `http://api.napster.com/v2.2/tracks/${artistName}/${albumName}/${songName}?apikey=${apiKey}`;
+    var queryURL = `https://api.napster.com/v2.2/tracks/${artistName}/${albumName}/${songName}?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -141,7 +141,7 @@ $(document).ready(function () {
 
     var albumID = data.tracks[0].albumId;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+    var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
 
     $.ajax({
       url: queryURL,

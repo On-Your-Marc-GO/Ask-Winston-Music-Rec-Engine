@@ -14,7 +14,7 @@ $(document).ready(function () {
   // SEARCH FOR SIMILAR ARTISTS BY ARTIST NAME - LASTFM API
   function getSimilarArtists() {
     var apiKey = "da538ed1310540e471c7324ad05cf95f";
-    var queryURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=${artistName}&api_key=${apiKey}&format=json`;
+    var queryURL = `https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=${artistName}&api_key=${apiKey}&format=json`;
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -47,7 +47,7 @@ $(document).ready(function () {
       var simArtistName = similarResultsArr[i];
       simArtistName = simArtistName.replace(/\W+/g, "-").toLowerCase();
       var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-      var queryURL = `http://api.napster.com/v2.2/artists/${simArtistName}?apikey=${apiKey}`;
+      var queryURL = `https://api.napster.com/v2.2/artists/${simArtistName}?apikey=${apiKey}`;
       $.ajax({
         url: queryURL,
         method: "GET",
@@ -81,7 +81,7 @@ $(document).ready(function () {
 
     var artistID = data.artists[0].id;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `http://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
+    var queryURL = `https://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
 
     $.ajax({
       url: queryURL,
@@ -111,7 +111,7 @@ $(document).ready(function () {
   function getTopSongs() {
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var artistID = $(this).attr("data-artist");
-    var queryURL = `http://api.napster.com/v2.2/artists/${artistID}/tracks/top?apikey=${apiKey}`;
+    var queryURL = `https://api.napster.com/v2.2/artists/${artistID}/tracks/top?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",
