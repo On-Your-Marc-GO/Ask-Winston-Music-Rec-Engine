@@ -139,7 +139,7 @@ $(document).ready(function () {
       topSongAlbumImg.addClass("col s2 albumImg");
       topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
       var topSongInfoDiv = $("<div>");
-      topSongInfoDiv.addClass("col s4 songInfoDiv");
+      topSongInfoDiv.addClass("col s4 topSongInfoDiv");
       var topSongLyricsDiv = $("<div>");
       topSongLyricsDiv.addClass("col s3 topSongLyricsDiv");
       var topSongPreviewDiv = $("<div>");
@@ -171,8 +171,6 @@ $(document).ready(function () {
       topSongDiv.append(topSongInfoDiv);
       topSongDiv.append(topSongLyricsDiv);
       topSongDiv.append(topSongPreviewDiv);
-
-      // TODO: lyrics not rendering: console says body style="overflow: hidden"
 
       // TODO: Logic to Include Top Track Album Image much like our similar song page
       // var topSongAlbumID = data.tracks[i].albumId;
@@ -222,10 +220,10 @@ $(document).ready(function () {
 
   $(".returnArtistsBtn").click(function () {
     $(".artistInfoDiv").removeClass("hide");
-    $(".topSongInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
     // $(".lyricInfo").addClass("hide");
     $(".topSongsInfoDiv").addClass("hide");
+    $(".userTopSongDiv").empty();
   });
 
   $(document).on("click", ".topSongsBtn", getTopSongs);
