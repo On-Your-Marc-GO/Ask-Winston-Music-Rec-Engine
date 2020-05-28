@@ -37,25 +37,27 @@
     <!--Header-->
     <div class="container center-align">
         <h1 class="aboutH1">MEET THE TEAM</h1>
+        <h2>Click on a Developer's Picture to view their Bio!</h2>
+        <h3><button class="hide">Meet Another Developer</button></h3>
     </div>
     <!--Dev Team images and bios-->
     <div class="container center-align dev-pics">
-      <div class="row center-align">
-        <div class="col s4">
+      <div class="row">
+        <div class="col s4" id="inezImageCol">
           <input type="image" id="inezImage" src="./assets/pics/inez.jpg" alt="young-hispanic-female-holding-small-dog" class="circle" height="250" width="250"/>
         </div>
-        <div class="col s4">
+        <div class="col s4" id="marcImageCol">
           <input type="image" id="marcImage" src="./assets/pics/marc.jpg" alt="young-hispanic-male-sitting-on-bench" class="circle" height="250" width="250"/>
         </div>
-        <div class="col s4">
+        <div class="col s4" id="ramonImageCol">
           <input type="image" id="ramonImage" src="./assets/pics/ramon.jpg" alt="young-hispanic-male-posing" class="circle" height="250" width="250"/>
         </div>
-        <div class="col s4 hide" id='inezBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
-          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</div>
-        <div class="col s4 hide" id='marcBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
-          aliquam vel debitis to6  iotam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</div>
-       <div class="col s6 hide" id='ramonBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
-          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</div>
+        <p class="col hide" id='inezBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
+          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</p>
+        <p class="col hide" id='marcBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
+          aliquam vel debitis to6  iotam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</p>
+       <p class="col hide" id='ramonBio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta non animi quam. Necessitatibus animi rerum exercitationem molestiae 
+          aliquam vel debitis totam impedit officiis sequi, ullam quo eaque, reiciendis voluptatibus voluptatum!</p>
       </div>
     </div>
   </main>
@@ -79,81 +81,56 @@
         $('#inezBio').removeClass('hide');
         $('#marcImage').addClass('hide');
         $('#ramonImage').addClass('hide');
-        //$('#inezImage').removeClass('circle');
-      }
-
-      function mouseLeaveInez() {
-        $('#inezBio').addClass('hide');
-        $('#marcImage').removeClass('hide');
-        $('#ramonImage').removeClass('hide');
-        //$('#inezImage').addClass('circle');
-      }
-
-      function mouseLeaveInez() {
-        $('#inezBio').addClass('hide');
-        $('#marcImage').removeClass('hide');
-        $('#ramonImage').removeClass('hide');
+        $('#inezImageCol').removeClass('col s4');
+        $('#inezImageCol').addClass('col s12');
+        $('button').removeClass('hide');
+        $('h2').addClass('hide');
       }
 
       function showMarcBio() {
         $('#marcBio').removeClass('hide');
         $('#inezImage').addClass('hide');
         $('#ramonImage').addClass('hide');
-        //$('#marcImage').removeClass('circle');
-      }
-
-      function mouseLeaveMarc() {
-        $('#marcBio').addClass('hide');
-        $('#marcImage').removeClass('hide');
-        $('#ramonImage').removeClass('hide');
-        $('#inezImage').removeClass('hide');
-        //$('#marcImage').addClass('circle');
-      }
-
-      function mouseLeaveMarc() {
-        $('#marcBio').addClass('hide');
-        $('#marcImage').removeClass('hide');
-        $('#ramonImage').removeClass('hide');
-        $('#inezImage').removeClass('hide');
+        $('button').removeClass('hide');
+        $('h2').addClass('hide');
       }
 
       function showRamonBio() {
         $('#ramonBio').removeClass('hide');
         $('#inezImage').addClass('hide');
         $('#marcImage').addClass('hide');
-        //$('#ramonImage').removeClass('circle');
+        $('#ramonImageCol').removeClass('col s4');
+        $('#ramonImageCol').addClass('col s12');
+        $('button').removeClass('hide');
+        $('h2').addClass('hide');
       }
 
-      function mouseLeaveRamon() {
-        $('#ramonBio').addClass('hide');
+      function meetOtherDeveloper() {
         $('#inezImage').removeClass('hide');
+        $('#inezImageCol').removeClass('col s12');
+        $('#inezImageCol').addClass('col s4');
+        $('#ramonImageCol').removeClass('col s12');
+        $('#ramonImageCol').addClass('col s4');
         $('#marcImage').removeClass('hide');
-        //$('#ramonImage').addClass('circle');
-      }
-
-      function mouseLeaveRamon() {
+        $('#ramonImage').removeClass('hide');
         $('#ramonBio').addClass('hide');
-        $('#inezImage').removeClass('hide');
-        $('#marcImage').removeClass('hide');
+        $('#marcBio').addClass('hide');
+        $('#inezBio').addClass('hide');
+        $('button').addClass('hide');
+        $('h2').removeClass('hide');
       }
 
-      $('#inezImage').hover(function() {
+      $('#inezImage').click(function() {
         showInezBio();
       });
-      $( "#inezImage" ).mouseleave(function() {
-        mouseLeaveInez();
-      });
-      $('#marcImage').hover(function() {
+      $('#marcImage').click(function() {
         showMarcBio();
       });
-      $( "#marcImage" ).mouseleave(function() {
-        mouseLeaveMarc();
-      });
-      $("#ramonImage").hover(function() {
+      $('#ramonImage').click(function() {
         showRamonBio();
       });
-      $("#ramonImage").mouseleave(function() {
-        mouseLeaveRamon();
+      $('button').click(function() {
+        meetOtherDeveloper();
       });
     </script>
     
