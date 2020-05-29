@@ -136,9 +136,10 @@ $(document).ready(function () {
     for (var i = 0; i < data.tracks.length; i++) {
       var topSongDiv = $("<div>");
       topSongDiv.addClass("row topSongDiv");
-      var topSongAlbumImg = $("<img>");
+      var topSongAlbumImg = $("<div>");
       topSongAlbumImg.addClass("col s2 albumImg");
-      topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
+      topSongAlbumImg.attr("data-albumImg", data.tracks[i].albumId);
+      // topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
       var topSongInfoDiv = $("<div>");
       topSongInfoDiv.addClass("col s4 topSongInfoDiv");
       var topSongLyricsDiv = $("<div>");
@@ -173,31 +174,36 @@ $(document).ready(function () {
       topSongDiv.append(topSongLyricsDiv);
       topSongDiv.append(topSongPreviewDiv);
 
-      // TODO: Logic to Include Top Track Album Image much like our similar song page
-      // var topSongAlbumID = data.tracks[i].albumId;
-      // var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-      // var topSongQueryURL = `http://api.napster.com/v2.2/albums/${topSongAlbumID}/images?apikey=${apiKey}`;
-
-      // $.ajax({
-      //   url: topSongQueryURL,
-      //   method: "GET",
-      // }).then(function (data) {
-      //   var topSongAlbumImg = $("<img>");
-      //   topSongAlbumImg.addClass("col s2 albumImg");
-      //   if (data.images.length >= 5) {
-      //     topSongAlbumImg.attr("src", data.images[4].url);
-      //   } else if (data.images.length > 0 && data.images.length < 5) {
-      //     topSongAlbumImg.attr("src", data.images[2].url);
-      //   } else {
-      //     topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
-      //   }
-      //   topSongDiv.prepend(topSongAlbumImg);
-      //   //  $(".songInfo").append(songDiv);
-      //   // $(".userTopSongDiv").append(topSongDiv);
-      // });
-
       $(".userTopSongDiv").append(topSongDiv);
+
+      getTopSongAlbumImg(data.tracks[i].albumId);
     }
+  }
+
+  function getTopSongAlbumImg(albumID) {
+    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+    var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (data) {
+      if (data) {
+        appendTopSongAlbumImg(data, albumID);
+      }
+    });
+  }
+
+  function appendTopSongAlbumImg(data, albumID) {
+    var topSongAlbumImage = $("<img>");
+    topSongAlbumImage.addClass("albumImg");
+    if (data.images.length) {
+      topSongAlbumImage.attr("src", data.images[data.images.length - 1].url);
+    } else {
+      topSongAlbumImage.attr("src", "assets/pics/placeholder.png");
+    }
+    var monthlyArtistDiv = $(`div[data-albumImg='${albumID}']`);
+    monthlyArtistDiv.append(topSongAlbumImage);
   }
 
   // EVENT LISTENERS
