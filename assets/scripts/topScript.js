@@ -114,23 +114,21 @@ function getTopArtists() {
     renderTopArtists(data);
   });
 }
-
 function renderTopArtists(data) {
   $(".searchInfo").addClass("hide");
   $(".monthlyTopArtistsDiv").removeClass("hide");
   var monthlyArtistDiv = $(".monthlyArtistDiv");
   for (var i = 0; i < 20; i++) {
+    var monthArtistCardDiv = $("<div>");
+    monthArtistCardDiv.addClass("card col s6");
     var artistCardImgDiv = $("<div>");
     artistCardImgDiv.addClass("card-image");
-    var artistImg = $("<img>");
-    artistImg.attr("src", "assets/pics/rectangleplaceholder.png");
+    artistCardImgDiv.attr("data-artist", data.artists[i].id);
     var artistImgName = $("<span>");
     artistImgName.addClass("card-title");
     artistImgName.text(data.artists[i].name);
-    var monthArtistCardDiv = $("<div>");
-    monthArtistCardDiv.addClass("card col s6");
-    var monthInfoDiv = $("<div>");
-    monthInfoDiv.addClass("card-content");
+    var artistInfoDiv = $("<div>");
+    artistInfoDiv.addClass("card-content");
     var monthArtistBio = $("<p>");
     if (data.artists[i].bios) {
       monthArtistBio.html(data.artists[i].bios[0].bio);
@@ -143,15 +141,38 @@ function renderTopArtists(data) {
     monthArtistTopSongBtn.addClass("btn waves-effect waves-light artistTopSongsBtn");
     monthArtistTopSongBtn.attr("data-artist", data.artists[i].id);
     monthArtistTopSongBtn.text("Top Songs");
-    artistCardImgDiv.append(artistImg);
     artistCardImgDiv.append(artistImgName);
-    monthInfoDiv.append(monthArtistBio);
+    artistInfoDiv.append(monthArtistBio);
     monthArtistTopSongsDiv.append(monthArtistTopSongBtn);
     monthArtistCardDiv.append(artistCardImgDiv);
-    monthArtistCardDiv.append(monthInfoDiv);
+    monthArtistCardDiv.append(artistInfoDiv);
     monthArtistCardDiv.append(monthArtistTopSongsDiv);
     monthlyArtistDiv.append(monthArtistCardDiv);
+    getTopArtistImageData(data.artists[i].id);
   }
+}
+function getTopArtistImageData(artistID) {
+  var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+  var queryURL = `http://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (data) {
+    if (data) {
+      appendTopArtistImages(data, artistID);
+    }
+  });
+}
+function appendTopArtistImages(data, artistID) {
+  var artistImage = $("<img>");
+  artistImage.addClass("artistImg");
+  if (data.images.length) {
+    artistImage.attr("src", data.images[data.images.length - 1].url);
+  } else {
+    artistImage.attr("src", "assets/pics/placeholder.png");
+  }
+  var monthlyArtistDiv = $(`div[data-artist='${artistID}']`);
+  monthlyArtistDiv.append(artistImage);
 }
 
 function getArtistTopSongs() {
