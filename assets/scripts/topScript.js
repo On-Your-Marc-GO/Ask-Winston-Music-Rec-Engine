@@ -151,7 +151,7 @@ $(document).ready(function () {
   }
   function getTopArtistImageData(artistID) {
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `http://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
+    var queryURL = `https://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -313,7 +313,7 @@ $(document).ready(function () {
 
   function getTopAlbumImageData(albumID) {
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+    var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",
