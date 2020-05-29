@@ -272,12 +272,12 @@ h2,
 /*About page CSS*/
 
 .aboutH1 {
-  margin-bottom: 75px;
+  margin-bottom: 40px;
 }
 
-.dev-pics {
+/* .dev-pics {
   margin-top: 100px;
-}
+} */
 
 .contact-info {
   margin-top: 200px;
@@ -308,18 +308,18 @@ h2,
 #inezBio {
   margin-left: 45px;
   font-size: 18px;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
 }
 
 #marcBio {
   margin-left: 40px;
   font-size: 18px;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
 }
 
 #ramonBio {
   font-size: 18px;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
 }
 
 #marcImage:hover {
@@ -342,15 +342,7 @@ h2,
   transition: transform 0.5s ease;
 }
 
-#meetDevBtn {
-  border-radius: 25px;
-  background: black;
-  color: whitesmoke;
-  font-size: 18px;
-  padding: 3px;
-}
-
-#meetDevBtn:hover {
+/* #meetDevBtn:hover {
   -ms-transform: scale(1.5);
   -webkit-transform: scale(1.5);
   transform: scale(1.5);
@@ -358,4 +350,8 @@ h2,
 
 #meetDevBtn {
   transition: transform 0.5s ease;
+} */
+
+#meetDevBtn {
+  margin-bottom: 15px;
 }
