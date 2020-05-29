@@ -22,7 +22,7 @@ $(document).ready(function () {
       if (data.error === 6 && data.message === "The artist you supplied could not be found") {
         $(".home-page").addClass("active");
         $(".searchInfo").removeClass("hide");
-        $(".songInfoDiv").removeClass("hide");
+        $(".songInfoDiv").addClass("hide");
         $(".artistInfoDiv").addClass("hide");
         M.toast({ html: "Not a valid artist name. Try searching again!", classes: "toast" });
         return;

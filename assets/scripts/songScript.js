@@ -38,7 +38,7 @@ $(document).ready(function () {
       if (data.error === 6 && data.message === "Track not found") {
         $(".home-page").addClass("active");
         $(".searchInfo").removeClass("hide");
-        $(".artistInfoDiv").removeClass("hide");
+        $(".artistInfoDiv").addClass("hide");
         $(".songInfoDiv").addClass("hide");
         M.toast({ html: "Either the artist or song were incorrect. Try searching again!", classes: "toast" });
         return;
