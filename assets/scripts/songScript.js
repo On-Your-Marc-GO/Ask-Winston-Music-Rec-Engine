@@ -81,7 +81,7 @@ $(document).ready(function () {
   // USE SONG, ARTIST, AND ALBUM INFO TO GET EVEN MORE SONG DETAILS - NAPSTER API
   function getNapsterSongInfo(data) {
     var artistName = data.track.artist.name;
-    artistName = artistName.replace(/\W+/g, "-").toLowerCase(); // Stackoverflow
+    artistName = artistName.replace(/\W+/g, "-").toLowerCase();
     var songName = data.track.name;
     songName = songName.replace(/\W+/g, "-").toLowerCase();
     var albumName = data.track.album.title;
@@ -169,14 +169,11 @@ $(document).ready(function () {
     lyricsSong.replace(/\W+/g, "-").toLowerCase();
     var lyricsArtist = $(this).attr("data-artist");
     lyricsArtist.replace(/\W+/g, "-").toLowerCase();
-    console.log(lyricsSong);
-    console.log(lyricsArtist);
     $.ajax({
       url: `https://api.lyrics.ovh/v1/${lyricsArtist}/${lyricsSong}`,
       method: "GET",
     })
       .then(function (data) {
-        console.log(data);
         var lyricsInfo = {
           song: lyricsSong,
           artist: lyricsArtist,
@@ -186,8 +183,6 @@ $(document).ready(function () {
         renderLyrics(lyricsInfo);
       })
       .catch(function (error) {
-        console.log("You effed up A-A-Ron");
-        console.log(JSON.stringify(error));
         var lyricsInfo = {
           song: lyricsSong,
           artist: lyricsArtist,
@@ -200,7 +195,6 @@ $(document).ready(function () {
 
   // USING LYRICSOVH DATA, RENDER RELEVANT INFO ON PAGE
   function renderLyrics(lyricsInfo) {
-    // console.log(lyricsInfo);
     $(".songLyric").text(lyricsInfo.song.toUpperCase());
     $(".artistLyric").text(lyricsInfo.artist);
     var lyrics = lyricsInfo.lyrics;

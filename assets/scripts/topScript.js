@@ -30,8 +30,7 @@ $(document).ready(function () {
       monthlySongsDiv.addClass("row monthlySongDiv");
       var albumImg = $("<div>");
       albumImg.addClass("col s2 albumImgDiv");
-      albumImg.attr("data-track",data.tracks[i].id)
-      //albumImg.attr("src", "assets/pics/placeholder.png");
+      albumImg.attr("data-track", data.tracks[i].id);
       var monthlyInfoDiv = $("<div>");
       monthlyInfoDiv.addClass("col s4 songInfoDiv");
       var monthlySongLyrics = $("<div>");
@@ -72,7 +71,7 @@ $(document).ready(function () {
       var dataObj = {
         albumID: data.tracks[i].albumId,
         trackID: data.tracks[i].id,
-      }
+      };
       getImageData(dataObj);
     }
   }
@@ -96,7 +95,6 @@ $(document).ready(function () {
     var trackID = dataObj.trackID;
     var albumImage = $("<img>");
     albumImage.addClass("albumImg");
-    console.log(data.images);
     if (data.images.length) {
       albumImage.attr("src", data.images[data.images.length - 1].url);
     } else {
@@ -190,7 +188,6 @@ $(document).ready(function () {
   }
 
   function renderArtistTopSongs(data) {
-    console.log(data);
     var artistTopSongs = $(".artistTopSongDiv");
     $(".monthlyTopArtistsDiv").addClass("hide");
     $(".artistTopSongsInfoDiv").removeClass("hide");
@@ -200,7 +197,7 @@ $(document).ready(function () {
       topSongDiv.addClass("row topSongDiv");
       var topSongAlbumImg = $("<div>");
       topSongAlbumImg.addClass(`col s2 albumImgDiv${[i]}`);
-      topSongAlbumImg.attr("data-track",data.tracks[i].id)
+      topSongAlbumImg.attr("data-track", data.tracks[i].id);
       var topSongInfoDiv = $("<div>");
       topSongInfoDiv.addClass("col s4 songInfoDiv");
       var topSongLyricsDiv = $("<div>");
@@ -237,16 +234,13 @@ $(document).ready(function () {
       var dataObj = {
         albumID: data.tracks[i].albumId,
         trackID: data.tracks[i].id,
-      }
+      };
       getAlbData(dataObj);
     }
   }
 
   function getAlbData(dataObj) {
-    // console.log(dataObj);
     var albumID = dataObj.albumID;
-    // console.log(albumID);
-    //var albumID = data.tracks[i].albumId;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
 
@@ -262,15 +256,14 @@ $(document).ready(function () {
 
   function appendAlb(data, dataObj) {
     var trackID = dataObj.trackID;
-    var albumImage = $('<img>');
-    albumImage.addClass('albumImg');
+    var albumImage = $("<img>");
+    albumImage.addClass("albumImg");
     if (data.images.length) {
       albumImage.attr("src", data.images[data.images.length - 1].url);
     } else {
       albumImage.attr("src", "assets/pics/placeholder.png");
     }
-    var songTopArtistDiv =  $(`div[data-track='${trackID}']`);
-    console.log(songTopArtistDiv);
+    var songTopArtistDiv = $(`div[data-track='${trackID}']`);
     songTopArtistDiv.append(albumImage);
   }
 
@@ -295,13 +288,10 @@ $(document).ready(function () {
       var albumCardImgDiv = $("<div>");
       albumCardImgDiv.addClass("card-image album-image");
       albumCardImgDiv.attr("data-album", data.albums[i].id);
-      // var albumImgName = $("<span>");
-      // albumImgName.addClass("card-title");
-      // albumImgName.text(data.albums[i].name);
       var albumInfoDiv = $("<div>");
       albumInfoDiv.addClass("card-content album-content");
-      var albumInfo = $('<p>');
-      albumInfo.addClass('songData');
+      var albumInfo = $("<p>");
+      albumInfo.addClass("songData");
       albumInfo.text(data.albums[i].name.toUpperCase());
       var artistInfo = $("<p>");
       artistInfo.text(`by ${data.albums[i].artistName}`);
@@ -311,7 +301,6 @@ $(document).ready(function () {
       albumTopSongsBtn.addClass("btn waves-effect waves-light albumDetailsBtn");
       albumTopSongsBtn.attr("data-albums", data.albums[i].id);
       albumTopSongsBtn.text("GET TRACKS");
-      // albumCardImgDiv.append(albumImgName);
       albumInfoDiv.append(albumInfo);
       albumInfoDiv.append(artistInfo);
       albumTopSongsDiv.append(albumTopSongsBtn);
@@ -363,7 +352,6 @@ $(document).ready(function () {
   function renderAlbumDetails(data) {
     $(".albumDetailsDiv").removeClass("hide");
     $(".monthlyTopAlbumsDiv").addClass("hide");
-    console.log(data);
     var userAlbumChoice = $("<div>");
     userAlbumChoice.addClass("row");
     var albumInfo = $("<div>");
@@ -384,7 +372,6 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (data) {
-      console.log(data);
       var albumImg = $("<img>");
       albumImg.addClass("col s4");
       if (data.images.length > 0 && data.images.length <= 5) {
@@ -403,7 +390,6 @@ $(document).ready(function () {
   }
 
   function renderTrackDetails(data) {
-    console.log(data);
     var trackTable = $("<table>");
     var trackTableHead = $("<thead>");
     var trackRowHead = $("<tr>");
@@ -412,9 +398,9 @@ $(document).ready(function () {
     var songPreviewHead = $("<th>");
     trackNameHead.text("Song Name");
     trackLyricsHead.text("Lyrics");
-    trackLyricsHead.addClass('center-align');
+    trackLyricsHead.addClass("center-align");
     songPreviewHead.text("Song Preview");
-    songPreviewHead.addClass('center-align');
+    songPreviewHead.addClass("center-align");
     trackRowHead.append(trackNameHead);
     trackRowHead.append(trackLyricsHead);
     trackRowHead.append(songPreviewHead);
@@ -425,16 +411,16 @@ $(document).ready(function () {
       var trackRowBody = $("<tr>");
       var trackName = $("<td>");
       var lyrics = $("<td>");
-      lyrics.addClass('center-align');
+      lyrics.addClass("center-align");
       var lyricsBtn = $("<button>");
       lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn lyricsAlbumBtn");
       lyricsBtn.attr("data-song", data.tracks[i].name);
       lyricsBtn.attr("data-artist", data.tracks[i].artistName);
       lyricsBtn.attr("data-target", "modal1");
       var songPreview = $("<td>");
-      songPreview.addClass('center-align');
+      songPreview.addClass("center-align");
       var songPreviewAudio = $("<audio>");
-      songPreviewAudio.addClass('audioAlbum')
+      songPreviewAudio.addClass("audioAlbum");
       songPreviewAudio.attr("controls", "controls");
       var songSource = $("<source>");
       songSource.attr("src", data.tracks[i].previewURL);
