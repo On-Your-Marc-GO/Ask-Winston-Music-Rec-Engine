@@ -30,7 +30,7 @@ $(document).ready(function () {
       monthlySongsDiv.addClass("row monthlySongDiv");
       var albumImg = $("<div>");
       albumImg.addClass("col s2 albumImgDiv");
-      albumImg.attr("data-album", data.tracks[i].albumId);
+      albumImg.attr("data-track",data.tracks[i].id)
       //albumImg.attr("src", "assets/pics/placeholder.png");
       var monthlyInfoDiv = $("<div>");
       monthlyInfoDiv.addClass("col s4 songInfoDiv");
@@ -69,26 +69,16 @@ $(document).ready(function () {
       monthlySongsDiv.append(monthlySongLyrics);
       monthlySongsDiv.append(monthlySongPreviewDiv);
       monthTopSongs.append(monthlySongsDiv);
-      getImageData(data.tracks[i].albumId);
+      var dataObj = {
+        albumID: data.tracks[i].albumId,
+        trackID: data.tracks[i].id,
+      }
+      getImageData(dataObj);
     }
   }
 
-  function appendImages(data, albumID) {
-    //var group = $('ul[data-group="Companies"]');
-    var albumImage = $("<img>");
-    albumImage.addClass("albumImg");
-    console.log(data.images);
-    if (data.images.length) {
-      albumImage.attr("src", data.images[data.images.length - 1].url);
-    } else {
-      albumImage.attr("src", "assets/pics/placeholder.png");
-    }
-    var monthlyArtistDiv = $(`div[data-album='${albumID}']`);
-    monthlyArtistDiv.append(albumImage);
-  }
-
-  function getImageData(albumID) {
-    //var albumID = data.tracks[i].albumId;
+  function getImageData(dataObj) {
+    var albumID = dataObj.albumID;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
 
@@ -97,9 +87,23 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       if (data) {
-        appendImages(data, albumID);
+        appendImages(data, dataObj);
       }
     });
+  }
+
+  function appendImages(data, dataObj) {
+    var trackID = dataObj.trackID;
+    var albumImage = $("<img>");
+    albumImage.addClass("albumImg");
+    console.log(data.images);
+    if (data.images.length) {
+      albumImage.attr("src", data.images[data.images.length - 1].url);
+    } else {
+      albumImage.attr("src", "assets/pics/placeholder.png");
+    }
+    var monthlyArtistDiv = $(`div[data-track='${trackID}']`);
+    monthlyArtistDiv.append(albumImage);
   }
 
   function getTopArtists() {
@@ -196,8 +200,7 @@ $(document).ready(function () {
       topSongDiv.addClass("row topSongDiv");
       var topSongAlbumImg = $("<div>");
       topSongAlbumImg.addClass(`col s2 albumImgDiv${[i]}`);
-      topSongAlbumImg.attr("data-alb", data.tracks[i].albumId);
-      // topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
+      topSongAlbumImg.attr("data-track",data.tracks[i].id)
       var topSongInfoDiv = $("<div>");
       topSongInfoDiv.addClass("col s4 topSongInfoDiv");
       var topSongLyricsDiv = $("<div>");
@@ -231,11 +234,18 @@ $(document).ready(function () {
       topSongDiv.append(topSongLyricsDiv);
       topSongDiv.append(topSongPreviewDiv);
       artistTopSongs.append(topSongDiv);
-      getAlbData(data.tracks[i].albumId);
+      var dataObj = {
+        albumID: data.tracks[i].albumId,
+        trackID: data.tracks[i].id,
+      }
+      getAlbData(dataObj);
     }
   }
 
-  function getAlbData(albumID) {
+  function getAlbData(dataObj) {
+    // console.log(dataObj);
+    var albumID = dataObj.albumID;
+    // console.log(albumID);
     //var albumID = data.tracks[i].albumId;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
@@ -245,22 +255,23 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       if (data) {
-        appendAlb(data, albumID);
+        appendAlb(data, dataObj);
       }
     });
   }
 
-  function appendAlb(data, albumID) {
-    var albumImage = $("<img>");
-    albumImage.addClass("albumImg");
-    console.log(data.images);
+  function appendAlb(data, dataObj) {
+    var trackID = dataObj.trackID;
+    var albumImage = $('<img>');
+    albumImage.addClass('albumImg');
     if (data.images.length) {
       albumImage.attr("src", data.images[data.images.length - 1].url);
     } else {
       albumImage.attr("src", "assets/pics/placeholder.png");
     }
-    var songTopArtistDiv = $(`div[data-alb='${albumID}']`);
-    songTopArtistDiv.prepend(albumImage);
+    var songTopArtistDiv =  $(`div[data-track='${trackID}']`);
+    console.log(songTopArtistDiv);
+    songTopArtistDiv.append(albumImage);
   }
 
   function getTopAlbums() {

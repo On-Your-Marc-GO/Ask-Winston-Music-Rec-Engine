@@ -138,7 +138,7 @@ $(document).ready(function () {
       topSongDiv.addClass("row topSongDiv");
       var topSongAlbumImg = $("<div>");
       topSongAlbumImg.addClass("col s2 albumImg");
-      topSongAlbumImg.attr("data-albumImg", data.tracks[i].albumId);
+      topSongAlbumImg.attr("data-track",data.tracks[i].id);
       // topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
       var topSongInfoDiv = $("<div>");
       topSongInfoDiv.addClass("col s4 topSongInfoDiv");
@@ -176,11 +176,16 @@ $(document).ready(function () {
 
       $(".userTopSongDiv").append(topSongDiv);
 
-      getTopSongAlbumImg(data.tracks[i].albumId);
+      var dataObj = {
+        albumID: data.tracks[i].albumId,
+        trackID: data.tracks[i].id,
+      }
+      getTopSongAlbumImg(dataObj);
     }
   }
 
-  function getTopSongAlbumImg(albumID) {
+  function getTopSongAlbumImg(dataObj) {
+    var albumID = dataObj.albumID;
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
 
@@ -189,12 +194,13 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       if (data) {
-        appendTopSongAlbumImg(data, albumID);
+        appendTopSongAlbumImg(data, dataObj);
       }
     });
   }
 
-  function appendTopSongAlbumImg(data, albumID) {
+  function appendTopSongAlbumImg(data, dataObj) {
+    var trackID = dataObj.trackID;
     var topSongAlbumImage = $("<img>");
     topSongAlbumImage.addClass("albumImg");
     if (data.images.length) {
@@ -202,7 +208,7 @@ $(document).ready(function () {
     } else {
       topSongAlbumImage.attr("src", "assets/pics/placeholder.png");
     }
-    var monthlyArtistDiv = $(`div[data-albumImg='${albumID}']`);
+    var monthlyArtistDiv = $(`div[data-track='${trackID}']`);
     monthlyArtistDiv.append(topSongAlbumImage);
   }
 
