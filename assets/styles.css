@@ -234,6 +234,18 @@ h2,
   margin-top: 100px;
 }
 
+.leftArrow {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.arrow {
+  border: solid whitesmoke;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 4px;
+}
+
 #inezImage:hover {
   -ms-transform: scale(1.5);
   -webkit-transform: scale(1.5);
@@ -247,14 +259,12 @@ h2,
 #inezBio {
   margin-left: 45px;
   font-size: 18px;
-  text-align: right;
   font-family: sans-serif;
 }
 
 #marcBio {
   margin-left: 40px;
   font-size: 18px;
-  text-align: left;
   font-family: sans-serif;
 }
 
@@ -280,5 +290,23 @@ h2,
 }
 
 #ramonImage {
+  transition: transform 0.5s ease;
+}
+
+#meetDevBtn {
+  border-radius: 25px;
+  background: black;
+  color: whitesmoke;
+  font-size: 18px;
+  padding: 3px;
+}
+
+#meetDevBtn:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+#meetDevBtn {
   transition: transform 0.5s ease;
 }

@@ -121,6 +121,7 @@ $(document).ready(function () {
   }
 
   // USING NAPSTER DATA, RENDER TOP SONGS ON PAGE
+  // Refactor code to look like Brandon's code ASAP. in topScript line 26 and down.
   function renderTopSongs(data) {
     console.log(data);
     $(".songInfoDiv").addClass("hide");
