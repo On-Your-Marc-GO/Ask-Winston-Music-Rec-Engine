@@ -66,7 +66,11 @@ $(document).ready(function () {
     var artistInfoDiv = $("<div>");
     artistInfoDiv.addClass("card-content");
     var artistInfoBio = $("<p>");
-    artistInfoBio.html(data.artists[0].bios[0].bio);
+    if (data.artists[0].bios) {
+      artistInfoBio.html(data.artists[0].bios[0].bio);
+    } else {
+      monthArtistBio.text("No Bio");
+    }
     var artistTopSongsDiv = $("<div>");
     artistTopSongsDiv.addClass("card-action");
     var artistTopSongsButton = $("<button>");
@@ -99,14 +103,6 @@ $(document).ready(function () {
       } else {
         artistImg.attr("src", "assets/pics/placeholder.png");
       }
-
-      // if (imageData.images.length >= 4) {
-      //   artistImg.attr("src", imageData.images[3].url);
-      // } else if (imageData.images.length > 0 && imageData.images.length < 4) {
-      //   artistImg.attr("src", imageData.images[1].url);
-      // } else {
-      //   artistImg.attr("src", "assets/pics/rectangleplaceholder.png");
-      // }
 
       artistCardImgDiv.append(artistImg);
       artistCardImgDiv.append(artistImgName);
