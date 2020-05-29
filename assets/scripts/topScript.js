@@ -10,68 +10,6 @@ $(document).ready(function () {
     }
   }
 
-<<<<<<< HEAD
-function getTopSongs() {
-  var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-  var queryURL = `https://api.napster.com/v2.2/tracks/top?apikey=${apiKey}`;
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-  }).then(function (data) {
-    renderMonthlyTopSongs(data);
-  });
-}
-
-function renderMonthlyTopSongs(data) {
-  var monthTopSongs = $(".monthlySongDiv");
-  $(".searchInfo").addClass("hide");
-  $(".monthlyTopSongsDiv").removeClass("hide");
-  for (var i = 0; i < 20; i++) {
-    var monthlySongsDiv = $("<div>");
-    monthlySongsDiv.addClass("row monthlySongDiv");
-    var albumImg = $("<div>");
-    albumImg.addClass("col s2 albumImgDiv");
-    albumImg.attr("data-album", data.tracks[i].albumId);
-    //albumImg.attr("src", "assets/pics/placeholder.png");
-    var monthlyInfoDiv = $("<div>");
-    monthlyInfoDiv.addClass("col s4 songInfoDiv");
-    var monthlySongLyrics = $("<div>");
-    monthlySongLyrics.addClass("col s3 monthlyLyricsDiv");
-    var monthlySongPreviewDiv = $("<div>");
-    monthlySongPreviewDiv.addClass("col s3 songPreviewDiv");
-    var monthSongData = $("<p>");
-    var monthArtistData = $("<p>");
-    var monthAlbumData = $("<p>");
-    monthSongData.addClass("songData");
-    monthArtistData.addClass("artistData");
-    monthAlbumData.addClass("albumData");
-    var lyricsBtn = $("<button>");
-    lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
-    lyricsBtn.attr("data-song", data.tracks[i].name);
-    lyricsBtn.attr("data-artist", data.tracks[i].artistName);
-    lyricsBtn.attr("data-target", "modal1");
-    var monthSongPreview = $("<audio>");
-    monthSongPreview.attr("controls", "controls");
-    var monthSongSource = $("<source>");
-    monthSongSource.attr("src", data.tracks[i].previewURL);
-    monthSongSource.attr("type", "audio/mp3");
-    monthSongData.text(data.tracks[i].name.toUpperCase());
-    monthArtistData.text(`Artist: ${data.tracks[i].artistName}`);
-    monthAlbumData.text(`Album: ${data.tracks[i].albumName}`);
-    lyricsBtn.text("Lyrics");
-    monthlyInfoDiv.append(monthSongData);
-    monthlyInfoDiv.append(monthArtistData);
-    monthlyInfoDiv.append(monthAlbumData);
-    monthlySongLyrics.append(lyricsBtn);
-    monthSongPreview.append(monthSongSource);
-    monthlySongPreviewDiv.append(monthSongPreview);
-    monthlySongsDiv.append(albumImg);
-    monthlySongsDiv.append(monthlyInfoDiv);
-    monthlySongsDiv.append(monthlySongLyrics);
-    monthlySongsDiv.append(monthlySongPreviewDiv);
-    monthTopSongs.append(monthlySongsDiv);
-    getImageData(data.tracks[i].albumId);
-=======
   function getTopSongs() {
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
     var queryURL = `https://api.napster.com/v2.2/tracks/top?apikey=${apiKey}`;
@@ -133,7 +71,6 @@ function renderMonthlyTopSongs(data) {
       monthTopSongs.append(monthlySongsDiv);
       getImageData(data.tracks[i].albumId);
     }
->>>>>>> 9d88976762814d97e9c49e44518160d65e108d7a
   }
 
   function appendImages(data, albumID) {
