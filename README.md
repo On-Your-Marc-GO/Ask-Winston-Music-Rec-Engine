@@ -17,7 +17,6 @@ Many positives were gained out of this project. First and foremost was learning 
 - [Developers](#developers)
 - [Technologies](#technologies)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
 
@@ -27,7 +26,6 @@ Many positives were gained out of this project. First and foremost was learning 
   - [Github Profile](https://github.com/iescandon)
 - Marc Arguijo
   - [Github Profile](https://github.com/On-Your-Marc-GO)
-  - [LinkedIn](https://www.linkedin.com/in/marcarguijo/)
 - Ramon Garza
   - [Github Profile](https://github.com/Ramong06)
 
@@ -56,7 +54,7 @@ SO THAT I can continue to not go insane during COVID while staying entertained
 ```
 GIVEN I am using a content recommendation engine to seek new music
 WHEN I arrive at the page
-THEN I am presented with the option to search for similar artists
+THEN I am presented with the option to search for similar artists or songs
 WHEN I enter input
 THEN I am then given relevant recommendations based on the selected radio button
 WHEN I click on any of the recommendations given
@@ -73,38 +71,19 @@ THEN I will receive that infomration for the given month based on the API call
 
 Alternatively you may refer to the 'Site Link' provided above to visit the site as it has been depoloyed via GitHub Pages.
 
-## Usage
-
-- Demos and use cases to go here
-
 ## Credits
 
-- List your collaborators, if any, with links to their GitHub profiles.
+- [Butler Icon made by Freepik](https://www.flaticon.com/authors/freepik)
 
-- If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+- [Headphones Icon made by Roundicons](https://roundicons.com/)
 
-- If you followed tutorials, include links to those here as well.
+- [Butler Full Body Icon made by Freepik](http://www.freepik.com)
 
-Butler Icon
+- Top artists Background Img, Photo by Atikh Bana on Unsplash
 
-<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+- Top Songs Background Img, Photo by Bruce Mars on Unsplash
 
-Headphones Icon
-
-<div>Icons made by <a href="https://roundicons.com/" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
-Butler Full Body Icon
-
-<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
-Top artists Background Img
-Photo by Atikh Bana on Unsplash
-
-Top Songs Background Img
-Photo by Bruce Mars on Unsplash
-
-Top Albums Background Img
-Photo by Daniel Schludi on Unsplash
+- Top Albums Background Img, Photo by Daniel Schludi on Unsplash
 
 ## License
 
