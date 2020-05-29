@@ -202,7 +202,7 @@ $(document).ready(function () {
       topSongAlbumImg.addClass(`col s2 albumImgDiv${[i]}`);
       topSongAlbumImg.attr("data-track",data.tracks[i].id)
       var topSongInfoDiv = $("<div>");
-      topSongInfoDiv.addClass("col s4 topSongInfoDiv");
+      topSongInfoDiv.addClass("col s4 songInfoDiv");
       var topSongLyricsDiv = $("<div>");
       topSongLyricsDiv.addClass("col s3 topSongLyricsDiv");
       var topSongPreviewDiv = $("<div>");
