@@ -7,7 +7,6 @@ $(document).ready(function () {
     $(".songInfoDiv").addClass("hide");
     $(".artistInfoDiv").removeClass("hide");
     getSimilarArtists();
-    4;
     $(".onlyArtistInput").val("");
   }
 
@@ -92,14 +91,23 @@ $(document).ready(function () {
       var artistImg = $("<img>");
       var artistImgName = $("<span>");
       artistImgName.addClass("card-title");
+
       artistImgName.text(data.artists[0].name);
-      if (imageData.images.length >= 4) {
-        artistImg.attr("src", imageData.images[3].url);
-      } else if (imageData.images.length > 0 && imageData.images.length < 4) {
-        artistImg.attr("src", imageData.images[1].url);
+
+      if (imageData.images.length) {
+        artistImg.attr("src", imageData.images[imageData.images.length - 1].url);
       } else {
-        artistImg.attr("src", "assets/pics/rectangleplaceholder.png");
+        artistImg.attr("src", "assets/pics/placeholder.png");
       }
+
+      // if (imageData.images.length >= 4) {
+      //   artistImg.attr("src", imageData.images[3].url);
+      // } else if (imageData.images.length > 0 && imageData.images.length < 4) {
+      //   artistImg.attr("src", imageData.images[1].url);
+      // } else {
+      //   artistImg.attr("src", "assets/pics/rectangleplaceholder.png");
+      // }
+
       artistCardImgDiv.append(artistImg);
       artistCardImgDiv.append(artistImgName);
       artistCardDiv.prepend(artistCardImgDiv);
@@ -121,25 +129,20 @@ $(document).ready(function () {
   }
 
   // USING NAPSTER DATA, RENDER TOP SONGS ON PAGE
-  // Refactor code to look like Brandon's code ASAP. in topScript line 26 and down.
   function renderTopSongs(data) {
-    console.log(data);
     $(".songInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
-    // $(".lyricInfo").addClass("hide");
     $(".artistInfoDiv").addClass("hide");
     $(".topSongsInfoDiv").removeClass("hide");
     $(".monthlyTopArtistsDiv").addClass("hide");
     $(".userTopSongH2").html(`<div><span class="artistChoice">${data.tracks[0].artistName}`);
-    // $(".userTopSongDiv").html(`<div><span class="songChoice">Top Songs by<spa ${data.tracks[0].artistName}</span></div>`);
 
     for (var i = 0; i < data.tracks.length; i++) {
       var topSongDiv = $("<div>");
       topSongDiv.addClass("row topSongDiv");
       var topSongAlbumImg = $("<div>");
       topSongAlbumImg.addClass("col s2 albumImg");
-      topSongAlbumImg.attr("data-track",data.tracks[i].id);
-      // topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
+      topSongAlbumImg.attr("data-track", data.tracks[i].id);
       var topSongInfoDiv = $("<div>");
       topSongInfoDiv.addClass("col s4 songInfoDiv");
       var topSongLyricsDiv = $("<div>");
@@ -179,7 +182,7 @@ $(document).ready(function () {
       var dataObj = {
         albumID: data.tracks[i].albumId,
         trackID: data.tracks[i].id,
-      }
+      };
       getTopSongAlbumImg(dataObj);
     }
   }
@@ -228,13 +231,9 @@ $(document).ready(function () {
     $(".artistForm").removeClass("hide");
   });
 
-  // TODO: TOP ARTISTS BUTTON, TOP SONGS USES THIS BUTTON
-  // NEED TO FIX BECAUSE INSTEAD OF RETURNING IT TO TOP ARTISTS IT RETURNS TO SIMILAR ARTISTS
-
   $(".returnArtistsBtn").click(function () {
     $(".artistInfoDiv").removeClass("hide");
     $(".searchInfo").addClass("hide");
-    // $(".lyricInfo").addClass("hide");
     $(".topSongsInfoDiv").addClass("hide");
     $(".userTopSongDiv").empty();
   });

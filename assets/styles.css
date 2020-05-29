@@ -143,7 +143,7 @@ h2,
 }
 
 .album-content {
-  height: 150px;
+  height: 100px;
   overflow: scroll;
 }
 
@@ -161,42 +161,14 @@ h2,
 
 .userSongDiv,
 .userArtistChoice,
-.userTopSongDiv,
-.monthlyText {
+.userTopSongDiv {
   margin-bottom: 75px;
-}
-
-.monthlyText {
-  font-family: "Prompt", sans-serif;
-  font-weight: 300;
-  font-size: 24px;
-}
-
-.albumInfo {
-  margin-top: 75px;
-}
-
-.albumName {
-  font-weight: 600;
-  font-size: 40px;
-}
-
-.artistName {
-  font-size: 25px;
 }
 
 .lyricsBtn {
   font-family: "Prompt", sans-serif;
   font-weight: 300;
   margin-top: 38px;
-}
-
-.audioAlbum {
-  margin-top: 8px;
-}
-
-.lyricsAlbumBtn {
-  margin-top: 0px;
 }
 
 .returnBtn {
@@ -222,8 +194,7 @@ h2,
   font-size: 50px;
 }
 
-.userTopSongDiv,
-.artistTopSongDiv {
+.userTopSongDiv {
   margin-top: 75px;
 }
 
@@ -321,7 +292,6 @@ h2,
   margin-top: 200px;
 } */
 
-
 .leftArrow {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
@@ -394,3 +364,24 @@ h2,
 #meetDevBtn {
   margin-bottom: 15px;
 }
+
+/* @media only screen and (min-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 368px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 168px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+} */
