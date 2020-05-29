@@ -171,7 +171,7 @@ function appendTopArtistImages(data, artistID) {
     artistImage.attr("src", "assets/pics/placeholder.png");
   }
   var monthlyArtistDiv = $(`div[data-artist='${artistID}']`);
-  monthlyArtistDiv.append(artistImage);
+  monthlyArtistDiv.prepend(artistImage);
 }
 
 function getArtistTopSongs() {
@@ -232,7 +232,7 @@ function renderArtistTopSongs(data) {
     topSongDiv.append(topSongLyricsDiv);
     topSongDiv.append(topSongPreviewDiv);
     artistTopSongs.append(topSongDiv);
-    getAlbData(data.tracks[i].albumId)
+    getAlbData(data.tracks[i].albumId);
   }
 }
 
@@ -251,20 +251,18 @@ function getAlbData(albumID) {
   });
 }
 
-  function appendAlb(data, albumID) {
-    var albumImage = $("<img>");
-    albumImage.addClass("albumImg");
-    console.log(data.images);
-    if (data.images.length) {
-      albumImage.attr("src", data.images[data.images.length - 1].url);
-    } else {
-      albumImage.attr("src", "assets/pics/placeholder.png");
-    }
-    var songTopArtistDiv = $(`div[data-alb='${albumID}']`);
-    songTopArtistDiv.append(albumImage);
+function appendAlb(data, albumID) {
+  var albumImage = $("<img>");
+  albumImage.addClass("albumImg");
+  console.log(data.images);
+  if (data.images.length) {
+    albumImage.attr("src", data.images[data.images.length - 1].url);
+  } else {
+    albumImage.attr("src", "assets/pics/placeholder.png");
   }
-  
-
+  var songTopArtistDiv = $(`div[data-alb='${albumID}']`);
+  songTopArtistDiv.prepend(albumImage);
+}
 
 function getTopAlbums() {
   var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
@@ -333,7 +331,7 @@ function appendTopAlbumImages(data, albumID) {
     albumImage.attr("src", "assets/pics/placeholder.png");
   }
   var monthlyAlbumDiv = $(`div[data-album='${albumID}']`);
-  monthlyAlbumDiv.append(albumImage);
+  monthlyAlbumDiv.prepend(albumImage);
 }
 
 function getAlbumDetails() {
