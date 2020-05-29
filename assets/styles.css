@@ -45,7 +45,16 @@ audio {
   margin-top: 28px;
 }
 
+.fa-map-marker:hover,
+.fa-envelope:hover,
+.fa-phone:hover {
+  color: #f5c002;
+}
+
 a:hover,
+.fa-map-marker,
+.fa-envelope,
+.fa-phone,
 #noteLogo {
   color: #26a69a;
 }
@@ -279,9 +288,10 @@ h2,
   margin-top: 100px;
 } */
 
-.contact-info {
+/* .contact-info {
   margin-top: 200px;
-}
+} */
+
 
 .leftArrow {
   transform: rotate(135deg);
