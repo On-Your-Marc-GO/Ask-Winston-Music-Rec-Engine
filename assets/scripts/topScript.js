@@ -301,6 +301,7 @@ $(document).ready(function () {
       var albumInfoDiv = $("<div>");
       albumInfoDiv.addClass("card-content album-content");
       var albumInfo = $('<p>');
+      albumInfo.addClass('songData');
       albumInfo.text(data.albums[i].name.toUpperCase());
       var artistInfo = $("<p>");
       artistInfo.text(`by ${data.albums[i].artistName}`);
@@ -366,12 +367,12 @@ $(document).ready(function () {
     var userAlbumChoice = $("<div>");
     userAlbumChoice.addClass("row");
     var albumInfo = $("<div>");
-    albumInfo.addClass("col s8");
+    albumInfo.addClass("col s8 albumInfo");
     var albumName = $("<p>");
-    albumName.text(data.tracks[0].albumName);
-    albumName.addClass("row");
+    albumName.text(data.tracks[0].albumName.toUpperCase());
+    albumName.addClass("row albumName");
     var artistName = $("<p>");
-    artistName.addClass("row");
+    artistName.addClass("row artistName");
     artistName.text(data.tracks[0].artistName);
     albumInfo.append(albumName);
     albumInfo.append(artistName);
@@ -411,7 +412,9 @@ $(document).ready(function () {
     var songPreviewHead = $("<th>");
     trackNameHead.text("Song Name");
     trackLyricsHead.text("Lyrics");
+    trackLyricsHead.addClass('center-align');
     songPreviewHead.text("Song Preview");
+    songPreviewHead.addClass('center-align');
     trackRowHead.append(trackNameHead);
     trackRowHead.append(trackLyricsHead);
     trackRowHead.append(songPreviewHead);
@@ -422,13 +425,16 @@ $(document).ready(function () {
       var trackRowBody = $("<tr>");
       var trackName = $("<td>");
       var lyrics = $("<td>");
+      lyrics.addClass('center-align');
       var lyricsBtn = $("<button>");
-      lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn");
+      lyricsBtn.addClass("btn modal-trigger waves-effect waves-light lyricsBtn lyricsAlbumBtn");
       lyricsBtn.attr("data-song", data.tracks[i].name);
       lyricsBtn.attr("data-artist", data.tracks[i].artistName);
       lyricsBtn.attr("data-target", "modal1");
       var songPreview = $("<td>");
+      songPreview.addClass('center-align');
       var songPreviewAudio = $("<audio>");
+      songPreviewAudio.addClass('audioAlbum')
       songPreviewAudio.attr("controls", "controls");
       var songSource = $("<source>");
       songSource.attr("src", data.tracks[i].previewURL);

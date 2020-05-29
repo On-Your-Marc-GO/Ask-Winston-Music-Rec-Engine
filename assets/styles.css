@@ -143,7 +143,7 @@ h2,
 }
 
 .album-content {
-  height: 100px;
+  height: 150px;
   overflow: scroll;
 }
 
@@ -161,14 +161,42 @@ h2,
 
 .userSongDiv,
 .userArtistChoice,
-.userTopSongDiv {
+.userTopSongDiv,
+.monthlyText {
   margin-bottom: 75px;
+}
+
+.monthlyText {
+  font-family: "Prompt", sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.albumInfo {
+  margin-top: 75px;
+}
+
+.albumName {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.artistName {
+  font-size: 25px;
 }
 
 .lyricsBtn {
   font-family: "Prompt", sans-serif;
   font-weight: 300;
   margin-top: 38px;
+}
+
+.audioAlbum {
+  margin-top: 8px;
+}
+
+.lyricsAlbumBtn {
+  margin-top: 0px;
 }
 
 .returnBtn {
@@ -194,7 +222,8 @@ h2,
   font-size: 50px;
 }
 
-.userTopSongDiv {
+.userTopSongDiv,
+.artistTopSongDiv {
   margin-top: 75px;
 }
 
