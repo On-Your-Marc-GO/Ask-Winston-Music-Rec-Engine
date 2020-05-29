@@ -123,7 +123,8 @@ $(document).ready(function () {
   // USING NAPSTER DATA, RENDER TOP SONGS ON PAGE
   // Refactor code to look like Brandon's code ASAP. in topScript line 26 and down.
   function renderTopSongs(data) {
-    console.log(data);
+    //console.log(data);
+    var userTopSongDiv = $('.userTopSongDiv');
     $(".songInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
     // $(".lyricInfo").addClass("hide");
@@ -136,9 +137,9 @@ $(document).ready(function () {
     for (var i = 0; i < data.tracks.length; i++) {
       var topSongDiv = $("<div>");
       topSongDiv.addClass("row topSongDiv");
-      var topSongAlbumImg = $("<img>");
+      var topSongAlbumImg = $("<div>");
       topSongAlbumImg.addClass("col s2 albumImg");
-      topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
+      topSongAlbumImg.attr("data-album", data.tracks[i].albumId);
       var topSongInfoDiv = $("<div>");
       topSongInfoDiv.addClass("col s4 topSongInfoDiv");
       var topSongLyricsDiv = $("<div>");
@@ -167,37 +168,44 @@ $(document).ready(function () {
       topSongLyricsDiv.append(topSongLyricsBtn);
       topSongPreview.append(topSongSource);
       topSongPreviewDiv.append(topSongPreview);
-
-      topSongDiv.append(topSongAlbumImg);
+      //topSongDiv.append(topSongAlbumImg);
       topSongDiv.append(topSongInfoDiv);
       topSongDiv.append(topSongLyricsDiv);
       topSongDiv.append(topSongPreviewDiv);
+      userTopSongDiv.append(topSongDiv);
+      getTopImageData(data.tracks[i].albumId);
 
-      // TODO: Logic to Include Top Track Album Image much like our similar song page
-      // var topSongAlbumID = data.tracks[i].albumId;
-      // var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-      // var topSongQueryURL = `http://api.napster.com/v2.2/albums/${topSongAlbumID}/images?apikey=${apiKey}`;
-
-      // $.ajax({
-      //   url: topSongQueryURL,
-      //   method: "GET",
-      // }).then(function (data) {
-      //   var topSongAlbumImg = $("<img>");
-      //   topSongAlbumImg.addClass("col s2 albumImg");
-      //   if (data.images.length >= 5) {
-      //     topSongAlbumImg.attr("src", data.images[4].url);
-      //   } else if (data.images.length > 0 && data.images.length < 5) {
-      //     topSongAlbumImg.attr("src", data.images[2].url);
-      //   } else {
-      //     topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
-      //   }
-      //   topSongDiv.prepend(topSongAlbumImg);
-      //   //  $(".songInfo").append(songDiv);
-      //   // $(".userTopSongDiv").append(topSongDiv);
-      // });
-
-      $(".userTopSongDiv").append(topSongDiv);
     }
+  }
+
+  function appendTopImages(data, albumID) {
+    //var group = $('ul[data-group="Companies"]');
+    var topAlbumImage = $("<img>");
+    topAlbumImage.addClass("albumImg");
+    console.log(data.images);
+    if (data.images.length) {
+      topAlbumImage.attr("src", data.images[data.images.length - 1].url);
+    } else {
+      topAlbumImage.attr("src", "assets/pics/placeholder.png");
+    }
+    var topMonthlyArtistDiv = $(`div[data-album='${albumID}']`);
+    topMonthlyArtistDiv.append(topAlbumImage);
+  }
+
+  function getTopImageData(albumID) {
+    //var albumID = data.tracks[i].albumId;
+    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+    var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+  
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (data) {
+      if (data) {
+        console.log(data);
+        appendTopImages(data, albumID);
+      }
+    });
   }
 
   // EVENT LISTENERS

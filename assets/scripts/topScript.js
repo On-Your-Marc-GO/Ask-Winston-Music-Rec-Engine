@@ -18,11 +18,11 @@ function getTopSongs() {
     url: queryURL,
     method: "GET",
   }).then(function (data) {
-    renderTopSongs(data);
+    renderMonthlyTopSongs(data);
   });
 }
 
-function renderTopSongs(data) {
+function renderMonthlyTopSongs(data) {
   var monthTopSongs = $(".monthlySongDiv");
   $(".searchInfo").addClass("hide");
   $(".monthlyTopSongsDiv").removeClass("hide");
