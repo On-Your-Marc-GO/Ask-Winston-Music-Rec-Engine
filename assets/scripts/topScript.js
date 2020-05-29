@@ -151,7 +151,7 @@ $(document).ready(function () {
   }
   function getTopArtistImageData(artistID) {
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `http://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
+    var queryURL = `https://api.napster.com/v2.2/artists/${artistID}/images?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -195,7 +195,7 @@ $(document).ready(function () {
       var topSongDiv = $("<div>");
       topSongDiv.addClass("row topSongDiv");
       var topSongAlbumImg = $("<div>");
-      topSongAlbumImg.addClass("col s2 albumImgDiv");
+      topSongAlbumImg.addClass(`col s2 albumImgDiv${[i]}`);
       topSongAlbumImg.attr("data-alb", data.tracks[i].albumId);
       // topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
       var topSongInfoDiv = $("<div>");
@@ -282,23 +282,26 @@ $(document).ready(function () {
       var albumCardDiv = $("<div>");
       albumCardDiv.addClass("card col s3");
       var albumCardImgDiv = $("<div>");
-      albumCardImgDiv.addClass("card-image");
+      albumCardImgDiv.addClass("card-image album-image");
       albumCardImgDiv.attr("data-album", data.albums[i].id);
-      var albumImgName = $("<span>");
-      albumImgName.addClass("card-title");
-      albumImgName.text(data.albums[i].name);
+      // var albumImgName = $("<span>");
+      // albumImgName.addClass("card-title");
+      // albumImgName.text(data.albums[i].name);
       var albumInfoDiv = $("<div>");
-      albumInfoDiv.addClass("card-content");
-      var albumInfo = $("<p>");
-      albumInfo.text(`Artist: ${data.albums[i].artistName}`);
+      albumInfoDiv.addClass("card-content album-content");
+      var albumInfo = $('<p>');
+      albumInfo.text(data.albums[i].name.toUpperCase());
+      var artistInfo = $("<p>");
+      artistInfo.text(`by ${data.albums[i].artistName}`);
       var albumTopSongsDiv = $("<div>");
       albumTopSongsDiv.addClass("card-action");
       var albumTopSongsBtn = $("<button>");
       albumTopSongsBtn.addClass("btn waves-effect waves-light albumDetailsBtn");
       albumTopSongsBtn.attr("data-albums", data.albums[i].id);
       albumTopSongsBtn.text("GET TRACKS");
-      albumCardImgDiv.append(albumImgName);
+      // albumCardImgDiv.append(albumImgName);
       albumInfoDiv.append(albumInfo);
+      albumInfoDiv.append(artistInfo);
       albumTopSongsDiv.append(albumTopSongsBtn);
       albumCardDiv.append(albumCardImgDiv);
       albumCardDiv.append(albumInfoDiv);
@@ -310,7 +313,7 @@ $(document).ready(function () {
 
   function getTopAlbumImageData(albumID) {
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+    var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",

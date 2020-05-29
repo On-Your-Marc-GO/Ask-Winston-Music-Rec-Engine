@@ -36,34 +36,38 @@
   <main>
     <!--Header-->
     <div class="container center-align">
+      <div class="row">
         <h1 class="aboutH1">MEET THE TEAM</h1>
         <h2>Click on a Developer's Picture to view their Bio!</h2>
-        <h3><button class="hide" id="meetDevBtn"><i class="arrow leftArrow"></i>Meet Another Developer</button></h3>
-    </div>
-    <!--Dev Team images and bios-->
-    <div class="container center-align dev-pics">
-      <div class="row">
-        <div class="col s4" id="inezImageCol">
-          <input type="image" id="inezImage" src="./assets/pics/inez.jpg" alt="young-hispanic-female-holding-small-dog" class="circle" height="350" width="350"/>
+        <button class="hide btn waves-effect waves-light" id="meetDevBtn">BACK</button>
+      </div>
+      <!--Dev Team images and bios-->
+      <div class="center-align dev-pics">
+        <div class="row">
+          <div class="col s4" id="inezImageCol">
+            <input type="image" id="inezImage" src="./assets/pics/inez.jpg" alt="young-hispanic-female-holding-small-dog" class="circle" height="350" width="350"/>
+          </div>
+          <div class="col s4" id="marcImageCol">
+            <input type="image" id="marcImage" src="./assets/pics/marc.jpg" alt="young-hispanic-male-sitting-on-bench" class="circle" height="350" width="350"/>
+          </div>
+          <div class="col s4" id="ramonImageCol">
+            <input type="image" id="ramonImage" src="./assets/pics/ramon.jpg" alt="young-hispanic-male-posing" class="circle" height="350" width="350"/>
+          </div>
         </div>
-        <div class="col s4" id="marcImageCol">
-          <input type="image" id="marcImage" src="./assets/pics/marc.jpg" alt="young-hispanic-male-sitting-on-bench" class="circle" height="350" width="350"/>
-        </div>
-        <div class="col s4" id="ramonImageCol">
-          <input type="image" id="ramonImage" src="./assets/pics/ramon.jpg" alt="young-hispanic-male-posing" class="circle" height="350" width="350"/>
-        </div>
-        <p class="col hide" id='inezBio'>Inez Escandon is enrolled in UT’s Coding and Programming Bootcamp and working to transition out of her career in Education. She is currently working 
-          as an elementary teacher in which she has 10 years experience. She graduated with a Bachelor’s Degree in Bilingual Education from the University of Texas at Austin and a 
-          Master’s Degree in Instructional Technology.
+        <div class="row">
+          <p class="col hide" id='inezBio'>Inez Escandon is enrolled in UT’s Coding and Programming Bootcamp and working to transition out of her career in Education. She is currently working 
+            as an elementary teacher in which she has 10 years experience. She graduated with a Bachelor’s Degree in Bilingual Education from the University of Texas at Austin and a 
+            Master’s Degree in Instructional Technology.
+          </p>
+          <p class="col hide" id='marcBio'>Marc is currently enrolled in the Houston Coding Bootcamp provided by the University of Texas at Austin. His attendance is the first step 
+            in what he hopes to be a career change as a Web Developer.  His career thus far has seen him working as an IT Professional and Customer Support Specialist across various organizations for ~6 years after getting his degree 
+            in Management Information Systems from the Mays Business School at TAMU.
+          </p>
+        <p class="col hide" id='ramonBio'>Ramon is currently a student at the University of Texas at University of Houston Coding Bootcamp.  He has joined this coding bootcamp with hopes 
+          of transitioning out of his almost decade long career in oil and gas into a career in Web Development.  Ramon has seen many sides of oil and gas from the floor of a rig and production management
+          to field equipment sales and logistics. 
         </p>
-        <p class="col hide" id='marcBio'>Marc is currently enrolled in the Houston Coding Bootcamp provided by the University of Texas at Austin. His attendance is the first step 
-          in what he hopes to be a career change as a Web Developer.  His career thus far has seen him working as an IT Professional and Customer Support Specialist across various organizations for ~6 years after getting his degree 
-          in Management Information Systems from the Mays Business School at TAMU.
-        </p>
-       <p class="col hide" id='ramonBio'>Ramon is currently a student at the University of Texas at University of Houston Coding Bootcamp.  He has joined this coding bootcamp with hopes 
-         of transitioning out of his almost decade long career in oil and gas into a career in Web Development.  Ramon has seen many sides of oil and gas from the floor of a rig and production management
-         to field equipment sales and logistics. 
-       </p>
+        </div>
       </div>
     </div>
   </main>
@@ -97,6 +101,8 @@
         $('#marcBio').removeClass('hide');
         $('#inezImage').addClass('hide');
         $('#ramonImage').addClass('hide');
+        $('#marcImageCol').removeClass('col s4');
+        $('#marcImageCol').addClass('col s12');
         $('button').removeClass('hide');
         $('h2').addClass('hide');
       }
@@ -113,16 +119,22 @@
 
       function meetOtherDeveloper() {
         $('#inezImage').removeClass('hide');
-        $('#inezImageCol').removeClass('col s12');
-        $('#inezImageCol').addClass('col s4');
-        $('#ramonImageCol').removeClass('col s12');
-        $('#ramonImageCol').addClass('col s4');
         $('#marcImage').removeClass('hide');
         $('#ramonImage').removeClass('hide');
+
+        $('#inezImageCol').removeClass();
+        $('#inezImageCol').addClass('col s4');
+        $('#ramonImageCol').removeClass();
+        $('#ramonImageCol').addClass('col s4');
+        $('#marcImageCol').removeClass();
+        $('#marcImageCol').addClass('col s4');
+  
         $('#ramonBio').addClass('hide');
         $('#marcBio').addClass('hide');
         $('#inezBio').addClass('hide');
+
         $('button').addClass('hide');
+
         $('h2').removeClass('hide');
       }
 
