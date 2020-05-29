@@ -123,8 +123,7 @@ $(document).ready(function () {
   // USING NAPSTER DATA, RENDER TOP SONGS ON PAGE
   // Refactor code to look like Brandon's code ASAP. in topScript line 26 and down.
   function renderTopSongs(data) {
-    //console.log(data);
-    var userTopSongDiv = $('.userTopSongDiv');
+    console.log(data);
     $(".songInfoDiv").addClass("hide");
     $(".searchInfo").addClass("hide");
     // $(".lyricInfo").addClass("hide");
@@ -139,12 +138,8 @@ $(document).ready(function () {
       topSongDiv.addClass("row topSongDiv");
       var topSongAlbumImg = $("<div>");
       topSongAlbumImg.addClass("col s2 albumImg");
-<<<<<<< HEAD
-      topSongAlbumImg.attr("data-album", data.tracks[i].albumId);
-=======
       topSongAlbumImg.attr("data-albumImg", data.tracks[i].albumId);
       // topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
->>>>>>> 9d88976762814d97e9c49e44518160d65e108d7a
       var topSongInfoDiv = $("<div>");
       topSongInfoDiv.addClass("col s4 topSongInfoDiv");
       var topSongLyricsDiv = $("<div>");
@@ -173,15 +168,12 @@ $(document).ready(function () {
       topSongLyricsDiv.append(topSongLyricsBtn);
       topSongPreview.append(topSongSource);
       topSongPreviewDiv.append(topSongPreview);
-      //topSongDiv.append(topSongAlbumImg);
+
+      topSongDiv.append(topSongAlbumImg);
       topSongDiv.append(topSongInfoDiv);
       topSongDiv.append(topSongLyricsDiv);
       topSongDiv.append(topSongPreviewDiv);
-      userTopSongDiv.append(topSongDiv);
-      getTopImageData(data.tracks[i].albumId);
 
-<<<<<<< HEAD
-=======
       $(".userTopSongDiv").append(topSongDiv);
 
       getTopSongAlbumImg(data.tracks[i].albumId);
@@ -209,40 +201,9 @@ $(document).ready(function () {
       topSongAlbumImage.attr("src", data.images[data.images.length - 1].url);
     } else {
       topSongAlbumImage.attr("src", "assets/pics/placeholder.png");
->>>>>>> 9d88976762814d97e9c49e44518160d65e108d7a
     }
     var monthlyArtistDiv = $(`div[data-albumImg='${albumID}']`);
     monthlyArtistDiv.append(topSongAlbumImage);
-  }
-
-  function appendTopImages(data, albumID) {
-    //var group = $('ul[data-group="Companies"]');
-    var topAlbumImage = $("<img>");
-    topAlbumImage.addClass("albumImg");
-    console.log(data.images);
-    if (data.images.length) {
-      topAlbumImage.attr("src", data.images[data.images.length - 1].url);
-    } else {
-      topAlbumImage.attr("src", "assets/pics/placeholder.png");
-    }
-    var topMonthlyArtistDiv = $(`div[data-album='${albumID}']`);
-    topMonthlyArtistDiv.append(topAlbumImage);
-  }
-
-  function getTopImageData(albumID) {
-    //var albumID = data.tracks[i].albumId;
-    var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
-  
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).then(function (data) {
-      if (data) {
-        console.log(data);
-        appendTopImages(data, albumID);
-      }
-    });
   }
 
   // EVENT LISTENERS
