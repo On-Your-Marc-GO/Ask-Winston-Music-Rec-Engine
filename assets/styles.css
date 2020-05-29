@@ -82,7 +82,7 @@ h2,
 
 .toast {
   /* background-color: #426b67; */
-  background-color: #F5C002;
+  background-color: #f5c002;
   color: black;
 }
 
@@ -309,4 +309,8 @@ h2,
 
 #meetDevBtn {
   transition: transform 0.5s ease;
+}
+
+img {
+  height: 100%;
 }
