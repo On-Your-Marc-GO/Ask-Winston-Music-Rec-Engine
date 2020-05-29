@@ -91,14 +91,23 @@ $(document).ready(function () {
       var artistImg = $("<img>");
       var artistImgName = $("<span>");
       artistImgName.addClass("card-title");
+
       artistImgName.text(data.artists[0].name);
-      if (imageData.images.length >= 4) {
-        artistImg.attr("src", imageData.images[3].url);
-      } else if (imageData.images.length > 0 && imageData.images.length < 4) {
-        artistImg.attr("src", imageData.images[1].url);
+
+      if (imageData.images.length) {
+        artistImg.attr("src", imageData.images[imageData.images.length - 1].url);
       } else {
-        artistImg.attr("src", "assets/pics/rectangleplaceholder.png");
+        artistImg.attr("src", "assets/pics/placeholder.png");
       }
+
+      // if (imageData.images.length >= 4) {
+      //   artistImg.attr("src", imageData.images[3].url);
+      // } else if (imageData.images.length > 0 && imageData.images.length < 4) {
+      //   artistImg.attr("src", imageData.images[1].url);
+      // } else {
+      //   artistImg.attr("src", "assets/pics/rectangleplaceholder.png");
+      // }
+
       artistCardImgDiv.append(artistImg);
       artistCardImgDiv.append(artistImgName);
       artistCardDiv.prepend(artistCardImgDiv);

@@ -149,15 +149,13 @@ $(document).ready(function () {
     }).then(function (data) {
       var albumImg = $("<img>");
       albumImg.addClass("col s2 albumImg");
-      if (data.images.length > 0 && data.images.length <= 5) {
-        for (var i = 0; i < 5; i++) {
-          if (data.images[i]) {
-            albumImg.attr("src", data.images[i].url);
-          }
-        }
+
+      if (data.images.length) {
+        albumImg.attr("src", data.images[data.images.length - 1].url);
       } else {
         albumImg.attr("src", "assets/pics/placeholder.png");
       }
+
       songDiv.prepend(albumImg);
       $(".songInfo").append(songDiv);
     });
