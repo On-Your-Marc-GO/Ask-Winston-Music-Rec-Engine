@@ -2,7 +2,6 @@ var monthlySongResults;
 
 function getApiType() {
   var apiType = $(this).attr("data-type");
-  //console.log(apiType);
   if (apiType === "top songs") {
     getTopSongs();
   } else if (apiType === "top artists") {
@@ -191,12 +190,10 @@ function renderArtistTopSongs(data) {
   console.log(data);
   $(".songInfoDiv").addClass("hide");
   $(".searchInfo").addClass("hide");
-  // $(".lyricInfo").addClass("hide");
   $(".artistInfoDiv").addClass("hide");
   $(".artistTopSongsInfoDiv").removeClass("hide");
   $(".monthlyTopArtistsDiv").addClass("hide");
   $(".artistTopSongH2").html(`<div><span class="artistChoice">${data.tracks[0].artistName}`);
-  // $(".userTopSongDiv").html(`<div><span class="songChoice">Top Songs by<spa ${data.tracks[0].artistName}</span></div>`);
 
   for (var i = 0; i < data.tracks.length; i++) {
     var topSongDiv = $("<div>");
@@ -285,8 +282,7 @@ function renderTopAlbums(data) {
     albumCardDiv.addClass("card col s3");
     var albumCardImgDiv = $("<div>");
     albumCardImgDiv.addClass("card-image");
-    var albumImg = $("<img>");
-    albumImg.attr("src", "assets/pics/placeholder.png");
+    albumCardImgDiv.attr("data-album", data.albums[i].id);
     var albumImgName = $("<span>");
     albumImgName.addClass("card-title");
     albumImgName.text(data.albums[i].name);
@@ -300,7 +296,6 @@ function renderTopAlbums(data) {
     albumTopSongsBtn.addClass("btn waves-effect waves-light albumDetailsBtn");
     albumTopSongsBtn.attr("data-albums", data.albums[i].id);
     albumTopSongsBtn.text("GET TRACKS");
-    albumCardImgDiv.append(albumImg);
     albumCardImgDiv.append(albumImgName);
     albumInfoDiv.append(albumInfo);
     albumTopSongsDiv.append(albumTopSongsBtn);
@@ -308,7 +303,33 @@ function renderTopAlbums(data) {
     albumCardDiv.append(albumInfoDiv);
     albumCardDiv.append(albumTopSongsDiv);
     monthlyAlbumsDiv.append(albumCardDiv);
+    getTopAlbumImageData(data.albums[i].id);
   }
+}
+
+function getTopAlbumImageData(albumID) {
+  var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+  var queryURL = `http://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (data) {
+    if (data) {
+      appendTopAlbumImages(data, albumID);
+    }
+  });
+}
+
+function appendTopAlbumImages(data, albumID) {
+  var albumImage = $("<img>");
+  albumImage.addClass("albumImg");
+  if (data.images.length) {
+    albumImage.attr("src", data.images[data.images.length - 1].url);
+  } else {
+    albumImage.attr("src", "assets/pics/placeholder.png");
+  }
+  var monthlyAlbumDiv = $(`div[data-album='${albumID}']`);
+  monthlyAlbumDiv.append(albumImage);
 }
 
 function getAlbumDetails() {
@@ -327,12 +348,8 @@ function renderAlbumDetails(data) {
   $(".albumDetailsDiv").removeClass("hide");
   $(".monthlyTopAlbumsDiv").addClass("hide");
   console.log(data);
-  // console.log(data);
   var userAlbumChoice = $("<div>");
   userAlbumChoice.addClass("row");
-  // var albumImg = $('<img>');
-  // albumImg.addClass('col s5');
-  // albumImg.attr('src', 'assets/pics/placeholder.png');
   var albumInfo = $("<div>");
   albumInfo.addClass("col s8");
   var albumName = $("<p>");
@@ -343,9 +360,7 @@ function renderAlbumDetails(data) {
   artistName.text(data.tracks[0].artistName);
   albumInfo.append(albumName);
   albumInfo.append(artistName);
-  // userAlbumChoice.append(albumImg);
   userAlbumChoice.append(albumInfo);
-  // $('.albumDetailsInfo').append(userAlbumChoice);
   var albumID = data.tracks[0].albumId;
   var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
   var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
@@ -354,7 +369,6 @@ function renderAlbumDetails(data) {
     method: "GET",
   }).then(function (data) {
     console.log(data);
-    // console.log(data);
     var albumImg = $("<img>");
     albumImg.addClass("col s4");
     if (data.images.length > 0 && data.images.length <= 5) {
