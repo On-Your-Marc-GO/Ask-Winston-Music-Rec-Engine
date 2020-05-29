@@ -1,12 +1,16 @@
-# Content Recommendation
+# Ask Winston: Music Recommendation Search Engine
 
 ## Site URL
 
-- Deployed URL Link will go here
+- [Ask Winston](https://on-your-marc-go.github.io/Bootcamp-Project-1/)
 
 ## Description
 
 The purpose of this project is to initially test our knowledge of the building blocks of the Web (ie. HTML, CSS, and JS) and how to consume API's in order to create a unique web application specific to a need we see.
+
+Given that each one of us are big consumers of music we thought a recommendation engine based on an artist or song you already enjoy would be a good way to start. The application is primarily built upon the LastFM and Napster API's. When a Artist or Artist/Song combo is input by the user, the applications queries the LastFM API and it's Similar Artist call to give us information. With that in hand, the application then leverages the Napster API to pull all relevant information for that intial call and display it to the user. The user is then allowed to search at their leisure and even enjoy quick song previews with song lyrics as well.
+
+Many positives were gained out of this project. First and foremost was learning how to work as part of a dev team. With different schedules, lifestyles, and availability, accurate planning and communication were of the utmost importance and probably one of the major takeaways from this. Identifying workflow and properly resolving branch related conflict is another thing I believe we were able to come out of this stronger with. Finally, combing through documentation and simply putting in the time to research was displayed and learned throughout this entire process.
 
 ## Table of Contents
 
@@ -52,13 +56,13 @@ SO THAT I can continue to not go insane during COVID while staying entertained
 ```
 GIVEN I am using a content recommendation engine to seek new music
 WHEN I arrive at the page
-THEN I am presented with the option to search for similar.
+THEN I am presented with the option to search for similar artists
 WHEN I enter input
-THEN I am then given relevant recommendations based on the selected media types
+THEN I am then given relevant recommendations based on the selected radio button
 WHEN I click on any of the recommendations given
-THEN I am presented with relevant content information (Ex. Albums, Artist Info, YT Link to Popular song)
-WHEN I refresh the page
-THEN the previously searched content will be cleared from the screen but remain in memory to be searched on again
+THEN I am presented with relevant content information (Ex. Albums, Artist Info, Song Info, Lyrics)
+WHEN I click on links to the TOP Artists, Songs, Albums
+THEN I will receive that infomration for the given month based on the API call
 ```
 
 ## Installation
@@ -81,25 +85,25 @@ Alternatively you may refer to the 'Site Link' provided above to visit the site 
 
 - If you followed tutorials, include links to those here as well.
 
-Butler icon
+Butler Icon
 
 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-Headphones icon
+Headphones Icon
 
 <div>Icons made by <a href="https://roundicons.com/" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-butler full body icon
+Butler Full Body Icon
 
 <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-Top artists background img
+Top artists Background Img
 Photo by Atikh Bana on Unsplash
 
-top songs background img
+Top Songs Background Img
 Photo by Bruce Mars on Unsplash
 
-top albums background img
+Top Albums Background Img
 Photo by Daniel Schludi on Unsplash
 
 ## License
