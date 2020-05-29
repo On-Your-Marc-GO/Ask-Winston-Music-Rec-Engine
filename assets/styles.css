@@ -38,7 +38,6 @@ p {
 
 img {
   height: 100%;
-  /* width: cover; */
 }
 
 audio {
@@ -95,7 +94,6 @@ h2,
 }
 
 .toast {
-  /* background-color: #426b67; */
   background-color: #f5c002;
   color: black;
 }
@@ -107,12 +105,9 @@ h2,
 .topImgs {
   width: 200px;
   border-radius: 50px;
-  /* border: 10px #26A69A solid; */
-  /* border-style: inset; */
 }
 
 .topImgs:hover {
-  /* opacity: 75%; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -121,8 +116,12 @@ h2,
 }
 
 .albumImg {
-  /* height:100%; */
   width: 100%;
+}
+
+.monthlyText {
+  margin-bottom: 75px;
+  font-size: 24px;
 }
 
 .card-title {
@@ -143,7 +142,7 @@ h2,
 }
 
 .album-content {
-  height: 100px;
+  height: 150px;
   overflow: scroll;
 }
 
@@ -171,6 +170,24 @@ h2,
   margin-top: 38px;
 }
 
+.lyricsAlbumBtn {
+  margin-top: 0px;
+}
+
+.audioAlbum {
+  margin-top: 8px;
+}
+
+.albumName {
+  margin-top: 65px;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.artistName {
+  font-size: 25px;
+}
+
 .returnBtn {
   margin-top: 15px;
   margin-bottom: 25px;
@@ -194,6 +211,7 @@ h2,
   font-size: 50px;
 }
 
+.topSongDiv,
 .userTopSongDiv {
   margin-top: 75px;
 }
@@ -205,6 +223,17 @@ h2,
   font-weight: 300;
   margin-top: 30px;
   margin-bottom: 20px;
+}
+
+.aboutH1 {
+  margin-bottom: 40px;
+}
+
+.help-tag {
+  font-family: "Prompt", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 55px;
 }
 
 #askwinstonlogo {
@@ -239,149 +268,33 @@ h2,
   text-align: center;
 }
 
-/*Help page CSS*/
-
-.help-tag {
-  font-family: "Prompt", sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  margin-bottom: 55px;
-}
-
-#homeAddress:hover {
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
-#homeAddress {
-  transition: transform 0.5s ease;
-}
-
-#contactPhone:hover {
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
-#contactPhone {
-  transition: transform 0.5s ease;
-}
-
-#email:hover {
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
-#email {
-  transition: transform 0.5s ease;
-}
-
-/*About page CSS*/
-
-.aboutH1 {
-  margin-bottom: 40px;
-}
-
-/* .dev-pics {
-  margin-top: 100px;
-} */
-
-/* .contact-info {
-  margin-top: 200px;
-} */
-
-.leftArrow {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-}
-
-.arrow {
-  border: solid whitesmoke;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 4px;
-}
-
-#inezImage:hover {
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
-#inezImage {
-  transition: transform 0.5s ease;
-}
-
-#inezBio {
-  margin-left: 45px;
-  font-size: 18px;
-  /* font-family: sans-serif; */
-}
-
-#marcBio {
-  margin-left: 40px;
-  font-size: 18px;
-  /* font-family: sans-serif; */
-}
-
-#ramonBio {
-  font-size: 18px;
-  /* font-family: sans-serif; */
-}
-
-#marcImage:hover {
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
-#marcImage {
-  transition: transform 0.5s ease;
-}
-
+#homeAddress:hover,
+#contactPhone:hover,
+#email:hover,
+#inezImage:hover,
+#marcImage:hover,
 #ramonImage:hover {
   -ms-transform: scale(1.5);
   -webkit-transform: scale(1.5);
   transform: scale(1.5);
 }
 
+#homeAddress,
+#contactPhone,
+#email,
+#inezImage,
+#marcImage,
 #ramonImage {
   transition: transform 0.5s ease;
 }
 
-/* #meetDevBtn:hover {
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
+#inezBio,
+#marcBio,
+#ramonBio {
+  font-size: 18px;
 }
-
-#meetDevBtn {
-  transition: transform 0.5s ease;
-} */
 
 #meetDevBtn {
   margin-bottom: 15px;
 }
 
-/* @media only screen and (min-width: 768px) {
-  .container {
-    width: 100%;
-    padding: 20px;
-  }
-}
-
-@media only screen and (max-width: 368px) {
-  .container {
-    width: 100%;
-    padding: 20px;
-  }
-}
-
-@media only screen and (max-width: 168px) {
-  .container {
-    width: 100%;
-    padding: 20px;
-  }
-} */
