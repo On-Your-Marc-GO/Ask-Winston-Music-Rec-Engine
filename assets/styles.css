@@ -224,6 +224,36 @@ h2,
   margin-bottom: 55px;
 }
 
+#homeAddress:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+#homeAddress {
+  transition: transform 0.5s ease;
+}
+
+#contactPhone:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+#contactPhone {
+  transition: transform 0.5s ease;
+}
+
+#email:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+#email {
+  transition: transform 0.5s ease;
+}
+
 /*About page CSS*/
 
 .aboutH1 {
@@ -232,6 +262,10 @@ h2,
 
 .dev-pics {
   margin-top: 100px;
+}
+
+.contact-info {
+  margin-top: 200px;
 }
 
 .leftArrow {
