@@ -171,7 +171,7 @@ function appendTopArtistImages(data, artistID) {
     artistImage.attr("src", "assets/pics/placeholder.png");
   }
   var monthlyArtistDiv = $(`div[data-artist='${artistID}']`);
-  monthlyArtistDiv.append(artistImage);
+  monthlyArtistDiv.prepend(artistImage);
 }
 
 function getArtistTopSongs() {
@@ -188,19 +188,17 @@ function getArtistTopSongs() {
 
 function renderArtistTopSongs(data) {
   console.log(data);
-  $(".songInfoDiv").addClass("hide");
-  $(".searchInfo").addClass("hide");
-  $(".artistInfoDiv").addClass("hide");
-  $(".artistTopSongsInfoDiv").removeClass("hide");
+  var artistTopSongs = $(".artistTopSongDiv");
   $(".monthlyTopArtistsDiv").addClass("hide");
+  $(".artistTopSongsInfoDiv").removeClass("hide");
   $(".artistTopSongH2").html(`<div><span class="artistChoice">${data.tracks[0].artistName}`);
-
   for (var i = 0; i < data.tracks.length; i++) {
     var topSongDiv = $("<div>");
     topSongDiv.addClass("row topSongDiv");
-    var topSongAlbumImg = $("<img>");
-    topSongAlbumImg.addClass("col s2 albumImg");
-    topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
+    var topSongAlbumImg = $("<div>");
+    topSongAlbumImg.addClass("col s2 albumImgDiv");
+    topSongAlbumImg.attr("data-alb", data.tracks[i].albumId);
+    // topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
     var topSongInfoDiv = $("<div>");
     topSongInfoDiv.addClass("col s4 topSongInfoDiv");
     var topSongLyricsDiv = $("<div>");
@@ -229,37 +227,41 @@ function renderArtistTopSongs(data) {
     topSongLyricsDiv.append(topSongLyricsBtn);
     topSongPreview.append(topSongSource);
     topSongPreviewDiv.append(topSongPreview);
-
     topSongDiv.append(topSongAlbumImg);
     topSongDiv.append(topSongInfoDiv);
     topSongDiv.append(topSongLyricsDiv);
     topSongDiv.append(topSongPreviewDiv);
-
-    // TODO: Logic to Include Top Track Album Image much like our similar song page
-    // var topSongAlbumID = data.tracks[i].albumId;
-    // var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    // var topSongQueryURL = `http://api.napster.com/v2.2/albums/${topSongAlbumID}/images?apikey=${apiKey}`;
-
-    // $.ajax({
-    //   url: topSongQueryURL,
-    //   method: "GET",
-    // }).then(function (data) {
-    //   var topSongAlbumImg = $("<img>");
-    //   topSongAlbumImg.addClass("col s2 albumImg");
-    //   if (data.images.length >= 5) {
-    //     topSongAlbumImg.attr("src", data.images[4].url);
-    //   } else if (data.images.length > 0 && data.images.length < 5) {
-    //     topSongAlbumImg.attr("src", data.images[2].url);
-    //   } else {
-    //     topSongAlbumImg.attr("src", "assets/pics/placeholder.png");
-    //   }
-    //   topSongDiv.prepend(topSongAlbumImg);
-    //   //  $(".songInfo").append(songDiv);
-    //   // $(".userTopSongDiv").append(topSongDiv);
-    // });
-
-    $(".artistTopSongDiv").append(topSongDiv);
+    artistTopSongs.append(topSongDiv);
+    getAlbData(data.tracks[i].albumId);
   }
+}
+
+function getAlbData(albumID) {
+  //var albumID = data.tracks[i].albumId;
+  var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
+  var queryURL = `https://api.napster.com/v2.2/albums/${albumID}/images?apikey=${apiKey}`;
+
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (data) {
+    if (data) {
+      appendAlb(data, albumID);
+    }
+  });
+}
+
+function appendAlb(data, albumID) {
+  var albumImage = $("<img>");
+  albumImage.addClass("albumImg");
+  console.log(data.images);
+  if (data.images.length) {
+    albumImage.attr("src", data.images[data.images.length - 1].url);
+  } else {
+    albumImage.attr("src", "assets/pics/placeholder.png");
+  }
+  var songTopArtistDiv = $(`div[data-alb='${albumID}']`);
+  songTopArtistDiv.prepend(albumImage);
 }
 
 function getTopAlbums() {
@@ -329,7 +331,7 @@ function appendTopAlbumImages(data, albumID) {
     albumImage.attr("src", "assets/pics/placeholder.png");
   }
   var monthlyAlbumDiv = $(`div[data-album='${albumID}']`);
-  monthlyAlbumDiv.append(albumImage);
+  monthlyAlbumDiv.prepend(albumImage);
 }
 
 function getAlbumDetails() {
