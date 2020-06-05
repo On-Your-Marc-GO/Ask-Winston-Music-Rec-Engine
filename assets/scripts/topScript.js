@@ -12,7 +12,7 @@ $(document).ready(function () {
 
   function getTopSongs() {
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `https://api.napster.com/v2.2/tracks/top?apikey=${apiKey}?`;
+    var queryURL = `https://api.napster.com/v2.2/tracks/top?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -106,7 +106,7 @@ $(document).ready(function () {
 
   function getTopArtists() {
     var apiKey = "ZmJjMTczNmQtZjM2Yy00ZDI4LWJmOGYtZTE4MDRhNjQyZGMw";
-    var queryURL = `https://api.napster.com/v2.2/artists/top?apikey=${apiKey}?`;
+    var queryURL = `https://api.napster.com/v2.2/artists/top?apikey=${apiKey}`;
     $.ajax({
       url: queryURL,
       method: "GET",
