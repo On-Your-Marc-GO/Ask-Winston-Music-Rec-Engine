@@ -2,7 +2,7 @@
 
 ## Site URL
 
-- [Ask Winston](https://on-your-marc-go.github.io/Bootcamp-Project-1/)
+- [Ask Winston](https://on-your-marc-go.github.io/Ask-Winston-Music-Rec-Engine/)
 
 ## Description
 
