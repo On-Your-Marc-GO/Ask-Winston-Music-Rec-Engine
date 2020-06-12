@@ -1,5 +1,6 @@
 $(document).ready(function () {
   function getApiType() {
+    $(".home-page").removeClass("active");
     var apiType = $(this).attr("data-type");
     if (apiType === "top songs") {
       getTopSongs();
